@@ -55,7 +55,7 @@ func _kpis() -> void:
 		{"title": "Mayoría", "value": "%d / %d" % [seats, Rules.MAJORITY], "sub": "escaños del Gobierno y sus socios", "color": UI.GOOD if seats >= Rules.MAJORITY else UI.BAD},
 		{"title": "Estabilidad", "value": "%.0f / 100" % m.gov.stability(), "sub": "cae con las crisis de coalición", "color": UI.GOOD if m.gov.stability() >= 40.0 else (UI.WARN if m.gov.stability() >= 20.0 else UI.BAD)},
 		{"title": "Confianza media de los socios", "value": "%.0f / 100" % trust_avg if not ids.is_empty() else "—", "sub": "%d socio%s" % [ids.size(), "" if ids.size() == 1 else "s"], "color": UI.TEXT},
-		{"title": "Capital político", "value": "%.0f / %.0f" % [m.exec.capital(), Executive.MAX_CAPITAL], "sub": "reuniones y mediaciones lo gastan", "color": UI.ACCENT},
+		{"title": "Capital político", "value": "%.0f / %.0f" % [m.exec.capital(), Executive.MAX_CAPITAL], "sub": "reuniones y mediaciones lo gastan", "color": UI.ACCENT, "tip": m.exec.capital_text()},
 	])
 
 func _act(res: Dictionary) -> void:

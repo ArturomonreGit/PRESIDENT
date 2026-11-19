@@ -269,8 +269,63 @@ func directive() -> float:
 func add_capital(v: float) -> void:
 	st()["capital"] = clampf(capital() + v, 0.0, MAX_CAPITAL)
 
+## Capital político por mes (especificación §9): CP = base institucional + liderazgo + apoyo parlamentario + cohesión +
+## eficiencia media del gabinete. **No depende del número de ministerios**: la eficiencia es una media ponderada y
+## normalizada (0-1), de modo que un gabinete de 8 y uno de 12 con la misma calidad media reciben lo mismo.
+const CP_BASE := 1.5
+const CP_LEADERSHIP := 2.0
+const CP_PARLIAMENT := 2.0
+const CP_COHESION := 2.0
+const CP_EFFICIENCY := 2.0
+const CP_MIN := 2.5
+const CP_MAX := 9.0
+
+## Peso de una cartera en la media: la suma de sus competencias (las esenciales pesan más). Dividir una cartera en dos
+## deja la suma de pesos igual, así que no cambia la media.
+func ministry_weight(entry: Dictionary) -> float:
+	var w := 0.0
+	for c in (entry.get("comps", []) as Array):
+		w += 1.5 if bool(Competencies.by_id(str(c)).get("essential", false)) else 1.0
+	return maxf(w, 1.0)
+
+## Eficiencia de un ministerio (0-1): mitad rendimiento actual, mitad competencia efectiva del titular.
+func ministry_efficiency(idx: int) -> float:
+	var mn := m.cab.minister(idx)
+	if mn.is_empty():
+		return 0.3
+	var perf := clampf(m.cab.act_of(idx) / 100.0, 0.0, 1.0)
+	var skill := clampf(m.ministers.skill_in(idx) / 11.0, 0.0, 1.0)
+	return 0.5 * perf + 0.5 * skill
+
+## E = Σ (peso × eficiencia) / Σ pesos.
+func cabinet_efficiency() -> float:
+	var sw := 0.0
+	var sv := 0.0
+	var cab := cabinet()
+	for i in range(cab.size()):
+		var w := ministry_weight(cab[i] as Dictionary)
+		sw += w
+		sv += w * ministry_efficiency(i)
+	return sv / sw if sw > 0.0 else 0.3
+
+func capital_breakdown() -> Dictionary:
+	var lead := CP_LEADERSHIP * clampf(m.gov.approval() / 100.0, 0.0, 1.0)
+	var seats := float(m.coal.government_seats())
+	var parl := CP_PARLIAMENT * clampf((seats - 100.0) / (float(Rules.MAJORITY) - 100.0), 0.0, 1.0)
+	var coh := CP_COHESION * (0.5 * clampf(m.gov.stability() / 100.0, 0.0, 1.0) + 0.5 * clampf(m.itrust.capital_factor() / 1.08, 0.0, 1.0))
+	var e := cabinet_efficiency()
+	var eff := CP_EFFICIENCY * e
+	var raw := CP_BASE + lead + parl + coh + eff
+	return {"base": CP_BASE, "leadership": lead, "parliament": parl, "cohesion": coh, "efficiency": eff, "efficiency_index": e,
+		"raw": raw, "total": clampf(raw, CP_MIN, CP_MAX)}
+
 func monthly_income() -> float:
-	return clampf(3.0 + m.gov.approval() / 14.0, 4.0, 10.0) * m.itrust.capital_factor()
+	return float(capital_breakdown()["total"])
+
+## Texto de desglose para mostrar en una ayuda emergente.
+func capital_text() -> String:
+	var b := capital_breakdown()
+	return "Capital político por mes: %.1f\n· Base institucional %.1f\n· Liderazgo (apoyo al Gobierno) %.1f\n· Apoyo parlamentario %.1f\n· Cohesión y estabilidad %.1f\n· Eficiencia media del gabinete %.1f (índice %.0f %%)\nEl número de ministerios no suma capital: solo cuenta la calidad media." % [float(b["total"]), float(b["base"]), float(b["leadership"]), float(b["parliament"]), float(b["cohesion"]), float(b["efficiency"]), float(b["efficiency_index"]) * 100.0]
 
 # ---------------------------------------------------------------- decretos
 func decreeable(meas: Dictionary) -> bool:

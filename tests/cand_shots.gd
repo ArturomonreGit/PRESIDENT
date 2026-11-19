@@ -7,6 +7,15 @@ func _frames(n: int = 3) -> void:
 func _shot(name: String) -> void:
 	await _frames(6)
 	root.get_viewport().get_texture().get_image().save_png("%s/%s.png" % [out_dir, name])
+func _find(n: Node, text: String) -> Control:
+	if (n is Button or n is Label) and str(n.get("text")) == text:
+		return n as Control
+	for c in n.get_children():
+		var r := _find(c, text)
+		if r != null:
+			return r
+	return null
+
 func _initialize() -> void:
 	var args := OS.get_cmdline_user_args()
 	if args.size() > 1:
@@ -44,6 +53,19 @@ func _run(party_id: String) -> void:
 	shell.go("cabinet")
 	await _frames(4)
 	await _shot("01_consejo")
+	MinistrySheet.open(shell, m, idx, "minister")
+	await _frames(6)
+	# Regresión: las pestañas de la ficha deben responder (la ficha se liberaba al salir de open()).
+	var tab_btn := _find(root, "Candidatos") as Button
+	if tab_btn != null:
+		tab_btn.pressed.emit()
+		await _frames(6)
+	print("TAB_CANDIDATOS_OK" if _find(root, "Encaje") != null else "TAB_CANDIDATOS_FALLA")
+	var comp_btn := _find(root, "Competencias") as Button
+	if comp_btn != null:
+		comp_btn.pressed.emit()
+		await _frames(6)
+	print("TAB_COMPETENCIAS_OK" if _find(root, "Candidatos") != null and _find(root, "Encaje") == null else "TAB_COMPETENCIAS_FALLA")
 	MinistrySheet.open(shell, m, idx, "cands")
 	await _shot("02_candidatos_propia")
 	var other := -1

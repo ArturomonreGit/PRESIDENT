@@ -174,3 +174,8 @@ Subsistemas nuevos de `GameModel`: `cab` (`CabinetSim`), `coal` (`Coalition`), `
 - **Integración**: `Ministers.available_for` y `assign` usan la lista; `ensure_cabinet` nombra al jugador el mejor encaje de su lista y al socio vía `ai_choose` (rasgos pragmatism/rigidity/loyalty/ambition de `PartyBrain`). `CabinetSim.replace_with` sigue pasando por `assign`.
 - **UI**: `MinistrySheet` tiene la pestaña `cands` (`_tab_cands`, `_cand_card`).
 - Pendiente (E-G): capital político normalizado, diputados y pantalla de investidura, QA y migraciones; cláusula de acuerdo que autorice independientes en carteras de socios.
+
+## Negociación de Gobierno, entrega E (Alpha 0.2.3)
+- **Capital político** (`Executive`): `capital_breakdown()` devuelve base, liderazgo, parlamento, cohesión, eficiencia y total (constantes `CP_*`); `monthly_income()` es el total acotado. `cabinet_efficiency()` = Σ(`ministry_weight` × `ministry_efficiency`) / Σ pesos; el peso es la suma de competencias (esenciales 1,5), por lo que no depende del número de ministerios. `capital_text()` genera el desglose que muestran los tooltips (`kpi_row` admite la clave `tip`).
+- **Ficha de cartera**: `MinistrySheet.open` guarda la instancia en `shell.set_meta("ministry_sheet")`; las `RefCounted` con callbacks `Callable(self, …)` deben mantenerse vivas por quien las abre.
+- Pendiente (F-G): diputados y pantalla de investidura; QA y migraciones; cláusula de acuerdo para independientes en carteras de socios.

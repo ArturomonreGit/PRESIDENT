@@ -35,7 +35,7 @@ func _kpis() -> void:
 	var inc := m.exec.monthly_income()
 	var dir := m.exec.directive()
 	kpi_row([
-		{"title": "Capital político", "value": "%.0f / %.0f" % [m.exec.capital(), Executive.MAX_CAPITAL], "sub": "+%.1f por trimestre" % (inc * float(Rules.TURN_MONTHS)), "color": UI.ACCENT},
+		{"title": "Capital político", "value": "%.0f / %.0f" % [m.exec.capital(), Executive.MAX_CAPITAL], "sub": "+%.1f por trimestre" % (inc * float(Rules.TURN_MONTHS)), "color": UI.ACCENT, "tip": m.exec.capital_text()},
 		{"title": "Confianza de la directiva", "value": "%.0f / 100" % dir, "sub": "Cumple los objetivos para mantenerla", "color": UI.GOOD if dir >= 50.0 else (UI.WARN if dir >= 30.0 else UI.BAD)},
 		{"title": "Apoyo al Gobierno", "value": "%.0f / 100" % m.gov.approval(), "sub": "Estabilidad %.0f" % m.gov.stability(), "color": UI.TEXT},
 		{"title": "Saldo público", "value": "%s bn €" % UI.signed(m.eco.balance(), 1), "sub": "%.1f %% del PIB" % m.eco.balance_pct(), "color": UI.GOOD if m.eco.balance() >= 0.0 else UI.BAD},

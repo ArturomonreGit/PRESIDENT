@@ -21,6 +21,8 @@ static func open(shell_node, model: GameModel, index: int, start_tab: String = "
 	s.m = model
 	s.idx = index
 	s.tab = start_tab
+	# Los botones de las pestañas llaman a métodos de esta ficha: sin una referencia viva se libera al salir de open().
+	shell_node.set_meta("ministry_sheet", s)
 	s.show()
 
 func _president() -> bool:

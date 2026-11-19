@@ -96,7 +96,9 @@ func kpi_row(items: Array) -> void:
 	add_child(row)
 	for it in items:
 		var d: Dictionary = it
-		UI.kpi(row, str(d["title"]), str(d["value"]), str(d.get("sub", "")), d.get("color", UI.TEXT), d.get("sub_color", UI.MUTED))
+		var tile := UI.kpi(row, str(d["title"]), str(d["value"]), str(d.get("sub", "")), d.get("color", UI.TEXT), d.get("sub_color", UI.MUTED))
+		if d.has("tip"):
+			(tile.get_parent() as Control).tooltip_text = str(d["tip"])
 
 ## Fila de tabla de partido: etiqueta, valores a la derecha.
 func party_row(parent: Node, id: String, cells: Array, bold: bool = false) -> HBoxContainer:
