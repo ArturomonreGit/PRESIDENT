@@ -182,19 +182,14 @@ func _pool_taken() -> Dictionary:
 			taken[int((ed["minister"] as Dictionary).get("pool_id", -1))] = str(ed["name"])
 	return taken
 
+## Candidatos de una cartera de tu partido: los cinco de su lista (ver MinistryCandidates), de mejor a peor encaje.
 func available_for(index: int) -> Array:
 	var cab := m.gov.cabinet()
 	if index < 0 or index >= cab.size():
 		return []
 	var entry: Dictionary = cab[index]
 	var ministry := str(entry["name"])
-	var taken := _pool_taken()
-	var cur_id := int((entry.get("minister", {}) as Dictionary).get("pool_id", -1))
-	var out: Array = []
-	for p in pool():
-		var pid := int((p as Dictionary)["pool_id"])
-		if not taken.has(pid) or pid == cur_id:
-			out.append(p)
+	var out: Array = m.cands.shortlist(index).duplicate()
 	out.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return effective_skill(a, ministry, entry) > effective_skill(b, ministry, entry))
 	return out
 
@@ -204,6 +199,8 @@ func assign(index: int, pool_id: int) -> void:
 		return
 	var entry: Dictionary = cab[index]
 	if str(entry.get("party", "")) != m.pid():
+		return
+	if m.cands.appoint(index, pool_id):
 		return
 	for p in pool():
 		if int((p as Dictionary)["pool_id"]) == pool_id:
@@ -227,32 +224,27 @@ func ensure_cabinet() -> void:
 			if ed2.has("minister") and int((ed2["minister"] as Dictionary).get("pool_id", -1)) >= 0:
 				ensure_profile(ed2["minister"] as Dictionary)
 				continue
+			# El jugador parte del candidato de mejor encaje de su lista; puede cambiarlo en la pestaña Candidatos.
 			var best := {}
 			var best_v := -1.0
-			# Quien acaba de salir del Gobierno no vuelve a ser nombrado salvo que no quede nadie más.
-			for allow_burned in [false, true]:
-				for p in pool():
-					var pd: Dictionary = p
-					if used.has(int(pd["pool_id"])) or (not allow_burned and m.cab.is_burned(int(pd["pool_id"]))):
-						continue
-					var v := effective_skill(pd, str(ed2["name"]), ed2)
-					if v > best_v:
-						best_v = v
-						best = pd
-				if not best.is_empty():
-					break
+			for c in m.cands.shortlist(i):
+				var cd: Dictionary = c
+				var v := effective_skill(cd, str(ed2["name"]), ed2)
+				if v > best_v:
+					best_v = v
+					best = cd
 			if not best.is_empty():
 				used[int(best["pool_id"])] = true
 				ed2["minister"] = best.duplicate(true)
 				log_history(ed2["minister"], "Nombrado/a para %s." % str(ed2["name"]))
 		elif not ed2.has("minister") or (ed2["minister"] as Dictionary).is_empty():
-			var seed_v := hash("%s_%s_%d_%d" % [party_id, str(ed2.get("id", ed2["name"])), m.cycle, m.gov_month]) % 100000
-			var mn := generate(party_id, seed_v)
-			# La IA coloca a su gente más competente en las carteras importantes.
-			if _focus(str(ed2["name"])) != "" and m.rng.randf() < 0.5:
-				mn["specialty"] = str(ed2["name"])
-			ed2["minister"] = mn
-			log_history(mn, "Nombrado/a para %s." % str(ed2["name"]))
+			# El socio elige a su ministro entre sus cinco candidatos según los rasgos de su partido.
+			var mn := m.cands.ai_choose(i)
+			if mn.is_empty():
+				var seed_v := hash("%s_%s_%d_%d" % [party_id, str(ed2.get("id", ed2["name"])), m.cycle, m.gov_month]) % 100000
+				mn = generate(party_id, seed_v)
+			ed2["minister"] = mn.duplicate(true)
+			log_history(ed2["minister"], "Nombrado/a para %s." % str(ed2["name"]))
 		else:
 			ensure_profile(ed2["minister"] as Dictionary)
 

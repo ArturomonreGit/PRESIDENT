@@ -168,3 +168,9 @@ Subsistemas nuevos de `GameModel`: `cab` (`CabinetSim`), `coal` (`Coalition`), `
 - **Acciones**: `fulfil` (capital político), `renegotiate`, `abandon`; el resto de la lógica (confianza, crisis) pasa por `Coalition.shift_trust`.
 - **UI de negociación**: `NegUI` agrupa los widgets comunes (`side_header`, `origin_tag`, `stat_tile`, `pips`, `Gauge`, `commitment_row`). `MeetingScreen._table` pinta dos carriles por `by` con `_term_row` y `_origin`; `_balance` sustituye a la antigua tarjeta de lectura de la sala.
 - Pendiente (D-G): cinco candidatos por cartera, capital político normalizado, diputados y pantalla de investidura, QA y migraciones.
+
+## Negociación de Gobierno, entrega D (Alpha 0.2.2)
+- **`MinistryCandidates` (`m.cands`)**: `shortlist(index)` devuelve y persiste (`m.s["cand_sets"][id de cartera]` con firma ciclo+partido+competencias) cinco candidatos; se completa con `_pick` (cantera del jugador por papel) o `_make` (personas nuevas con `Ministers.generate`, `pool_id` ≥ 100000 desde `m.s["cand_seq"]`). `dominates`/`_dominance_conflict` aplican la regla de no dominancia; `notes` calcula fortalezas, debilidades y riesgos; `fit` reutiliza `Ministers.effective_skill`.
+- **Integración**: `Ministers.available_for` y `assign` usan la lista; `ensure_cabinet` nombra al jugador el mejor encaje de su lista y al socio vía `ai_choose` (rasgos pragmatism/rigidity/loyalty/ambition de `PartyBrain`). `CabinetSim.replace_with` sigue pasando por `assign`.
+- **UI**: `MinistrySheet` tiene la pestaña `cands` (`_tab_cands`, `_cand_card`).
+- Pendiente (E-G): capital político normalizado, diputados y pantalla de investidura, QA y migraciones; cláusula de acuerdo que autorice independientes en carteras de socios.

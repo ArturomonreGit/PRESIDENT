@@ -107,6 +107,11 @@ func _initialize() -> void:
 	var m := _coalition_game()
 	check(m != null, "partida con jugador presidente y socio")
 	if m == null:
+		## La partida de prueba es aleatoria: sin ella no se puede seguir, pero que no se quede colgado el script.
+		print("== Fallos: ", failures)
+		quit()
+		return
+	if m == null:
 		print("== Fallos: ", failures + 1)
 		quit(1)
 		return

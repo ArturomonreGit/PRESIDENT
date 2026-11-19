@@ -11,7 +11,6 @@ var split_sel: Array = []
 var _pick_party: OptionButton
 var _pick_other: OptionButton
 var _pick_area: OptionButton
-var _pick_pool: OptionButton
 var _name_edit: LineEdit
 var _desc_edit: LineEdit
 var _split_name: LineEdit
@@ -56,7 +55,7 @@ func show() -> void:
 	head.add_child(UI.button("Cerrar", "ghost", Callable(shell, "close_modal")))
 	col.add_child(head)
 	var tabs := UI.hbox(6)
-	var order: Array = [["minister", "Ministro"], ["comps", "Competencias"]]
+	var order: Array = [["minister", "Ministro"], ["cands", "Candidatos"], ["comps", "Competencias"]]
 	if _president():
 		order.append(["actions", "Acciones del presidente"])
 	if _can_edit():
@@ -68,6 +67,8 @@ func show() -> void:
 	col.add_child(tabs)
 	col.add_child(UI.hsep())
 	match tab:
+		"cands":
+			_tab_cands(col)
 		"comps":
 			_tab_comps(col)
 		"actions":
@@ -136,23 +137,8 @@ func _tab_minister(col: VBoxContainer) -> void:
 	var sk := m.ministers.effective_skill(mn, str(e["name"]), e)
 	right.add_child(_meter_line("Competencia en la cartera", sk, 11.0, UI.GOOD if sk >= 7.0 else (UI.WARN if sk >= 5.0 else UI.BAD)))
 	right.add_child(UI.wrap_label(m.ministers.describe(mn, str(e["name"]), e), UI.FS_SMALL, UI.MUTED))
-	# Titular de tu partido: elegir
 	if str(e.get("party", "")) == m.pid() and (m.phase == "cabinet_design" or _president()):
-		_pick_pool = OptionButton.new()
-		_pick_pool.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var list := m.ministers.available_for(idx)
-		var sel := -1
-		for k in range(list.size()):
-			var cand: Dictionary = list[k]
-			_pick_pool.add_item(m.ministers.describe(cand, str(e["name"]), e))
-			_pick_pool.set_item_metadata(k, int(cand.get("pool_id", -1)))
-			if int(cand.get("pool_id", -2)) == int(mn.get("pool_id", -1)):
-				sel = k
-		if sel >= 0:
-			_pick_pool.select(sel)
-		right.add_child(UI.label("Titular de la cartera", UI.FS_SMALL, UI.MUTED, true))
-		right.add_child(_pick_pool)
-		right.add_child(UI.button("Nombrar al elegido%s" % (_cost_text("replace") if _president() else ""), "secondary", Callable(self, "_do_pick")))
+		right.add_child(UI.button("Comparar los 5 candidatos", "secondary", Callable(self, "_set_tab").bind("cands")))
 	right.add_child(UI.label("Historial", UI.FS_SMALL, UI.MUTED, true))
 	var hist: Array = mn.get("history", [])
 	if hist.is_empty():
@@ -180,15 +166,116 @@ func _meter_line(title: String, v: float, mx: float, color: Color) -> HBoxContai
 	row.add_child(vl)
 	return row
 
-func _do_pick() -> void:
-	if _pick_pool == null or _pick_pool.selected < 0:
-		return
-	var pool_id := int(_pick_pool.get_item_metadata(_pick_pool.selected))
+func _do_pick(pool_id: int) -> void:
 	if m.phase == "cabinet_design":
 		m.ministers.assign(idx, pool_id)
 		_done({"ok": true, "text": "Nombramiento hecho."})
 	else:
 		_done(m.cab.replace_with(idx, pool_id))
+
+# ---------------------------------------------------------------- pestaña Candidatos
+func _tab_cands(col: VBoxContainer) -> void:
+	var e := m.cab.entry(idx)
+	var party := str(e.get("party", ""))
+	var mine := party == m.pid()
+	var can_pick := mine and (m.phase == "cabinet_design" or _president()) and not m.cab.is_reserved(idx)
+	var cur: Dictionary = m.cab.minister(idx)
+	var intro := ""
+	if mine:
+		intro = "Cinco candidatos plausibles para %s, con su encaje real en la cartera. Ninguno es mejor en todo: elige qué riesgo asumes." % str(e["name"])
+		if can_pick and _president():
+			intro += " Cambiar de titular cuesta %d de capital político." % int(CabinetSim.ACTION_COST.get("replace", 0.0))
+	else:
+		intro = "%s elige a su ministro de esta cartera entre estos cinco candidatos, según los rasgos de su partido." % m.party_name(party)
+	col.add_child(UI.wrap_label(intro, UI.FS_SMALL, UI.MUTED))
+	var row := UI.hbox(8)
+	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	col.add_child(row)
+	var list: Array = m.cands.shortlist(idx)
+	var chosen_id := int(cur.get("pool_id", -9))
+	for c in list:
+		row.add_child(_cand_card(c as Dictionary, e, chosen_id, can_pick, mine))
+	if list.is_empty():
+		col.add_child(UI.wrap_label("No hay candidatos disponibles para esta cartera.", UI.FS_BODY, UI.WARN))
+
+func _cand_card(c: Dictionary, e: Dictionary, chosen_id: int, can_pick: bool, mine: bool) -> Control:
+	m.ministers.ensure_profile(c)
+	var is_cur := int(c.get("pool_id", -1)) == chosen_id
+	var pc := PanelContainer.new()
+	pc.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	pc.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	pc.custom_minimum_size = Vector2(150, 0)
+	pc.add_theme_stylebox_override("panel", UI.box(UI.PANEL if not is_cur else UI.PANEL.lerp(UI.GOOD, 0.08), UI.GOOD if is_cur else UI.D4_LINE, 6, 2 if is_cur else 1, 8, 8))
+	var v := UI.vbox(3)
+	pc.add_child(v)
+	var top := UI.hbox(4)
+	top.add_child(UI.chip(m.cands.role_name(c), UI.D4_BLUE))
+	if bool(c.get("independent", false)):
+		top.add_child(UI.chip("Indep.", UI.MUTED))
+	v.add_child(top)
+	var nm := UI.label(Leader.full_name(c), UI.FS_BODY, UI.TEXT, true)
+	nm.clip_text = true
+	nm.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	nm.tooltip_text = Leader.full_name(c)
+	v.add_child(nm)
+	var sub := UI.label("%d años · %s" % [int(c.get("age", 50)), m.ministers.personality_name(c)], UI.FS_TINY, UI.ACCENT, true)
+	sub.tooltip_text = m.ministers.personality_desc(c)
+	v.add_child(sub)
+	var fit := m.cands.fit(c, idx)
+	var fl := HBoxContainer.new()
+	fl.add_theme_constant_override("separation", 4)
+	fl.add_child(UI.label("Encaje", UI.FS_TINY, UI.MUTED))
+	var fm := UI.meter(fit, 11.0, UI.GOOD if fit >= 7.0 else (UI.WARN if fit >= 5.0 else UI.BAD), 7)
+	fm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	fm.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	fl.add_child(fm)
+	fl.add_child(UI.label("%.1f" % fit, UI.FS_SMALL, UI.TEXT, true))
+	v.add_child(fl)
+	var sp := UI.label("Especialidad: %s" % str(c.get("specialty", "—")), UI.FS_TINY, UI.GOOD if m.ministers.specialty_match(c, str(e["name"]), e) else UI.FAINT)
+	sp.clip_text = true
+	sp.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	v.add_child(sp)
+	v.add_child(UI.hsep())
+	for k in Ministers.ATTR_ORDER:
+		var val := m.ministers.attr(c, str(k))
+		var ar := HBoxContainer.new()
+		ar.add_theme_constant_override("separation", 4)
+		var al := UI.label(str(MinistryCandidates.SHORT[str(k)]), UI.FS_TINY, UI.MUTED)
+		al.custom_minimum_size = Vector2(78, 0)
+		al.clip_text = true
+		ar.add_child(al)
+		var good := val >= 7 or str(k) == "ambicion"
+		var ab := UI.meter(float(val), 10.0, UI.GOOD if val >= 7 and good else (UI.WARN if val >= 4 else UI.BAD), 5)
+		ab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		ab.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		ar.add_child(ab)
+		var avl := UI.label("%d" % val, UI.FS_TINY, UI.TEXT, true)
+		avl.custom_minimum_size = Vector2(14, 0)
+		ar.add_child(avl)
+		v.add_child(ar)
+	v.add_child(UI.hsep())
+	var nt: Dictionary = m.cands.notes(c, idx)
+	for line in nt["strengths"]:
+		v.add_child(_note_line("+ " + str(line), UI.GOOD))
+	for line in nt["weaknesses"]:
+		v.add_child(_note_line("− " + str(line), UI.WARN))
+	for line in nt["risks"]:
+		v.add_child(_note_line("⚠ " + str(line), UI.BAD))
+	var sp2 := Control.new()
+	sp2.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(sp2)
+	if is_cur:
+		v.add_child(UI.chip("Titular", UI.GOOD, true))
+	elif can_pick:
+		var pid := int(c.get("pool_id", -1))
+		var b := UI.button("Nombrar", "secondary", Callable(self, "_do_pick").bind(pid))
+		v.add_child(b)
+	return pc
+
+func _note_line(text: String, color: Color) -> Label:
+	var l := UI.wrap_label(text, UI.FS_TINY, color)
+	l.max_lines_visible = 3
+	return l
 
 # ---------------------------------------------------------------- pestaña Competencias
 func _tab_comps(col: VBoxContainer) -> void:

@@ -29,6 +29,7 @@ var ministers: Ministers
 var exec: Executive
 var manifesto: Manifesto
 var cab: CabinetSim
+var cands: MinistryCandidates
 var coal: Coalition
 var agr: Agreements
 var mact: MinisterActivity
@@ -98,6 +99,7 @@ func _init(save_dict: Dictionary) -> void:
 	exec = Executive.new(self)
 	manifesto = Manifesto.new(self)
 	cab = CabinetSim.new(self)
+	cands = MinistryCandidates.new(self)
 	coal = Coalition.new(self)
 	agr = Agreements.new(self)
 	mact = MinisterActivity.new(self)

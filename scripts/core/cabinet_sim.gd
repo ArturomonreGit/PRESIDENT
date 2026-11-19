@@ -736,6 +736,7 @@ func _vacate(idx: int, text: String, voluntary: bool) -> Dictionary:
 		var burned: Array = st().get("burned", [])
 		burned.append(int(mn["pool_id"]))
 		st()["burned"] = burned
+	m.cands.retire(idx, int(mn.get("pool_id", -1)))
 	e.erase("minister")
 	e.erase("plan")
 	e["autonomy"] = "plena"
