@@ -30,6 +30,7 @@ var exec: Executive
 var manifesto: Manifesto
 var cab: CabinetSim
 var coal: Coalition
+var agr: Agreements
 var mact: MinisterActivity
 var autosave := true
 var _by_id: Dictionary = {}
@@ -98,6 +99,7 @@ func _init(save_dict: Dictionary) -> void:
 	manifesto = Manifesto.new(self)
 	cab = CabinetSim.new(self)
 	coal = Coalition.new(self)
+	agr = Agreements.new(self)
 	mact = MinisterActivity.new(self)
 	_migrate()
 	eco.ensure()

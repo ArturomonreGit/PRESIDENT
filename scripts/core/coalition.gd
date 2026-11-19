@@ -706,6 +706,7 @@ func _new_commitment(id: String, ask: Dictionary, fulfilled: bool, reduced: bool
 	var com := {"id": seq, "party": id, "issue": str(ask.get("issue", ask.get("line", ask.get("comp", "mesa")))), "text": str(ask["title"]),
 		"due": m.gov_month + (12 if reduced else 9), "fulfilled": fulfilled, "overdue_flagged": false, "source": "mesa", "scope": str(ask.get("scope", "leyes"))}
 	m.a("commitments").append(com)
+	m.agr.normalize(com)
 	return com
 
 func _apply_ask(id: String, ask: Dictionary, reduced: bool) -> Dictionary:

@@ -84,10 +84,10 @@ func _cell(i: int, entry: Dictionary, designing: bool) -> Control:
 	bar.custom_minimum_size = Vector2(4, 20)
 	bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	row.add_child(bar)
-	var nm := UI.label(str(entry["name"]), UI.FS_SMALL, UI.TEXT, true)
+	var nm := UI.label(m.agr.ministry_label(i), UI.FS_SMALL, UI.TEXT, true)
 	nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_clip(nm)
-	nm.tooltip_text = str(entry["name"])
+	nm.tooltip_text = m.agr.ministry_label(i)
 	row.add_child(nm)
 	row.add_child(UI.chip(m.party_short(party_id), m.party_color(party_id)))
 	cv.add_child(row)

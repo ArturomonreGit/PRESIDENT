@@ -4,7 +4,7 @@ extends RefCounted
 
 const SCHEMA_VERSION := 3
 const GAME_STAGE := "Alpha"  ## fase de desarrollo; pasará a la numeración definitiva cuando el usuario dé por terminada la alpha
-const GAME_VERSION := "0.2.0"  ## Alpha 0.2.x: se sube el último número en cada entrega validada (ver CHANGELOG.md)
+const GAME_VERSION := "0.2.1"  ## Alpha 0.2.x: se sube el último número en cada entrega validada (ver CHANGELOG.md)
 const CAMPAIGN_LENGTH_DAYS := 42
 const MAJORITY := 176
 const CONGRESS_SEATS := 350

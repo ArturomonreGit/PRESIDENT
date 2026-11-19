@@ -17,6 +17,7 @@ for p in psoe pp sumar podemos salf adelante alianca custom regional; do
 "$GODOT" --headless --path . --script res://tests/roles.gd 2>&1 | grep -E "FAIL|Fallos"
 "$GODOT" --headless --path . --script res://tests/negotiation.gd 2>&1 | grep -E "FAIL|Fallos"
 "$GODOT" --headless --path . --script res://tests/negotiation_ai.gd 2>&1 | grep -E "FAIL|Fallos"
+"$GODOT" --headless --path . --script res://tests/agreements.gd 2>&1 | grep -E "FAIL|Fallos"
 "$GODOT" --headless --path . --script res://tests/law_deals.gd 2>&1 | grep -E "FAIL|Fallos"
 "$GODOT" --headless --path . --script res://tests/history.gd 2>&1 | grep -E "FAIL|Fallos"
 "$GODOT" --headless --path . --script res://tests/diplomacy.gd 2>&1 | grep -E "FAIL|Fallos"

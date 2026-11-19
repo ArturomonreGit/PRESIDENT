@@ -279,35 +279,35 @@ func _respond(pid: int, opt: String) -> void:
 
 # ---------------------------------------------------------------- compromisos
 func _tab_commitments() -> void:
+	m.agr.ensure()
 	var list := m.a("commitments")
-	var c := UI.card(self, "Compromisos del acuerdo", "%d pendientes" % _pending_n(list), UI.ACCENT)
+	var cnt := m.agr.counts()
+	var active := int(cnt["pending"]) + int(cnt["in_progress"])
+	var c := UI.card(self, "Compromisos del acuerdo", "%d vigentes · %d cumplidos · %d incumplidos" % [active, int(cnt["fulfilled"]), int(cnt["breached"])], UI.ACCENT)
 	if list.is_empty():
 		c.add_child(UI.wrap_label("No hay compromisos: nadie te ha exigido nada concreto todavía.", UI.FS_BODY, UI.MUTED))
-	var shown := 0
-	for i in range(list.size() - 1, -1, -1):
-		var com: Dictionary = list[i]
-		shown += 1
-		if shown > 9:
-			break
-		var fulfilled := bool(com.get("fulfilled", false))
-		var overdue := not fulfilled and m.gov_month > int(com.get("due", 8))
-		var row := UI.hbox(8)
-		row.custom_minimum_size = Vector2(0, 30)
-		row.add_child(UI.chip("Cumplido" if fulfilled else ("Vencido" if overdue else "Pendiente"), UI.GOOD if fulfilled else (UI.BAD if overdue else UI.WARN), true))
-		var tag := UI.party_tag(m, str(com.get("party", "")), UI.FS_SMALL)
-		tag.custom_minimum_size = Vector2(110, 0)
-		row.add_child(tag)
-		var tl := UI.wrap_label(str(com.get("text", "")), UI.FS_SMALL, UI.TEXT)
-		tl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(tl)
-		row.add_child(UI.label("Plazo: mes %d" % int(com.get("due", 8)), UI.FS_TINY, UI.FAINT))
-		if not fulfilled and m.coal.gov_id() == m.pid():
-			if str(com.get("measure", "")) == "" and str(com.get("source", "")) != "mesa" or str(com.get("source", "")) == "mesa":
-				row.add_child(UI.mini_button("Ir al Taller", Callable(shell, "go").bind("laws")))
-			if not bool(com.get("extended", false)):
-				row.add_child(UI.mini_button("Prorrogar (1 cap.)", Callable(self, "_extend").bind(i)))
-		c.add_child(row)
-	c.add_child(UI.wrap_label("Los compromisos con ley se cumplen cuando una ley de esa materia sale adelante; los de crédito o competencias se cumplen al concederlos. Los vencidos reducen la confianza cada trimestre.", UI.FS_TINY, UI.FAINT))
+		return
+	var box := UI.vbox(6)
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	c.add_child(box)
+	var president := m.coal.gov_id() == m.pid()
+	# Primero los vigentes y los incumplidos; después lo ya cerrado.
+	var order: Array = []
+	for pass_n in range(2):
+		for i in range(list.size() - 1, -1, -1):
+			var com: Dictionary = list[i]
+			var closed := m.agr.state_of(com) in Agreements.TERMINAL
+			if (pass_n == 0) != closed:
+				order.append(com)
+	for com2 in order:
+		var cd: Dictionary = com2
+		var row := NegUI.commitment_row(m, cd, president, Callable(self, "_act"))
+		box.add_child(row)
+		if president and m.agr.is_active(cd) and not bool(cd.get("extended", false)) and m.agr.state_of(cd) != "breached":
+			var ext := UI.mini_button("Prorrogar (1 cap.)", Callable(self, "_extend").bind(list.find(cd)))
+			ext.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+			(row.get_child(0).get_child(1) as VBoxContainer).add_child(ext)
+	c.add_child(UI.wrap_label("Pasa el ratón por el texto para ver la consecuencia de incumplir. Lo medible se comprueba solo cada mes; lo demás lo cumples a mano con capital político. Incumplir resta confianza según la gravedad y, si se acumula, escala la crisis.", UI.FS_TINY, UI.FAINT))
 
 func _pending_n(list: Array) -> int:
 	var n := 0

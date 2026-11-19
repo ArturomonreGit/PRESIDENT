@@ -240,18 +240,27 @@ func _legislature() -> void:
 			row.add_child(UI.label("%.0f" % v, UI.FS_BODY, UI.TEXT, true))
 			pg.add_child(row)
 	_image_card(right)
+	m.agr.ensure()
 	var pending: Array = []
+	var in_gov: bool = m.coal.gov_id() == m.pid() or m.coal.party_ids().has(m.pid())
 	for cm in m.a("commitments"):
-		if not bool((cm as Dictionary).get("fulfilled", false)):
+		if in_gov and not (m.agr.state_of(cm as Dictionary) in Agreements.TERMINAL):
 			pending.append(cm)
 	if not pending.is_empty():
-		var c4 := UI.card(right, "Compromisos de la investidura", "", UI.GOOD)
-		for cm2 in pending.slice(0, 3):
+		var c4 := UI.card(right, "Compromisos del acuerdo", "%d vigentes" % pending.size(), UI.GOOD)
+		for cm2 in pending.slice(0, 2):
 			var com: Dictionary = cm2
 			var row2 := UI.hbox(8)
-			row2.add_child(UI.chip("Pendiente", UI.WARN))
-			row2.add_child(UI.wrap_label("%s: %s" % [m.party_short(str(com["party"])), str(com["text"])], UI.FS_SMALL, UI.TEXT))
+			row2.add_child(UI.chip(m.agr.state_name(com), NegUI.STATE_COLOR.get(m.agr.state_of(com), UI.WARN)))
+			var ctxt := UI.label("%s: %s" % [m.party_short(str(com["party"])), str(com["text"])], UI.FS_SMALL, UI.TEXT)
+			ctxt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			ctxt.clip_text = true
+			ctxt.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+			ctxt.tooltip_text = str(com["text"])
+			row2.add_child(ctxt)
 			c4.add_child(row2)
+		if pending.size() > 2:
+			c4.add_child(UI.label("y %d más en Mesa de coalición" % (pending.size() - 2), UI.FS_TINY, UI.FAINT))
 
 ## Franja «Estado del país»: los grandes indicadores con su tendencia de los últimos 5 años.
 func _country_strip() -> void:

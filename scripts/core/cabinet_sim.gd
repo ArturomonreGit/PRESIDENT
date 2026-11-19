@@ -167,6 +167,8 @@ func set_comps(idx: int, comps: Array, take: bool = false) -> Dictionary:
 		return _fail("Solo el presidente puede reorganizar las competencias.")
 	if is_reserved(idx):
 		return _fail("Esta cartera está reservada a su partido por el acuerdo de coalición.")
+	if m.agr.pledge_text(idx) != "":
+		return _fail(m.agr.pledge_text(idx))
 	var conf := conflicts_for(idx, comps)
 	for cf in conf:
 		if bool((cf as Dictionary)["reserved"]):
@@ -234,6 +236,8 @@ func create(new_name: String, comps: Array, party_id: String = "", take: bool = 
 		return _fail("Solo el presidente del Gobierno puede crear ministerios.")
 	if size() >= Competencies.MAX_MINISTRIES:
 		return _fail("El Gobierno no puede tener más de %d ministerios." % Competencies.MAX_MINISTRIES)
+	if m.agr.size_block(true) != "":
+		return _fail(m.agr.size_block(true))
 	var pid := party_id if party_id != "" else gov_id()
 	if not m.gov.government_parties().has(pid):
 		return _fail("Ese partido no forma parte del Gobierno.")
@@ -334,6 +338,10 @@ func delete(idx: int, heir: int = -1) -> Dictionary:
 		return _fail("Esta cartera está reservada a su partido por el acuerdo de coalición.")
 	if size() <= Competencies.MIN_MINISTRIES:
 		return _fail("El Gobierno necesita al menos %d ministerios." % Competencies.MIN_MINISTRIES)
+	if m.agr.pledge_text(idx) != "":
+		return _fail(m.agr.pledge_text(idx))
+	if m.agr.size_block(false) != "":
+		return _fail(m.agr.size_block(false))
 	if not comps_of(idx).is_empty() or not shared_of(idx).is_empty():
 		if heir < 0:
 			heir = _default_heir(idx)
@@ -369,6 +377,10 @@ func merge(a: int, b: int, new_name: String = "") -> Dictionary:
 		return _fail("Elige dos ministerios distintos.")
 	if is_reserved(a) or is_reserved(b):
 		return _fail("No se pueden fusionar carteras reservadas a un socio.")
+	if m.agr.pledge_text(a) != "" or m.agr.pledge_text(b) != "":
+		return _fail(m.agr.pledge_text(a) if m.agr.pledge_text(a) != "" else m.agr.pledge_text(b))
+	if m.agr.size_block(false) != "":
+		return _fail(m.agr.size_block(false))
 	if str(entry(a)["party"]) != str(entry(b)["party"]):
 		return _fail("Solo se fusionan carteras del mismo partido.")
 	if size() <= Competencies.MIN_MINISTRIES:
@@ -404,6 +416,10 @@ func split(idx: int, moved: Array, new_name: String = "") -> Dictionary:
 		return _fail("Esta cartera está reservada a su partido por el acuerdo de coalición.")
 	if size() >= Competencies.MAX_MINISTRIES:
 		return _fail("El Gobierno no puede tener más de %d ministerios." % Competencies.MAX_MINISTRIES)
+	if m.agr.size_block(true) != "":
+		return _fail(m.agr.size_block(true))
+	if m.agr.pledge_text(idx) != "":
+		return _fail(m.agr.pledge_text(idx))
 	var src: Array = comps_of(idx)
 	var take: Array = []
 	for c in moved:

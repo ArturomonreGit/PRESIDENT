@@ -146,8 +146,12 @@ func offer_terms(id: String) -> Array:
 				terms.append({"k": "policy", "by": "ai", "issue": str(dem["issue"]), "text": str(dem["text"]), "lean": m.brain.lean(m.pid(), str(dem["issue"]))})
 		if str(offer.get("role", "external")) == "cabinet":
 			terms.append({"k": "cabinet", "by": "ai", "n": 1})
+		for xt2 in offer.get("terms_extra", []):
+			terms.append((xt2 as Dictionary).duplicate(true))
 		return terms
 	terms.append({"k": "vote_abstain" if str(offer.get("vote", "yes")) == "abstain" else "vote_yes", "by": "ai"})
+	for xt in offer.get("terms_extra", []):
+		terms.append((xt as Dictionary).duplicate(true))
 	for d in offer.get("demands", []):
 		var dem2: Dictionary = d
 		if bool(dem2.get("conceded", false)):
@@ -397,14 +401,16 @@ func government_parties() -> Array:
 
 func _start_cabinet_design() -> void:
 	var cabinet_partners := government_parties().size() - 1
-	m.s["cabinet_size"] = clampi(10 + cabinet_partners * 2, 8, 18)
+	m.s["cabinet_size"] = clampi(10 + cabinet_partners * 2, Competencies.MIN_MINISTRIES, Competencies.MAX_MINISTRIES)
 	var claimed := 0
 	for id in government_parties():
 		claimed += int(m.d("cabinet_claims").get(str(id), 0))
-	m.s["cabinet_size"] = clampi(maxi(int(m.s["cabinet_size"]), claimed + 4), 8, 18)
+	var lim := m.agr.cabinet_limits()
+	m.s["cabinet_size"] = clampi(maxi(int(m.s["cabinet_size"]), claimed + 4), int(lim["min"]), int(lim["max"]))
 	cabinet().clear()
 	_grow_cabinet(int(m.s["cabinet_size"]))
 	_apply_claims()
+	m.agr.apply_to_cabinet()
 
 ## Reparte primero las carteras que los socios pactaron en la mesa.
 func _apply_claims() -> void:
@@ -450,7 +456,8 @@ func _grow_cabinet(target: int) -> void:
 		list.append({"name": str(Rules.MINISTRY_CATALOG[list.size()]), "key": str(Rules.MINISTRY_CATALOG[list.size()]), "party": recipient})
 
 func set_cabinet_size(n: int) -> void:
-	m.s["cabinet_size"] = clampi(n, 8, 18)
+	var lim := m.agr.cabinet_limits()
+	m.s["cabinet_size"] = clampi(n, int(lim["min"]), int(lim["max"]))
 	_grow_cabinet(int(m.s["cabinet_size"]))
 
 func rename_ministry(index: int, new_name: String) -> void:
@@ -462,6 +469,8 @@ func assign_ministry(index: int, party_id: String) -> void:
 	var list := cabinet()
 	if index >= 0 and index < list.size() and government_parties().has(party_id):
 		if str((list[index] as Dictionary).get("party", "")) != party_id:
+			if m.agr.pledge_text(index) != "":
+				return
 			(list[index] as Dictionary).erase("minister")
 		(list[index] as Dictionary)["party"] = party_id
 
@@ -487,6 +496,9 @@ func form_government() -> Dictionary:
 	var check := validate_cabinet()
 	if not bool(check["ok"]):
 		return check
+	var pledged := m.agr.validate_formation()
+	if not bool(pledged["ok"]):
+		return pledged
 	m.phase = "legislature"
 	m.gov_month = 1
 	m.advance_clock_days(5)
@@ -509,6 +521,7 @@ func form_government() -> Dictionary:
 	m.ministers.ensure_cabinet()
 	m.exec.on_government_formed()
 	m.coal.on_formed()
+	m.agr.on_government_formed()
 	m.congress.open_session()
 	m.publish("El nuevo Gobierno queda constituido", "Consejo de Ministros de %d carteras. Reparto: %s. Comienza la legislatura." % [cabinet().size(), ", ".join(parts)], "GOBIERNO", "positive")
 	m.save_now()
@@ -692,6 +705,7 @@ func advance_turn() -> Dictionary:
 	m.militancy.monthly()
 	m.itrust.quarterly()
 	m.diplomacy.monthly()
+	m.agr.tick()
 	m.enc.daily()
 	m.expire_news()
 	m.media.monthly()
@@ -724,7 +738,7 @@ func _update_partners() -> void:
 		sat[pid] = clampf(v, 0.0, 100.0)
 	for c in m.a("commitments"):
 		var com: Dictionary = c
-		if bool(com.get("fulfilled", false)):
+		if bool(com.get("fulfilled", false)) or str(com.get("source", "")) == "acuerdo":
 			continue
 		if str(com.get("measure", "")) != "" and _measure_done(com):
 			com["fulfilled"] = true
@@ -816,7 +830,7 @@ func propose_bill(bill_id: String) -> Dictionary:
 		m.trust = m.trust + 1.0
 		for c in m.a("commitments"):
 			var com: Dictionary = c
-			if str(com["issue"]) == issue and not bool(com.get("fulfilled", false)) and str(com.get("measure", "")) == "":
+			if str(com["issue"]) == issue and not bool(com.get("fulfilled", false)) and str(com.get("measure", "")) == "" and str(com.get("source", "")) != "acuerdo":
 				com["fulfilled"] = true
 				var pid := str(com["party"])
 				m.d("partner_satisfaction")[pid] = clampf(float(m.d("partner_satisfaction").get(pid, 60.0)) + 14.0, 0.0, 100.0)

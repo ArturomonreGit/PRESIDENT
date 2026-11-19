@@ -160,3 +160,11 @@ Subsistemas nuevos de `GameModel`: `cab` (`CabinetSim`), `coal` (`Coalition`), `
 - **Investidura**: `_sync_investiture` interpreta `participation` (coalición → cartera reclamada, abstención → voto «abstain», apoyo externo/puntual → fuera del Consejo). `GovernmentSim._ai_resolve` fija `role` y `vote` según la modalidad.
 - Pendiente (C-G): materializar las condiciones (campos §6 en `commitments`, reclamaciones, vicepresidencias, límite 8-20 unificado), cinco candidatos, capital normalizado, capa de diputados.
 
+
+## Negociación de Gobierno, entrega C (Alpha 0.2.1)
+- **`Agreements` (`m.agr`)**: capa única de compromisos sobre `m.a("commitments")`. `normalize` completa los campos de la especificación §6 (id, agreement_id, category, binding, type, kind, parties, responsible, consequence, history, state, progress); `spec_for_term` / `specs_for_offer` convierten los términos de una mesa en compromisos (`verify`: metric, manual, review, meeting, structural). Convención de lados: el presidente da ⇔ (`by=="player"`) XOR `as_partner`.
+- **Formación**: `GovernmentSim._start_cabinet_design` usa `cabinet_limits()` (8–20, mínimo/máximo pactados) y `apply_to_cabinet()` (carteras y vicepresidencia con `rank="vice"`); `assign_ministry` y `CabinetSim` (crear, dividir, fusionar, borrar) respetan lo pactado vía `pledge_text`/`size_block`; `form_government` llama a `validate_formation()` y después a `on_government_formed()`.
+- **Mensual**: `GovernmentSim` llama a `m.agr.tick()` tras `m.diplomacy.monthly()`; los bucles heredados de cumplimiento por materia ignoran `source=="acuerdo"`.
+- **Acciones**: `fulfil` (capital político), `renegotiate`, `abandon`; el resto de la lógica (confianza, crisis) pasa por `Coalition.shift_trust`.
+- **UI de negociación**: `NegUI` agrupa los widgets comunes (`side_header`, `origin_tag`, `stat_tile`, `pips`, `Gauge`, `commitment_row`). `MeetingScreen._table` pinta dos carriles por `by` con `_term_row` y `_origin`; `_balance` sustituye a la antigua tarjeta de lectura de la sala.
+- Pendiente (D-G): cinco candidatos por cartera, capital político normalizado, diputados y pantalla de investidura, QA y migraciones.

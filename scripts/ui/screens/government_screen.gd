@@ -143,24 +143,19 @@ func _commitments(parent: Node) -> void:
 		pg.add_child(row)
 	if m.gov.partners().is_empty():
 		empty_note(c, "Sin socios formales.")
-	# Primero los pendientes; como mucho 5 líneas para que la pantalla no necesite desplazarse.
+	# Primero lo vigente y lo incumplido; como mucho 4 fichas compactas para que la pantalla no necesite desplazarse.
+	m.agr.ensure()
 	var coms: Array = []
 	for cm in m.a("commitments"):
-		if not bool((cm as Dictionary).get("fulfilled", false)):
+		if not (m.agr.state_of(cm as Dictionary) in Agreements.TERMINAL):
 			coms.append(cm)
 	for cm in m.a("commitments"):
-		if bool((cm as Dictionary).get("fulfilled", false)):
+		if m.agr.state_of(cm as Dictionary) in Agreements.TERMINAL:
 			coms.append(cm)
-	for i in range(mini(5, coms.size())):
-		var com: Dictionary = coms[i]
-		var row2 := UI.hbox(8)
-		row2.add_child(UI.chip("Cumplido" if bool(com.get("fulfilled", false)) else "Pendiente", UI.GOOD if bool(com.get("fulfilled", false)) else UI.WARN))
-		var cl := UI.wrap_label("%s: %s" % [m.party_short(str(com["party"])), str(com["text"])], UI.FS_SMALL, UI.TEXT)
-		cl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row2.add_child(cl)
-		c.add_child(row2)
-	if coms.size() > 5:
-		c.add_child(UI.label("y %d compromisos más" % (coms.size() - 5), UI.FS_SMALL, UI.FAINT))
+	for i in range(mini(4, coms.size())):
+		c.add_child(NegUI.commitment_row(m, coms[i] as Dictionary, false, Callable(), true))
+	if coms.size() > 4:
+		c.add_child(UI.label("y %d compromisos más · detalle en Coalición" % (coms.size() - 4), UI.FS_SMALL, UI.FAINT))
 
 func _balance(parent: Node) -> void:
 	var c := UI.card(parent, "Balance legislativo", "", UI.ACCENT)

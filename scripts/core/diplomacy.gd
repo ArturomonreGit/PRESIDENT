@@ -1186,6 +1186,9 @@ func _sync_investiture(id: String, table: Array, as_partner: bool) -> void:
 	offer["vote"] = vote
 	offer["status"] = "accepted"
 	offer["note"] = ""
+	offer["terms_extra"] = m.agr.extract_extra(table)
+	offer["agreement_id"] = m.agr.new_agreement_id()
+	offer["type"] = m.agr.type_of_offer(offer)
 	var claims := m.d("cabinet_claims")
 	if cabinet_n > 0:
 		claims[key] = cabinet_n
@@ -1228,6 +1231,7 @@ func _register_pacts(id: String, topic: String, table: Array) -> void:
 			m.publish("Pacto renovado con %s" % m.party_short(id), "%s: %s." % [TOPICS[topic]["name"], label], "NEGOCIACIONES", "positive", {"key": "pact_%d" % int(od["id"])})
 			return
 	pacts().append(pact)
+	m.agr.register_pact(id, topic, table, seq)
 	m.publish("Pacto con %s" % m.party_short(id), "%s: %s." % [TOPICS[topic]["name"], label], "NEGOCIACIONES", "positive", {"key": "pact_%d" % seq})
 
 ## El jugador acepta tal cual una propuesta que le hace un partido (desde la bandeja).

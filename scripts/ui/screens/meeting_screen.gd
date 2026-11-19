@@ -60,7 +60,6 @@ func build() -> void:
 	_know(left, mt, id)
 	_conversation(left, mt, id)
 	_table(center, mt, id, is_open)
-	_room(center, mt, id)
 	if is_open:
 		_palette(right, mt, id)
 	else:
@@ -70,42 +69,35 @@ func build() -> void:
 # ---------------------------------------------------------------- cabecera
 func _header(mt: Dictionary, id: String, is_open: bool) -> void:
 	var col := m.party_color(id)
-	var hero := UI.hero(self, Color(col, 0.14), Color(col, 0.55))
+	var hero := UI.hero(self, Color(col, 0.10), Color(col, 0.5))
 	var row := UI.hbox(16)
 	hero.add_child(row)
 	var tone := m.diplomacy._tone_of(id, mt)
 	row.add_child(UI.leader_portrait(m, id, 76, "happy" if tone == "warm" else ("angry" if tone == "cold" else "neutral")))
 	var t := UI.vbox(1)
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	t.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	t.add_child(UI.eyebrow("Mesa de negociación · %s" % str(Diplomacy.TOPICS[str(mt["topic"])]["name"])))
 	t.add_child(UI.label("%s · %s" % [m.party_name(id), m.leader_name(id)], UI.FS_H2, UI.TEXT, true))
 	var weight := ("%d escaños" % m.seats_of(id)) if m.phase != "campaign" else ("%.1f%% en las encuestas" % m.poll_of(id))
-	t.add_child(UI.label("%s · %s" % [weight, m.diplomacy.stakes_text(mt)], UI.FS_BODY, UI.MUTED))
+	var sub := UI.label("%s · %s" % [weight, m.diplomacy.stakes_text(mt)], UI.FS_BODY, UI.MUTED)
+	sub.clip_text = true
+	sub.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	t.add_child(sub)
 	row.add_child(t)
-	var side_box := UI.hbox(22)
-	side_box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	var tiles := UI.hbox(8)
+	tiles.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var pat := int(mt["patience"])
-	var dots := ""
-	for i in range(4):
-		dots += ("●" if i < pat else "○")
-	var v1 := UI.vbox(0)
-	v1.add_child(UI.label("PACIENCIA", UI.FS_TINY, UI.FAINT, true))
-	v1.add_child(UI.label(dots, UI.FS_LEAD, UI.BAD if pat <= 1 else UI.TEXT, true))
-	side_box.add_child(v1)
-	var v2 := UI.vbox(0)
-	v2.add_child(UI.label("RONDA", UI.FS_TINY, UI.FAINT, true))
-	v2.add_child(UI.label("%d de %d" % [mini(int(mt["round"]) + (1 if is_open else 0), Diplomacy.MAX_ROUNDS), Diplomacy.MAX_ROUNDS], UI.FS_LEAD, UI.TEXT, true))
-	side_box.add_child(v2)
-	var v3 := UI.vbox(0)
-	v3.add_child(UI.label("RELACIÓN", UI.FS_TINY, UI.FAINT, true))
-	v3.add_child(UI.label("%d / 100" % int(m.ai.relation(id)), UI.FS_LEAD, UI.TEXT, true))
-	side_box.add_child(v3)
-	var v4 := UI.vbox(0)
-	v4.add_child(UI.label("AMBIENTE", UI.FS_TINY, UI.FAINT, true))
+	var tp := NegUI.stat_tile(tiles, "PACIENCIA", "", UI.TEXT, "", "Cada intervención gasta paciencia; con cero se levantan de la mesa.")
+	tp.add_child(NegUI.pips(pat, 4, UI.BAD if pat <= 1 else UI.GOOD))
+	var rnd := mini(int(mt["round"]) + (1 if is_open else 0), Diplomacy.MAX_ROUNDS)
+	var tr := NegUI.stat_tile(tiles, "RONDA %d DE %d" % [rnd, Diplomacy.MAX_ROUNDS], "", UI.TEXT, "", "Cada oferta presentada consume una ronda.")
+	tr.add_child(NegUI.pips(rnd, Diplomacy.MAX_ROUNDS, UI.D4_BLUE_D))
+	var rel := int(m.ai.relation(id))
+	NegUI.stat_tile(tiles, "RELACIÓN", "%d / 100" % rel, UI.GOOD if rel >= 60 else (UI.BAD if rel < 35 else UI.TEXT), "", "Cómo os lleváis fuera de la mesa.")
 	var rap := float(mt.get("rapport", 0.0))
-	v4.add_child(UI.label("%+d" % int(rap), UI.FS_LEAD, UI.GOOD if rap > 2.0 else (UI.BAD if rap < -2.0 else UI.TEXT), true))
-	side_box.add_child(v4)
-	row.add_child(side_box)
+	NegUI.stat_tile(tiles, "AMBIENTE", "%+d" % int(rap), UI.GOOD if rap > 2.0 else (UI.BAD if rap < -2.0 else UI.TEXT), "", "Cómo va la reunión: sube con los gestos y baja con la presión.")
+	row.add_child(tiles)
 
 # ---------------------------------------------------------------- avisos de la mesa
 func _banner(mt: Dictionary, id: String, is_open: bool) -> void:
@@ -271,138 +263,228 @@ func _bubble(e: Dictionary, id: String) -> Control:
 
 # ---------------------------------------------------------------- la mesa
 func _table(parent: Node, mt: Dictionary, id: String, is_open: bool) -> void:
-	var c := UI.card(parent, "La mesa", "Lo que se pone y cómo lo ve %s" % m.party_short(id), UI.D4_BLUE)
+	var short := m.party_short(id)
+	var c := UI.card(parent, "La mesa", "Quién da qué y de quién es cada idea", UI.D4_BLUE)
 	UI.expand_card(c)
+	_balance(c, mt, id)
 	var table: Array = mt["table"]
 	var ctx := m.diplomacy.context_for(mt)
 	var show_stance := int(mt["round"]) > 0 or bool(mt.get("sounded", false))
 	var stn: Array = m.diplomacy.dyn.stances(id, table, ctx) if show_stance else []
 	var statuses: Array = m.diplomacy.term_statuses(mt)
-	var lanes := UI.hbox(12)
+	var lanes := UI.hbox(10)
 	lanes.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	c.add_child(lanes)
-	var mine := UI.vbox(6)
-	mine.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var theirs := UI.vbox(6)
-	theirs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	lanes.add_child(mine)
-	lanes.add_child(UI.vsep())
-	lanes.add_child(theirs)
-	mine.add_child(UI.label("TÚ PONES", UI.FS_SMALL, UI.D4_BLUE_D, true))
-	theirs.add_child(UI.label("%s PONE" % m.party_short(id), UI.FS_SMALL, m.party_color(id).darkened(0.2), true))
+	var lane_l := UI.vbox(6)
+	lane_l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var lane_r := UI.vbox(6)
+	lane_r.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lanes.add_child(lane_l)
+	lanes.add_child(lane_r)
+	NegUI.side_header(lane_l, "LO QUE TÚ DAS", "Tus compromisos", UI.D4_BLUE_D, "▶")
+	NegUI.side_header(lane_r, "LO QUE DA %s" % short.to_upper(), "Lo que consigues a cambio", m.party_color(id), "◀")
+	var mine := _lane_list(lane_l)
+	var theirs := _lane_list(lane_r)
+	var order := Rules.TABLE_CATEGORY_ORDER
 	var n_mine := 0
 	var n_theirs := 0
-	for i in range(table.size()):
-		var t: Dictionary = table[i]
-		var by_ai := str(t.get("by", "player")) == "ai"
-		var st: Dictionary = stn[i] if i < stn.size() else {}
-		var row := _term_row(t, i, is_open, st, id, bool(mt.get("sounded", false)), statuses[i] if i < statuses.size() else {})
-		if by_ai:
-			theirs.add_child(row)
-			n_theirs += 1
-		else:
-			mine.add_child(row)
-			n_mine += 1
+	for cat in order:
+		for i in range(table.size()):
+			var t: Dictionary = table[i]
+			if _tab_of(t) != str(cat):
+				continue
+			var by_ai := str(t.get("by", "player")) == "ai"
+			var st: Dictionary = stn[i] if i < stn.size() else {}
+			var row := _term_row(t, i, is_open, st, id, bool(mt.get("sounded", false)), statuses[i] if i < statuses.size() else {})
+			if by_ai:
+				theirs.add_child(row)
+				n_theirs += 1
+			else:
+				mine.add_child(row)
+				n_mine += 1
 	if n_mine == 0:
-		mine.add_child(UI.wrap_label("No te comprometes a nada. Ofrece algo para que quieran darte lo que pides.", UI.FS_SMALL, UI.FAINT))
+		mine.add_child(UI.wrap_label("Todavía no te comprometes a nada. Ofrece algo para que quieran darte lo que pides.", UI.FS_SMALL, UI.FAINT))
 	if n_theirs == 0:
-		theirs.add_child(UI.wrap_label("No aportan nada todavía. Pide votos, carteras o medidas.", UI.FS_SMALL, UI.FAINT))
+		theirs.add_child(UI.wrap_label("%s no aporta nada todavía. Pide votos, carteras o medidas en el catálogo." % short, UI.FS_SMALL, UI.FAINT))
 	var counts: Dictionary = m.diplomacy.status_counts(mt)
+	var sum := HFlowContainer.new()
+	sum.add_theme_constant_override("h_separation", 8)
+	sum.add_child(UI.label("Su reacción:", UI.FS_SMALL, UI.MUTED, true))
+	for rs in [["ok", "acepta"], ["costly", "le cuesta"], ["refuse", "rechaza"]]:
+		var rd := NegUI.reaction(str(rs[0]), true)
+		sum.add_child(UI.label("%s %s" % [str(rd["dot"]), str(rs[1])], UI.FS_SMALL, rd["color"] as Color, true))
 	if int(counts["must"]) + int(counts["negotiable"]) + int(counts["rejected"]) > 0:
-		var sum := HFlowContainer.new()
-		sum.add_theme_constant_override("h_separation", 6)
+		sum.add_child(UI.vsep())
 		sum.add_child(UI.label("Según lo que sabes:", UI.FS_SMALL, UI.MUTED))
-		sum.add_child(UI.chip("%d imprescindibles" % int(counts["must"]), UI.BAD, int(counts["must"]) > 0))
-		sum.add_child(UI.chip("%d negociables" % int(counts["negotiable"]), UI.GOOD))
-		sum.add_child(UI.chip("%d rechazadas" % int(counts["rejected"]), UI.MUTED))
-		c.add_child(sum)
+		sum.add_child(UI.chip("%d imprescindible%s" % [int(counts["must"]), "" if int(counts["must"]) == 1 else "s"], UI.BAD, int(counts["must"]) > 0))
+		sum.add_child(UI.chip("%d negociable%s" % [int(counts["negotiable"]), "" if int(counts["negotiable"]) == 1 else "s"], UI.GOOD))
+		sum.add_child(UI.chip("%d rechazada%s" % [int(counts["rejected"]), "" if int(counts["rejected"]) == 1 else "s"], UI.MUTED))
+	c.add_child(sum)
+
+## Lista con desplazamiento propio: una mesa muy cargada nunca ensancha ni alarga la pantalla.
+func _lane_list(lane: Control) -> VBoxContainer:
+	var sc := ScrollContainer.new()
+	sc.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	sc.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	sc.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	lane.add_child(sc)
+	var v := UI.vbox(6)
+	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	sc.add_child(v)
+	return v
+
+## Medidor de disposición a firmar (como la probabilidad de aceptación de Crusader Kings) con su desglose.
+func _balance(c: Control, mt: Dictionary, id: String) -> void:
+	var read := m.diplomacy.read_the_room(mt)
+	var tone := str(read["tone"])
+	var sounded := bool(mt.get("sounded", false))
+	var box := PanelContainer.new()
+	box.add_theme_stylebox_override("panel", UI.box(UI.PANEL2, UI.D4_LINE, 6, 1, 12, 6))
+	c.add_child(box)
+	var v := UI.vbox(2)
+	box.add_child(v)
+	var top := UI.hbox(10)
+	var ttl := UI.label("DISPOSICIÓN DE %s A FIRMAR" % m.party_short(id).to_upper(), UI.FS_TINY, UI.MUTED, true)
+	ttl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	top.add_child(ttl)
+	if not sounded:
+		top.add_child(UI.label("impresión aproximada", UI.FS_TINY, UI.FAINT))
+	top.add_child(UI.chip(str(read["label"]), UI.tone_color(tone), true))
+	v.add_child(top)
+	v.add_child(NegUI.gauge(float(read["ratio"]), not sounded))
+	var scale := UI.hbox(0)
+	var l0 := UI.label("Rechazo", UI.FS_TINY, UI.FAINT)
+	l0.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scale.add_child(l0)
+	var l1 := UI.label("│ umbral de firma", UI.FS_TINY, UI.FAINT)
+	scale.add_child(l1)
+	var l2 := UI.label("Firman", UI.FS_TINY, UI.FAINT)
+	l2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	l2.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	scale.add_child(l2)
+	v.add_child(scale)
+	if not sounded:
+		v.add_child(UI.label("Sondea su posición para ver por qué valoran así la mesa.", UI.FS_SMALL, UI.FAINT))
+		return
+	var exact: Dictionary = read["exact"]
+	var grid := UI.grid(2, 22, 2)
+	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	v.add_child(grid)
+	var shown := 0
+	for f in exact["factors"]:
+		var fd: Dictionary = f
+		if shown >= 6:
+			break
+		var fv := float(fd["value"])
+		var line := UI.hbox(8)
+		line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var nm := UI.label(str(fd["label"]), UI.FS_SMALL, UI.MUTED)
+		nm.custom_minimum_size = Vector2(185, 0)
+		nm.clip_text = true
+		nm.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+		line.add_child(nm)
+		var bar := UI.meter(clampf(absf(fv), 0.0, 0.6) * 100.0 / 0.6, 100.0, UI.GOOD if fv >= 0.0 else UI.BAD, 6)
+		bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		line.add_child(bar)
+		var val := UI.label("%+.2f" % fv, UI.FS_SMALL, UI.GOOD if fv >= 0.0 else UI.BAD, true)
+		val.custom_minimum_size = Vector2(40, 0)
+		val.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		line.add_child(val)
+		grid.add_child(line)
+		shown += 1
+	v.add_child(UI.label("Exigen un balance de %+.2f; ahora hay %+.2f." % [float(exact["need"]), float(exact["utility"])], UI.FS_SMALL, UI.TEXT, true))
+
+## De quién es la idea: la propuso el jugador o la IA, y qué papel juega en la mesa.
+func _origin(t: Dictionary, by_ai: bool, id: String) -> Dictionary:
+	var short := m.party_short(id).to_upper()
+	var ai_made := bool(t.get("ultimatum", false)) or bool(t.get("new", false)) or bool(t.get("changed", false)) or bool(t.get("from_ai", false)) or bool(t.get("opening", false))
+	if bool(t.get("ultimatum", false)):
+		return {"text": "ÚLTIMA OFERTA DE %s" % short, "color": UI.BAD}
+	if ai_made:
+		return {"text": ("OFERTA DE %s" % short) if by_ai else ("EXIGENCIA DE %s" % short), "color": m.party_color(id).darkened(0.1)}
+	if bool(t.get("sweetener", false)):
+		return {"text": "MEJORA TUYA", "color": UI.GOOD}
+	return {"text": "LO PIDES TÚ" if by_ai else "TU OFERTA", "color": UI.D4_BLUE_D}
 
 func _term_row(t: Dictionary, idx: int, is_open: bool, st: Dictionary, id: String, sounded: bool, status: Dictionary = {}) -> Control:
 	var by_ai := str(t.get("by", "player")) == "ai"
-	var accent := m.party_color(id) if by_ai else UI.D4_BLUE
+	var side_col := m.party_color(id) if by_ai else UI.D4_BLUE
 	if str(t.get("k", "")) == "joint_list":
-		accent = UI.GOLD
+		side_col = UI.GOLD
+	var cat := _tab_of(t)
+	var cat_col := NegUI.cat_color(cat)
+	var react: Dictionary = {}
+	var stance := str(st.get("stance", ""))
+	if stance != "" and (sounded or stance in ["veto", "refuse", "costly"]):
+		react = NegUI.reaction(stance, by_ai)
+	var tint := UI.PANEL2
+	if not react.is_empty():
+		tint = UI.PANEL.lerp(react["color"] as Color, 0.07)
 	var pc := PanelContainer.new()
 	pc.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	pc.add_theme_stylebox_override("panel", UI.box(UI.PANEL2, UI.D4_LINE, 4, 1, 8, 5))
+	pc.add_theme_stylebox_override("panel", UI.box(tint, UI.D4_LINE, 4, 1, 8, 5))
 	var h := UI.hbox(8)
 	pc.add_child(h)
 	var bar := ColorRect.new()
-	bar.color = accent
+	bar.color = side_col
 	bar.custom_minimum_size = Vector2(5, 0)
 	h.add_child(bar)
-	var v := UI.vbox(2)
+	var v := UI.vbox(3)
 	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	h.add_child(v)
-	var top := HFlowContainer.new()
-	top.add_theme_constant_override("h_separation", 5)
-	top.add_theme_constant_override("v_separation", 2)
+	# Línea 1: categoría a la izquierda y autoría a la derecha.
+	var top := UI.hbox(6)
 	v.add_child(top)
-	top.add_child(UI.label(str(KIND_TAG.get(str(t.get("k", "")), "TÉRMINO")), UI.FS_TINY, accent.darkened(0.15), true))
-	if bool(t.get("ultimatum", false)):
-		top.add_child(UI.chip("ÚLTIMA OFERTA", UI.BAD, true))
-	elif bool(t.get("new", false)):
-		top.add_child(UI.chip("NUEVA EXIGENCIA", UI.WARN, true))
-	elif bool(t.get("changed", false)):
-		top.add_child(UI.chip("AJUSTADO", UI.WARN))
-	elif bool(t.get("sweetener", false)):
-		top.add_child(UI.chip("TU MEJORA", UI.GOOD))
-	elif bool(t.get("opening", false)):
-		top.add_child(UI.chip("SU PROPUESTA", m.party_color(id)))
-	elif bool(t.get("from_ai", false)):
-		top.add_child(UI.chip("SU CONTRAOFERTA", m.party_color(id)))
-	if not st.is_empty():
-		var stance := str(st["stance"])
-		var chip_text := ""
-		var chip_col := UI.MUTED
-		match stance:
-			"ok":
-				chip_text = "Lo aceptan" if by_ai else "Bien"
-				chip_col = UI.GOOD
-			"welcome":
-				chip_text = "Les interesa"
-				chip_col = UI.GOOD
-			"costly":
-				chip_text = "Les cuesta"
-				chip_col = UI.WARN
-			"refuse":
-				chip_text = "Lo rechazan"
-				chip_col = UI.BAD
-			"veto":
-				chip_text = "Veto"
-				chip_col = UI.BAD
-		if chip_text != "" and (sounded or stance in ["veto", "refuse", "costly"]):
-			var sc := UI.chip(chip_text, chip_col, stance in ["veto", "refuse"])
-			sc.tooltip_text = str(st.get("note", ""))
-			top.add_child(sc)
-	var sk := str(status.get("status", "unknown"))
-	if sk == "must":
-		var mc := UI.chip("IMPRESCINDIBLE", UI.BAD, true)
-		mc.tooltip_text = str(status.get("why", ""))
-		top.add_child(mc)
-	elif sk == "rejected" and str(st.get("stance", "")) not in ["veto", "refuse"]:
-		var rc := UI.chip("RECHAZADA", UI.MUTED, true)
-		rc.tooltip_text = str(status.get("why", ""))
-		top.add_child(rc)
-	elif sk == "negotiable" and st.is_empty():
-		var nc := UI.chip("NEGOCIABLE", UI.GOOD)
-		nc.tooltip_text = str(status.get("why", ""))
-		top.add_child(nc)
-	if bool(t.get("partial", false)):
-		top.add_child(UI.chip("PARCIAL", UI.WARN))
-	if str(t.get("alt_for", "")) != "":
-		var ac := UI.chip("ALTERNATIVA", UI.D4_BLUE)
-		ac.tooltip_text = "En lugar de: " + str(t["alt_for"])
-		top.add_child(ac)
-	elif str(t.get("replaced", "")) != "":
-		var pc2 := UI.chip("SUSTITUYE", UI.D4_BLUE)
-		pc2.tooltip_text = "Antes: " + str(t["replaced"])
-		top.add_child(pc2)
+	var ct := UI.label(str(KIND_TAG.get(str(t.get("k", "")), NegUI.CAT_TAG.get(cat, "TÉRMINO"))), UI.FS_TINY, cat_col, true)
+	ct.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	top.add_child(ct)
+	var org := _origin(t, by_ai, id)
+	var ot := NegUI.origin_tag(str(org["text"]), org["color"] as Color)
+	ot.tooltip_text = "Quién propuso esta condición."
+	top.add_child(ot)
+	# Línea 2: el texto de la condición.
 	var txt := UI.wrap_label(_cap(m.brain.term_text(t)), UI.FS_BODY, UI.TEXT, true)
 	txt.max_lines_visible = 2
 	txt.tooltip_text = m.brain.term_text(t)
 	txt.mouse_filter = Control.MOUSE_FILTER_PASS
 	v.add_child(txt)
+	# Línea 3: reacción del interlocutor y estado según lo que se sabe.
+	var info := HFlowContainer.new()
+	info.add_theme_constant_override("h_separation", 6)
+	info.add_theme_constant_override("v_separation", 2)
+	v.add_child(info)
+	if not react.is_empty():
+		var rl := UI.label("%s %s" % [str(react["dot"]), str(react["text"])], UI.FS_SMALL, react["color"] as Color, true)
+		rl.tooltip_text = str(st.get("note", ""))
+		rl.mouse_filter = Control.MOUSE_FILTER_PASS
+		info.add_child(rl)
+	if bool(t.get("new", false)):
+		info.add_child(UI.chip("NUEVA", UI.WARN, true))
+	elif bool(t.get("changed", false)):
+		info.add_child(UI.chip("AJUSTADA", UI.WARN))
+	var sk := str(status.get("status", "unknown"))
+	if sk == "must":
+		var mc := UI.chip("IMPRESCINDIBLE", UI.BAD, true)
+		mc.tooltip_text = str(status.get("why", ""))
+		info.add_child(mc)
+	elif sk == "rejected" and stance not in ["veto", "refuse"]:
+		var rc := UI.chip("RECHAZADA", UI.MUTED, true)
+		rc.tooltip_text = str(status.get("why", ""))
+		info.add_child(rc)
+	elif sk == "negotiable" and react.is_empty():
+		var nc := UI.chip("NEGOCIABLE", UI.GOOD)
+		nc.tooltip_text = str(status.get("why", ""))
+		info.add_child(nc)
+	if bool(t.get("partial", false)):
+		info.add_child(UI.chip("PARCIAL", UI.WARN))
+	if str(t.get("alt_for", "")) != "":
+		var ac := UI.chip("ALTERNATIVA", UI.D4_BLUE)
+		ac.tooltip_text = "En lugar de: " + str(t["alt_for"])
+		info.add_child(ac)
+	elif str(t.get("replaced", "")) != "":
+		var pc2 := UI.chip("SUSTITUYE", UI.D4_BLUE)
+		pc2.tooltip_text = "Antes: " + str(t["replaced"])
+		info.add_child(pc2)
 	if is_open:
 		var tools := UI.hbox(3)
 		tools.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -461,47 +543,6 @@ func _term_row(t: Dictionary, idx: int, is_open: bool, st: Dictionary, id: Strin
 
 func _cap(s: String) -> String:
 	return s.substr(0, 1).to_upper() + s.substr(1)
-
-# ---------------------------------------------------------------- lectura de la sala
-func _room(parent: Node, mt: Dictionary, id: String) -> void:
-	var c := UI.card(parent, "Lectura de la sala", "", UI.WARN)
-	var read := m.diplomacy.read_the_room(mt)
-	var tone := str(read["tone"])
-	var row := UI.hbox(10)
-	row.add_child(UI.chip(str(read["label"]), UI.tone_color(tone), true))
-	var mb := UI.meter(float(read["ratio"]) * 100.0, 100.0, UI.tone_color(tone), 10)
-	mb.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	row.add_child(mb)
-	c.add_child(row)
-	if not bool(mt.get("sounded", false)):
-		c.add_child(UI.label("Solo una impresión: sondea su posición para ver el detalle de su valoración.", UI.FS_SMALL, UI.FAINT))
-		return
-	var exact: Dictionary = read["exact"]
-	var grid := UI.grid(2, 22, 3)
-	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	c.add_child(grid)
-	var shown := 0
-	for f in exact["factors"]:
-		var fd: Dictionary = f
-		if shown >= 6:
-			break
-		var v := float(fd["value"])
-		var line := UI.hbox(8)
-		line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var nm := UI.label(str(fd["label"]), UI.FS_SMALL, UI.MUTED)
-		nm.custom_minimum_size = Vector2(170, 0)
-		nm.clip_text = true
-		line.add_child(nm)
-		var bar := UI.meter(clampf(absf(v), 0.0, 0.6) * 100.0 / 0.6, 100.0, UI.GOOD if v >= 0.0 else UI.BAD, 6)
-		bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		line.add_child(bar)
-		var val := UI.label("%+.2f" % v, UI.FS_SMALL, UI.GOOD if v >= 0.0 else UI.BAD, true)
-		val.custom_minimum_size = Vector2(42, 0)
-		val.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		line.add_child(val)
-		grid.add_child(line)
-		shown += 1
-	c.add_child(UI.label("Exigen un balance de %+.2f; ahora hay %+.2f." % [float(exact["need"]), float(exact["utility"])], UI.FS_SMALL, UI.TEXT, true))
 
 # ---------------------------------------------------------------- catálogo para añadir a la mesa
 func _tab_of(t: Dictionary) -> String:

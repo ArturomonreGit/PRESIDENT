@@ -372,7 +372,7 @@ func _after_passed(law: Dictionary, res: Dictionary) -> void:
 	# Los pactos de investidura se dan por cumplidos si la ley toca su materia.
 	for c in m.a("commitments"):
 		var com: Dictionary = c
-		if str(com.get("issue", "")) == issue and not bool(com.get("fulfilled", false)) and str(com.get("measure", "")) == "" and m.laws._coalition().has(proposer):
+		if str(com.get("issue", "")) == issue and not bool(com.get("fulfilled", false)) and str(com.get("measure", "")) == "" and str(com.get("source", "")) != "acuerdo" and m.laws._coalition().has(proposer):
 			com["fulfilled"] = true
 			var pid := str(com["party"])
 			m.d("partner_satisfaction")[pid] = clampf(float(m.d("partner_satisfaction").get(pid, 60.0)) + 14.0, 0.0, 100.0)
