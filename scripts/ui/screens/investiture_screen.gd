@@ -53,13 +53,19 @@ func _hero(cand: String, est: Dictionary) -> void:
 	head.add_child(t)
 	var yes := int(est["yes"])
 	var ok := yes >= Rules.MAJORITY if m.gov.round_number() == 1 else yes > int(est["no"])
-	head.add_child(UI.chip("Saldría adelante" if ok else "No saldría adelante", UI.GOOD if ok else UI.WARN, true))
+	var out := m.ivote.outlook(est)
+	var margin := yes - (Rules.MAJORITY if m.gov.round_number() == 1 else int(est["no"]) + 1)
+	var tight := ok and margin < int(out["safe_margin"])
+	head.add_child(UI.chip("Margen ajustado" if tight else ("Saldría adelante" if ok else "No saldría adelante"), UI.WARN if (tight or not ok) else UI.GOOD, true))
 	hero.add_child(head)
 	var bar := VoteBar.new()
 	bar.set_data(_segments(est))
 	hero.add_child(bar)
 	if m.gov.round_number() == 2:
 		hero.add_child(UI.label("Segunda votación: basta con más votos a favor que en contra.", UI.FS_BODY, UI.WARN))
+	var risk := UI.label("Disciplina de voto: se esperan unas %.0f disidencias en la Cámara (%.0f entre los votos a favor). Margen sobre el umbral: %s%d." % [float(out["expected_rebels"]), float(out["expected_yes_loss"]), "+" if margin >= 0 else "", margin], UI.FS_SMALL, UI.WARN if (tight or not ok) else UI.MUTED)
+	risk.tooltip_text = "Cada diputado puede romper la disciplina de su grupo por tensiones internas, distancia ideológica, presión territorial, crisis de liderazgo o pactos incumplidos."
+	hero.add_child(risk)
 
 func _next_step(cand: String, est: Dictionary) -> void:
 	var yes := int(est["yes"])
@@ -267,7 +273,17 @@ func _vote_button(est: Dictionary) -> void:
 	var yes := int(est["yes"])
 	var ok := yes >= Rules.MAJORITY if m.gov.round_number() == 1 else yes > int(est["no"])
 	var row := UI.hbox(10)
-	row.alignment = BoxContainer.ALIGNMENT_END
+	var last := m.ivote.last_of_cycle()
+	if not last.is_empty():
+		# Resumen de la última votación del ciclo, con opción de repetirla (misma fila: no añade altura).
+		var lt: Dictionary = last["tally"]
+		var passed := bool(last.get("passed", false))
+		row.add_child(UI.chip("Última votación: " + ("aprobada" if passed else "fallida"), UI.GOOD if passed else UI.BAD, true))
+		var lbl := UI.label("%d a favor · %d en contra · %d abstenciones · %d disidentes" % [int(lt["yes"]), int(lt["no"]), int(lt["abstain"]), (last["rebels"] as Array).size()], UI.FS_SMALL, UI.MUTED)
+		lbl.clip_text = true
+		row.add_child(lbl)
+		row.add_child(UI.mini_button("Ver de nuevo", func() -> void: shell.open_investiture_vote(last)))
+	row.add_child(UI.fill())
 	row.add_child(UI.label("Cuando estés listo:", UI.FS_BODY, UI.MUTED))
 	row.add_child(UI.button("Celebrar la votación", "good" if ok else "warn", func() -> void: shell.confirm_vote(), 220))
 	add_child(row)

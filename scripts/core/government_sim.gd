@@ -354,13 +354,19 @@ func estimate_votes() -> Dictionary:
 	return {"yes": yes, "no": no, "abstain": abstain, "detail": detail}
 
 func hold_vote() -> Dictionary:
-	var tally := estimate_votes()
+	# Voto diputado a diputado: el grupo marca la orden y cada escaño la sigue o rompe la disciplina.
+	var session := m.ivote.cast()
+	var tally: Dictionary = session["tally"]
+	tally["detail"] = estimate_votes()["detail"]
 	var rnd := round_number()
 	var passed := int(tally["yes"]) >= Rules.MAJORITY if rnd == 1 else int(tally["yes"]) > int(tally["no"])
 	var cand := candidate_id()
-	var result := {"passed": passed, "tally": tally, "round": rnd, "dissolved": false}
+	m.ivote.record(session, passed)
+	var rebels: Array = session["rebels"]
+	var result := {"passed": passed, "tally": tally, "round": rnd, "dissolved": false, "rebels": rebels.size(), "session": session}
+	var rebel_text := "" if rebels.is_empty() else " %d diputados rompen la disciplina de su grupo." % rebels.size()
 	m.publish("Investidura de %s: %s (%s votación)" % [m.party_short(cand), "aprobada" if passed else "fallida", "primera" if rnd == 1 else "segunda"],
-		"%d votos a favor, %d en contra y %d abstenciones. %s" % [tally["yes"], tally["no"], tally["abstain"], "El candidato obtiene la confianza del Congreso." if passed else "No se alcanza la mayoría necesaria."],
+		"%d votos a favor, %d en contra y %d abstenciones. %s%s" % [tally["yes"], tally["no"], tally["abstain"], "El candidato obtiene la confianza del Congreso." if passed else "No se alcanza la mayoría necesaria.", rebel_text],
 		"PARLAMENTO", "positive" if passed else "warning")
 	if passed:
 		m.s["government_party_id"] = cand
@@ -921,7 +927,7 @@ func start_new_cycle(_origin: String) -> void:
 			"coal", "table_proposals", "mact", "cab", "election_revealed", "election_scrut", "election_baseline", "election_shares", "election_turnout", "meeting", "meet_log", "cabinet_claims", "pleno", "law_queue", "law_drafts"]:
 		m.s.erase(key)
 	for key in ["government_party_id", "government_candidate_id", "gov_approval", "stability", "economy", "bills_left",
-			"negotiation_candidate_id", "player_vote", "election_index", "election_seed", "investiture_attempts", "negotiation_round"]:
+			"negotiation_candidate_id", "player_vote", "election_index", "election_seed", "investiture_attempts", "negotiation_round", "ivote_last"]:
 		m.s.erase(key)
 	m.s["election_complete"] = false
 	m.s["election_started"] = false

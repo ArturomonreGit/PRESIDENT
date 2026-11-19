@@ -16,7 +16,7 @@ Ruta: documento «Especificación de negociación, formación de Gobierno e inve
 | Alpha 0.2.1 | C | Campos de compromisos, reclamaciones de cartera, vicepresidencias, límite 8–20, seguimiento de objetivos; rediseño de la interfaz de negociación | Entregada |
 | Alpha 0.2.2 | D | Cinco candidatos por cartera, perfiles y selección por titular | Entregada; probada por el usuario, botones corregidos en 0.2.3 |
 | Alpha 0.2.3 | E | Capital político normalizado (+ corrección de las pestañas de la ficha de cartera) | Entregada, pendiente de validar |
-| Alpha 0.2.4 | F | Capa de diputados y pantalla de investidura | Pendiente |
+| Alpha 0.2.4 | F | Capa de diputados (350 votos con disciplina) y pantalla de investidura | Entregada, pendiente de validar |
 | Alpha 0.2.5 | G | QA y migraciones | Pendiente |
 
 ## Equivalencia con la numeración anterior

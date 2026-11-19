@@ -136,10 +136,30 @@ func _drive_studio() -> bool:
 		await _frames(1)
 	return true
 
+## Si hay una votación de investidura abierta, la celebra entera (empieza, salta al resultado y continúa).
+func _drive_investiture() -> bool:
+	var b := shell.get_node_or_null("InvestitureBroadcast") as InvestitureBroadcast
+	if b == null:
+		return false
+	if b.phase == "intro":
+		b._begin_voting()
+		await _frames(1)
+	if b.phase == "voting":
+		b._acc = 350.0
+		b.revealed = 350
+		b._finish_voting()
+		await _frames(1)
+	if is_instance_valid(b) and b.phase == "result":
+		b._on_continue()
+		await _frames(2)
+	return true
+
 func _drain() -> bool:
 	var did := false
 	var guard := 0
 	if await _drive_studio():
+		did = true
+	if await _drive_investiture():
 		did = true
 	while guard < 12 and _press_modal():
 		did = true

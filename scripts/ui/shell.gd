@@ -872,55 +872,26 @@ func _do_next_month() -> void:
 
 # ---------------------------------------------------------------- votación de investidura
 func confirm_vote() -> void:
-	var est := m.gov.estimate_votes()
-	var first := m.gov.round_number() == 1
-	var col := modal("Votación de investidura", 540.0, "Candidato: %s · %s votación" % [m.party_name(m.gov.candidate_id()), "primera" if first else "segunda"])
-	var yes := int(est["yes"])
-	var line := UI.hbox(20)
-	line.add_child(_vote_box("A favor", yes, UI.GOOD))
-	line.add_child(_vote_box("En contra", int(est["no"]), UI.BAD))
-	line.add_child(_vote_box("Abstención", int(est["abstain"]), UI.MUTED))
-	col.add_child(line)
-	var need := "Primera votación: se exigen %d votos a favor (mayoría absoluta)." % Rules.MAJORITY if first else "Segunda votación: basta con más votos a favor que en contra."
-	var ok_now := yes >= Rules.MAJORITY if first else yes > int(est["no"])
-	col.add_child(UI.wrap_label(need, UI.FS_BODY, UI.MUTED))
-	col.add_child(UI.label("Con el cómputo actual la investidura %s." % ("saldría adelante" if ok_now else "NO saldría adelante"), UI.FS_LEAD, UI.GOOD if ok_now else UI.BAD, true))
-	var row := UI.hbox(10)
-	row.alignment = BoxContainer.ALIGNMENT_END
-	row.add_child(UI.button("Seguir negociando", "ghost", close_modal))
-	row.add_child(UI.button("Celebrar la votación", "primary" if ok_now else "warn", func() -> void:
-		close_modal()
-		_hold_vote()))
-	col.add_child(row)
+	open_investiture_vote()
 
-func _vote_box(title: String, value: int, color: Color) -> VBoxContainer:
-	var v := UI.vbox(0)
-	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	v.add_child(UI.label(title.to_upper(), UI.FS_TINY, UI.MUTED, true))
-	v.add_child(UI.label(str(value), 30, color, true))
-	return v
+## Abre la pantalla especial de investidura (presentación, votación animada y resultado).
+## Con `replay_session` repite una votación ya celebrada sin volver a votar.
+func open_investiture_vote(replay_session: Dictionary = {}) -> InvestitureBroadcast:
+	if has_node("InvestitureBroadcast"):
+		return get_node("InvestitureBroadcast") as InvestitureBroadcast
+	var b := InvestitureBroadcast.open(self, m, replay_session)
+	b.finished.connect(_on_investiture_finished)
+	return b
 
-func _hold_vote() -> void:
-	var res := m.gov.hold_vote()
-	var tally: Dictionary = res["tally"]
-	var text := "%d votos a favor, %d en contra y %d abstenciones." % [int(tally["yes"]), int(tally["no"]), int(tally["abstain"])]
-	var passed := bool(res["passed"])
+func _on_investiture_finished(res: Dictionary) -> void:
 	var dissolved := bool(res.get("dissolved", false))
-	Sfx.play("gavel")
-	get_tree().create_timer(0.35).timeout.connect(func() -> void: Sfx.play("fanfare" if passed else "deny"))
-	var title := "Investidura aprobada" if passed else ("Disolución de las Cortes" if dissolved else "Investidura fallida")
-	var extra := ""
-	if passed:
-		extra = " %s es investido presidente. Toca diseñar el Consejo de Ministros." % m.party_short(str(m.s.get("government_party_id", "")))
-	elif dissolved:
-		extra = " Se agotan los intentos: se convocan nuevas elecciones."
-	elif int(res["round"]) == 1:
-		extra = " Se abre la segunda votación: bastará con más votos a favor que en contra."
+	if bool(res.get("passed", false)):
+		go("cabinet")
+	elif dissolved or m.phase == "campaign":
+		go("home")
 	else:
-		extra = " El Rey propone un nuevo candidato."
-	info(title, text + extra, "good" if passed else "warn", func() -> void:
-		go("cabinet" if m.phase == "cabinet_design" else "home" if m.phase == "campaign" else "investiture")
-		refresh())
+		go("investiture")
+	refresh()
 
 # ---------------------------------------------------------------- jugar actos
 func play_pending() -> void:

@@ -187,7 +187,10 @@ func _run(party_id: String) -> void:
 	shell.go("investiture")
 	shell.confirm_vote()
 	await _shot("42_modal_voto")
-	shell.close_modal()
+	var ib := shell.get_node_or_null("InvestitureBroadcast")
+	if ib != null:
+		ib.queue_free()
+		await _frames(2)
 	# Si el jugador es candidato, concede todo y propone
 	var attempts := 0
 	while m.phase == "investiture" and attempts < 10:
