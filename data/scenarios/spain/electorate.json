@@ -1,0 +1,523 @@
+{
+ "archetypes": [
+  {
+   "id": "urb_prog",
+   "name": "Progresistas urbanos",
+   "desc": "Universitarios y profesionales de ciudad: derechos, vivienda y clima.",
+   "share": 0.1,
+   "x": [
+    -0.55,
+    -0.75,
+    0.15
+   ],
+   "groups": {
+    "jovenes": 0.3,
+    "funcionarios": 0.25,
+    "clase_media": 0.3,
+    "trabajadores": 0.15
+   },
+   "issues": {
+    "housing": 0.2,
+    "energy": 0.2,
+    "education": 0.15,
+    "health": 0.15,
+    "jobs": 0.1,
+    "tax": 0.05,
+    "security": 0.0,
+    "territory": 0.15
+   },
+   "loyalty": 0.8,
+   "turnout": 0.8,
+   "vol": 1.0,
+   "anti": 0.25,
+   "sus": 0.8
+  },
+  {
+   "id": "jov_prec",
+   "name": "Jóvenes precarios",
+   "desc": "Contratos temporales y alquileres imposibles. Votan poco y cambian rápido.",
+   "share": 0.09,
+   "x": [
+    -0.35,
+    -0.55,
+    0.1
+   ],
+   "groups": {
+    "jovenes": 0.6,
+    "trabajadores": 0.25,
+    "parados": 0.15
+   },
+   "issues": {
+    "housing": 0.3,
+    "jobs": 0.3,
+    "education": 0.1,
+    "energy": 0.1,
+    "health": 0.05,
+    "tax": 0.05,
+    "security": 0.03,
+    "territory": 0.07
+   },
+   "loyalty": 0.3,
+   "turnout": 0.56,
+   "vol": 1.7,
+   "anti": 0.55,
+   "sus": 1.0
+  },
+  {
+   "id": "obr_izq",
+   "name": "Obreros de izquierda",
+   "desc": "Asalariados de tradición sindical: salarios, empleo y sanidad.",
+   "share": 0.1,
+   "x": [
+    -0.55,
+    -0.15,
+    -0.05
+   ],
+   "groups": {
+    "trabajadores": 0.65,
+    "vulnerables": 0.1,
+    "parados": 0.1,
+    "funcionarios": 0.15
+   },
+   "issues": {
+    "jobs": 0.3,
+    "health": 0.25,
+    "housing": 0.15,
+    "tax": 0.1,
+    "education": 0.1,
+    "security": 0.05,
+    "energy": 0.02,
+    "territory": 0.03
+   },
+   "loyalty": 1.0,
+   "turnout": 0.7,
+   "vol": 0.8,
+   "anti": 0.3,
+   "sus": 0.5
+  },
+  {
+   "id": "pen_izq",
+   "name": "Pensionistas de tradición progresista",
+   "desc": "Mayores fieles a la izquierda: pensiones, sanidad y servicios.",
+   "share": 0.08,
+   "x": [
+    -0.3,
+    0.1,
+    -0.1
+   ],
+   "groups": {
+    "pensionistas": 0.85,
+    "vulnerables": 0.15
+   },
+   "issues": {
+    "health": 0.35,
+    "jobs": 0.15,
+    "security": 0.15,
+    "tax": 0.1,
+    "housing": 0.1,
+    "education": 0.05,
+    "energy": 0.05,
+    "territory": 0.05
+   },
+   "loyalty": 1.4,
+   "turnout": 0.82,
+   "vol": 0.5,
+   "anti": 0.2,
+   "sus": 0.3
+  },
+  {
+   "id": "cm_mod",
+   "name": "Clase media moderada",
+   "desc": "Familias con hipoteca que deciden cada elección: el voto bisagra.",
+   "share": 0.13,
+   "x": [
+    0.0,
+    0.0,
+    -0.1
+   ],
+   "groups": {
+    "clase_media": 0.6,
+    "trabajadores": 0.25,
+    "funcionarios": 0.15
+   },
+   "issues": {
+    "tax": 0.2,
+    "housing": 0.2,
+    "jobs": 0.2,
+    "health": 0.15,
+    "education": 0.1,
+    "security": 0.08,
+    "energy": 0.04,
+    "territory": 0.03
+   },
+   "loyalty": 0.5,
+   "turnout": 0.76,
+   "vol": 1.5,
+   "anti": 0.25,
+   "sus": 0.7
+  },
+  {
+   "id": "pen_cons",
+   "name": "Pensionistas conservadores",
+   "desc": "Mayores de orden y tradición: sanidad, seguridad y estabilidad.",
+   "share": 0.09,
+   "x": [
+    0.25,
+    0.5,
+    -0.3
+   ],
+   "groups": {
+    "pensionistas": 0.85,
+    "clase_media": 0.15
+   },
+   "issues": {
+    "health": 0.3,
+    "security": 0.25,
+    "tax": 0.15,
+    "jobs": 0.1,
+    "housing": 0.05,
+    "education": 0.05,
+    "energy": 0.02,
+    "territory": 0.08
+   },
+   "loyalty": 1.4,
+   "turnout": 0.86,
+   "vol": 0.4,
+   "anti": 0.15,
+   "sus": 0.3
+  },
+  {
+   "id": "cen_lib",
+   "name": "Centro liberal urbano",
+   "desc": "Profesionales liberales: impuestos, educación y gestión eficaz.",
+   "share": 0.07,
+   "x": [
+    0.4,
+    -0.2,
+    -0.2
+   ],
+   "groups": {
+    "clase_media": 0.35,
+    "autonomos": 0.2,
+    "empresarios": 0.1,
+    "funcionarios": 0.35
+   },
+   "issues": {
+    "tax": 0.25,
+    "education": 0.2,
+    "jobs": 0.15,
+    "energy": 0.1,
+    "housing": 0.1,
+    "health": 0.1,
+    "security": 0.05,
+    "territory": 0.05
+   },
+   "loyalty": 0.6,
+   "turnout": 0.82,
+   "vol": 1.2,
+   "anti": 0.2,
+   "sus": 0.6
+  },
+  {
+   "id": "autonomos",
+   "name": "Autónomos y pymes",
+   "desc": "Quienes cargan con cuotas e impuestos: fiscalidad y burocracia.",
+   "share": 0.07,
+   "x": [
+    0.55,
+    0.15,
+    -0.2
+   ],
+   "groups": {
+    "autonomos": 0.7,
+    "empresarios": 0.1,
+    "clase_media": 0.2
+   },
+   "issues": {
+    "tax": 0.35,
+    "jobs": 0.25,
+    "security": 0.1,
+    "housing": 0.1,
+    "health": 0.08,
+    "education": 0.05,
+    "energy": 0.03,
+    "territory": 0.04
+   },
+   "loyalty": 0.7,
+   "turnout": 0.78,
+   "vol": 1.1,
+   "anti": 0.35,
+   "sus": 0.6
+  },
+  {
+   "id": "der_trad",
+   "name": "Conservadores tradicionales",
+   "desc": "Familia, orden e instituciones: seguridad, impuestos y unidad de España.",
+   "share": 0.09,
+   "x": [
+    0.4,
+    0.65,
+    -0.45
+   ],
+   "groups": {
+    "clase_media": 0.4,
+    "funcionarios": 0.1,
+    "pensionistas": 0.3,
+    "autonomos": 0.2
+   },
+   "issues": {
+    "security": 0.2,
+    "tax": 0.2,
+    "territory": 0.2,
+    "health": 0.15,
+    "education": 0.1,
+    "jobs": 0.08,
+    "housing": 0.04,
+    "energy": 0.03
+   },
+   "loyalty": 1.2,
+   "turnout": 0.85,
+   "vol": 0.6,
+   "anti": 0.2,
+   "sus": 0.6
+  },
+  {
+   "id": "protesta_der",
+   "name": "Descontentos de derecha dura",
+   "desc": "Desencantados con el sistema: inmigración, seguridad y mano dura.",
+   "share": 0.08,
+   "x": [
+    0.2,
+    0.85,
+    -0.8
+   ],
+   "groups": {
+    "trabajadores": 0.35,
+    "parados": 0.1,
+    "rurales": 0.2,
+    "clase_media": 0.2,
+    "autonomos": 0.15
+   },
+   "issues": {
+    "security": 0.3,
+    "territory": 0.3,
+    "jobs": 0.2,
+    "housing": 0.1,
+    "tax": 0.05,
+    "health": 0.03,
+    "education": 0.01,
+    "energy": 0.01
+   },
+   "loyalty": 0.6,
+   "turnout": 0.72,
+   "vol": 1.4,
+   "anti": 0.8,
+   "sus": 1.0
+  },
+  {
+   "id": "rural",
+   "name": "Mundo rural",
+   "desc": "Pueblos y comarcas: empleo, servicios y agricultura.",
+   "share": 0.06,
+   "x": [
+    0.2,
+    0.4,
+    0.0
+   ],
+   "groups": {
+    "rurales": 0.7,
+    "pensionistas": 0.15,
+    "autonomos": 0.15
+   },
+   "issues": {
+    "jobs": 0.25,
+    "health": 0.25,
+    "energy": 0.1,
+    "tax": 0.15,
+    "territory": 0.1,
+    "security": 0.08,
+    "housing": 0.04,
+    "education": 0.03
+   },
+   "loyalty": 1.2,
+   "turnout": 0.78,
+   "vol": 0.7,
+   "anti": 0.45,
+   "sus": 0.5
+  },
+  {
+   "id": "vulner",
+   "name": "Vulnerables y parados",
+   "desc": "Hogares en el límite: ingreso, vivienda y empleo. Votan poco.",
+   "share": 0.04,
+   "x": [
+    -0.5,
+    0.0,
+    0.0
+   ],
+   "groups": {
+    "vulnerables": 0.5,
+    "parados": 0.4,
+    "trabajadores": 0.1
+   },
+   "issues": {
+    "jobs": 0.3,
+    "housing": 0.25,
+    "health": 0.2,
+    "tax": 0.05,
+    "education": 0.08,
+    "security": 0.07,
+    "energy": 0.02,
+    "territory": 0.03
+   },
+   "loyalty": 0.3,
+   "turnout": 0.48,
+   "vol": 1.6,
+   "anti": 0.7,
+   "sus": 0.8
+  }
+ ],
+ "blocks": {
+  "Cataluña": {
+   "shift": [
+    0.0,
+    -0.08,
+    0.4
+   ],
+   "turnout": -0.03
+  },
+  "País Vasco": {
+   "shift": [
+    -0.02,
+    -0.05,
+    0.5
+   ],
+   "turnout": 0.0
+  },
+  "Navarra": {
+   "shift": [
+    0.0,
+    0.0,
+    0.15
+   ],
+   "turnout": 0.02
+  },
+  "Galicia": {
+   "shift": [
+    0.0,
+    0.0,
+    0.25
+   ],
+   "turnout": -0.04
+  },
+  "Canarias": {
+   "shift": [
+    0.0,
+    0.0,
+    0.3
+   ],
+   "turnout": -0.06
+  },
+  "_default": {
+   "shift": [
+    0.0,
+    0.0,
+    0.25
+   ],
+   "turnout": 0.0
+  }
+ },
+ "trends": {
+  "giro_derecha": {
+   "name": "Giro a la derecha",
+   "x": [
+    0.1,
+    0.12,
+    -0.06
+   ],
+   "salience": {
+    "security": 0.25,
+    "tax": 0.12
+   },
+   "anti": 0.0,
+   "turnout": 0.0,
+   "up": "Se extiende un giro conservador entre los votantes",
+   "down": "El electorado pierde el apetito por el discurso conservador"
+  },
+  "ola_progresista": {
+   "name": "Ola progresista",
+   "x": [
+    -0.1,
+    -0.12,
+    0.04
+   ],
+   "salience": {
+    "housing": 0.15,
+    "health": 0.12,
+    "education": 0.1,
+    "energy": 0.08
+   },
+   "anti": 0.0,
+   "turnout": 0.0,
+   "up": "Crece la demanda social de políticas progresistas",
+   "down": "Se enfría el impulso progresista en la opinión pública"
+  },
+  "desafeccion": {
+   "name": "Desafección política",
+   "x": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "salience": {},
+   "anti": 0.45,
+   "turnout": -0.45,
+   "up": "Aumenta el hartazgo con los partidos tradicionales",
+   "down": "Los votantes recuperan la confianza en las instituciones"
+  },
+  "ola_verde": {
+   "name": "Preocupación climática",
+   "x": [
+    -0.03,
+    -0.08,
+    0.0
+   ],
+   "salience": {
+    "energy": 0.4
+   },
+   "anti": 0.0,
+   "turnout": 0.0,
+   "up": "El clima sube a lo más alto de la agenda ciudadana",
+   "down": "La agenda climática pierde empuje"
+  },
+  "tension_territorial": {
+   "name": "Tensión territorial",
+   "x": [
+    0.0,
+    0.0,
+    0.14
+   ],
+   "salience": {
+    "territory": 0.35
+   },
+   "anti": 0.0,
+   "turnout": 0.05,
+   "up": "El debate territorial polariza al electorado",
+   "down": "El debate territorial se enfría"
+  },
+  "polarizacion": {
+   "name": "Polarización",
+   "x": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "salience": {},
+   "anti": 0.0,
+   "turnout": 0.2,
+   "spread": 0.18,
+   "up": "La sociedad se polariza: cada bloque se atrinchera",
+   "down": "Baja la crispación y vuelven los consensos"
+  }
+ }
+}

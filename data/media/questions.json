@@ -1,0 +1,398 @@
+{
+ "q": {
+  "issue": {
+   "housing": [
+    "Un joven con sueldo medio necesita casi {n} años de ahorro para la entrada de un piso. ¿Qué le dice usted a esa generación?",
+    "[t,r,p]Hay propietarios que no alquilan por miedo a okupas e inquilinos que no llegan a fin de mes. ¿Qué medidas tomaría para dar seguridad a ambos?",
+    "¿Topar el alquiler, sí o no? Y si no, ¿qué propone para que bajen los precios?",
+    "[d,c]Los pisos turísticos se comen barrios enteros. ¿Qué haría usted con ellos?",
+    "Prometen vivienda pública desde hace décadas y los plazos siguen sin cumplirse. ¿Qué cambia con usted?",
+    "[c]¿Cuántas viviendas protegidas se compromete a entregar en esta legislatura?",
+    "[t,r]¿Cómo piensa que un joven pueda emanciparse antes de los 30 con los sueldos de hoy?",
+    "[d]Alquiler, compra, vivienda pública: ¿dónde pondría usted el dinero primero?",
+    "[p,r]¿Qué haría con los pisos vacíos en manos de los grandes tenedores?",
+    "Los desahucios han repuntado. ¿Qué protección pondría en marcha para las familias afectadas?"
+   ],
+   "tax": [
+    "Un autónomo que factura {n}.000 euros se pregunta qué recibe a cambio de lo que paga. ¿Qué le responde?",
+    "[t,r,d]¿Va a subir los impuestos a alguien? Dígalo ahora, no el día después de las elecciones.",
+    "¿Tiene sentido pedir más a las grandes fortunas si algunas se marchan a otro país? ¿Cuál es su propuesta?",
+    "[p,r]Cada declaración de la renta es un pequeño drama familiar. ¿Qué haría para que la gente la sintiera menos como un castigo?",
+    "[d,c]¿Qué cambiaría en la fiscalidad de la clase media y cómo lo compensaría?",
+    "El IVA de los alimentos básicos: ¿lo bajaría? ¿Con qué coste?",
+    "[c]¿Va a tocar usted el IRPF durante la legislatura? Sí o no, y en qué sentido.",
+    "[t,r]¿Cómo combatiría el fraude fiscal sin asfixiar a los pequeños negocios?",
+    "[d]¿Qué impuesto bajaría primero y cuál subiría si tuviera que elegir?"
+   ],
+   "health": [
+    "Hay personas que llevan {n} semanas esperando una cita con el especialista. ¿Qué les dice usted?",
+    "[t,r,d]¿Más dinero para la sanidad pública o más colaboración con la privada? Elija una línea y defiéndala.",
+    "Los centros de salud rurales cierran por las tardes. ¿De dónde saca médicos que quieran vivir en un pueblo?",
+    "[d,c]Los sanitarios amenazan con huelga. ¿Qué les ofrece?",
+    "La salud mental sigue siendo la gran olvidada: meses de espera para un psicólogo. ¿Qué plan tiene?",
+    "[c]Hablemos de listas de espera: ¿qué cifra se compromete a bajar y en cuánto tiempo?",
+    "[t,r]Urgencias saturadas cada invierno. ¿Qué haría para que no vuelva a pasar?",
+    "[p]¿Cómo vamos a pagar la sanidad de una población cada vez más envejecida?",
+    "[d,c]¿Qué haría para retener a los médicos y enfermeras que se marchan al extranjero?"
+   ],
+   "education": [
+    "Un docente de secundaria me decía ayer que ya no se siente un profesional, sino un burócrata. ¿Qué cambia con usted?",
+    "[t,r,d]¿Debe existir una prueba al final de la ESO que decida quién sigue estudiando? ¿Cuál es su posición?",
+    "La Formación Profesional está llena de plazas vacías y de empresas que no encuentran técnicos. ¿Qué haría?",
+    "[d,c]Los pactos educativos duran lo que dura cada ministro. ¿Qué propone para que este sí dure?",
+    "Las familias pagan libros, comedor y extraescolares. ¿Hasta dónde debe llegar la gratuidad?",
+    "[c]¿Cuántos alumnos por aula es razonable? Díganos una cifra y la fecha en que la alcanzaría.",
+    "[t,r,p]El fracaso escolar sigue en cifras altas. ¿Qué haría usted para reducirlo?",
+    "[p]¿Cómo preparamos a los chavales para trabajos que todavía no existen?",
+    "[d]Universidad: tasas, becas y plazas. ¿Qué cambiaría primero?"
+   ],
+   "jobs": [
+    "El paro baja, pero mucha gente sigue sin llegar a fin de mes con contrato. ¿Qué medidas propone?",
+    "[t,r,d]La reducción de jornada, ¿la impondría por ley o la dejaría a la negociación entre las partes?",
+    "Hay pymes que no encuentran trabajadores y jóvenes que no encuentran trabajo. ¿Cómo lo arreglaría?",
+    "[d,c]¿Subirá el salario mínimo por encima de lo pactado aunque las empresas adviertan del riesgo para el empleo?",
+    "Los repartidores, los falsos autónomos y los becarios eternos: ¿cómo los protegería?",
+    "[c]¿Cuántos empleos estables se compromete a crear y cómo vamos a comprobarlo dentro de un año?",
+    "[t,r]¿Cómo combatiría la temporalidad entre los jóvenes?",
+    "[p]¿Qué haría con los parados de más de 50 años que nadie quiere contratar?",
+    "[d]La inteligencia artificial amenaza algunos empleos. ¿Cuál es su plan para los trabajadores afectados?"
+   ],
+   "energy": [
+    "La factura de la luz entra en casa como una amenaza cada mes. ¿Qué haría usted para bajarla?",
+    "[t,r,d]¿Cerrar las nucleares o alargar su vida? Una respuesta sin matices, por favor.",
+    "[p,r]¿Cómo se hace la transición energética sin dejar atrás a quien no puede pagar un coche eléctrico?",
+    "Hay parques eólicos que dividen a los pueblos: ¿se imponen por interés general o se negocian pueblo a pueblo?",
+    "[d,c]La industria dice que sin energía barata se va a otro país. ¿Qué prefiere, descarbonizar o competir?",
+    "El autoconsumo está lleno de trabas administrativas. ¿Cuánto tardaría en quitarlas?",
+    "[c]¿Qué porcentaje de renovables se compromete a alcanzar y qué hará si no llega?",
+    "[t,r]Gas, nuclear y renovables: ¿cuál es su mix energético ideal?"
+   ],
+   "security": [
+    "Hay barrios donde la gente ya no sale de noche. ¿Qué mensaje manda usted a quien tiene miedo?",
+    "[t,r,d]¿Más policías en la calle o más trabajo social? Defienda su prioridad.",
+    "La multirreincidencia indigna a vecinos y comerciantes. ¿Hay que cambiar el Código Penal?",
+    "[d,c]Los sindicatos policiales denuncian falta de medios. ¿Cuántos agentes más y con qué dinero?",
+    "La seguridad en las redes y el acoso a menores preocupan a todas las familias. ¿Qué haría?",
+    "[c]¿Va a modificar la ley de seguridad ciudadana? ¿Qué artículos y en qué sentido?",
+    "[t,r]¿Cómo combatiría el narcotráfico en las costas y en los barrios?",
+    "[p]Las llegadas irregulares a las costas tensan el debate. ¿Qué política migratoria defiende?"
+   ],
+   "territory": [
+    "La financiación autonómica lleva años caducada. ¿Se atreve a cambiarla aunque pierda votos en alguna región?",
+    "[t,r,d]¿Hasta dónde puede llegar el autogobierno sin romper la igualdad entre españoles?",
+    "[p,r]Hay quien dice que a usted solo le interesa lo que pasa dentro de la M-30. ¿Qué responde a la España vaciada?",
+    "El reparto de inversiones enfrenta a comunidades. ¿Con qué criterio decide quién recibe más?",
+    "[d,c]¿Aceptaría usted una consulta pactada en alguna comunidad? Respuesta corta, por favor.",
+    "Trenes que no llegan, bancos que cierran, médicos que no vienen. ¿Qué es lo primero que arregla en un pueblo?",
+    "[c]¿Va a transferir nuevas competencias durante esta legislatura? ¿Cuáles y con qué contrapartida?",
+    "[t,r]¿Qué haría para frenar la despoblación del interior?"
+   ]
+  },
+  "policy": [
+   "Una pregunta de las que nos llegan a diario: ¿qué haría usted, en concreto, con {issue} durante el primer año?",
+   "[t,p,r]Si solo pudiera aprobar una medida sobre {issue} esta semana, ¿cuál sería?",
+   "[d]Hable de {issue} sin repetir el eslogan del cartel: ¿qué va a cambiar de verdad?",
+   "[c]¿Qué propone su partido sobre {issue} que no estuviera ya en el programa de hace cuatro años?",
+   "{hook}. ¿Qué piensa hacer usted al respecto?",
+   "{hook}. ¿Qué parte de eso se puede arreglar desde el Gobierno y cómo?",
+   "Ponga fecha: ¿cuándo notará un ciudadano normal que ha mejorado {issue} con sus medidas?",
+   "[t,r]Resúmame en treinta segundos su plan sobre {issue}.",
+   "[p]Olvide los folletos: ¿qué le quita el sueño de {issue} y qué haría para resolverlo?",
+   "Si tuviera enfrente a alguien que lo está pasando mal por {issue}, ¿qué compromiso le ofrecería?",
+   "¿Cuál es la primera medida que tomaría sobre {issue} si gobernara mañana?",
+   "[d,c]¿Es {issue} una prioridad real de su partido? Demuéstrelo con una medida concreta.",
+   "[p,r]Imagine que dentro de cuatro años hacemos balance de {issue}: ¿qué querría poder decir?",
+   "Vamos al grano: ¿qué diferencia a su plan sobre {issue} del de los demás?",
+   "[r,t]Un oyente nos escribe preocupado por {issue}. ¿Qué le contesta usted?",
+   "[d]Su propuesta sobre {issue}, ¿es de las que se notan en un año o de las que tardan una década?"
+  ],
+  "cost": [
+   "Muy bien, ¿y quién lo paga? Cuénteme la factura de lo que acaba de prometer.",
+   "[d,c]Sus cuentas suman {n}.000 millones de menos en ingresos. ¿De dónde sale la diferencia?",
+   "¿Subirá el déficit, la deuda o los impuestos para financiar su programa? Elija una.",
+   "[t,r]El Banco de España ha advertido de que las promesas electorales no caben en el marco fiscal. ¿Qué responde?",
+   "[p]Hablemos de dinero: ¿cuál de sus medidas estaría dispuesto a recortar si faltan ingresos?",
+   "Un economista independiente dice que su programa cuesta el doble de lo que declara. ¿Se equivoca?",
+   "¿Prefiere recortar gasto, subir impuestos o crecer más rápido que los demás? Hay que elegir.",
+   "[c]¿Tiene usted el informe de impacto económico de sus medidas? ¿Lo publicará?",
+   "Cada euro prometido es un euro que no está. ¿Qué euro es el que no está en su programa?",
+   "[t,r,d]Su programa promete mucho y recauda poco. ¿Dónde está el dinero?",
+   "[c]¿Qué porcentaje del PIB costará su programa y cómo lo financia?",
+   "¿Qué le responde a quien dice que usted gasta dinero que no tiene?"
+  ],
+  "rival": [
+   "{rival} dice que usted miente en sus cifras. ¿Tiene algo que decirle a la cara?",
+   "[d]Su rival acaba de llamarle improvisador. Le doy la palabra.",
+   "[d]Mírele y dígale en qué se equivoca {rival}. Solo una cosa, pero que duela.",
+   "[t,r]Los analistas dicen que {rival} le ha ganado el relato esta semana. ¿Lo acepta?",
+   "[p,praise]Si no fuera su adversario, ¿qué reconocería de {rival}?",
+   "[d,dare]{rival} ofrece un debate sin moderador y sin cortes. ¿Se atrevería?",
+   "[c]¿Qué le parece que {rival} le acuse de no tener programa?",
+   "[d]{rival} ha dicho que su plan es insostenible. ¿Dónde fallan sus cuentas?",
+   "[t,r,p]¿Qué es lo que más le irrita de {rival}? Sin diplomacia, por favor.",
+   "Dice {rival} que su partido ha cambiado de posición según las encuestas. ¿Es verdad?",
+   "[d,c,praise]Una cosa que {rival} haya hecho bien en su carrera. Una sola, y sin ironía.",
+   "[d]Su rival le recuerda que el último dato desmiente lo que usted dijo hace unos días. ¿Cómo lo explica?",
+   "[t,r,dare]{rival} le reta a un cara a cara sin guion en esta misma cadena. ¿Acepta?",
+   "[p,praise]¿Hay algo que le haya enseñado {rival}, aunque sea sin querer?",
+   "{rival} afirma que usted no está preparado para gobernar. ¿Qué responde?",
+   "[c]{rival} ha llamado a su plan «un brindis al sol». Réplica, por favor."
+  ],
+  "pact": [
+   "¿Daría usted a {rival} los votos que necesite para gobernar, sí o no?",
+   "[t,r,d]Sus votantes quieren saber: ¿gobernaría usted con {rival}?",
+   "[p]Si {rival} le llamara mañana para hablar de gobernar juntos, ¿qué le respondería?",
+   "[c]¿Aceptaría usted entrar en un Gobierno de coalición con {rival} si se lo ofrecieran mañana?",
+   "Usted dijo que no pactaría con {rival}. ¿Mantiene esa frase tal cual o ha cambiado el viento?",
+   "[d]Si pactar con {rival} le obligase a renunciar a parte de su programa, ¿lo haría?",
+   "Hay quien dice que acabará pactando con {rival}. ¿Qué responde?",
+   "[t,r]¿Facilitaría con su abstención un Gobierno de {rival} para evitar unas nuevas elecciones?",
+   "[t,r]Si los números no le dan, ¿negociaría con {rival} o prefiere repetir las elecciones?",
+   "¿Pondría condiciones a {rival} para apoyarle? ¿Cuáles serían?"
+  ],
+  "scandal": [
+   "Esta mañana se ha publicado que {scandal}. ¿Lo conocía?",
+   "[t,r,c]{scandal}. ¿Va a dimitir alguien?",
+   "[p]Sin guion y con calma: {scandal}. ¿Qué ha ocurrido de verdad?",
+   "[d]Su rival lo ha sacado hoy mismo: {scandal}. Responda.",
+   "[c]Tres medios publican que {scandal}. ¿Pedirá usted perdón o va a desmentirlo con pruebas?",
+   "Dicen las encuestas que {scandal} le está costando votos. ¿Lo reconoce?",
+   "[t,r]{scandal}. ¿Qué le dice a sus votantes que se sienten decepcionados?",
+   "[c]¿Se ha enterado por la prensa de que {scandal}? ¿Qué medidas va a tomar?",
+   "[p]{scandal}. ¿Cómo lo vive usted a título personal?",
+   "[d]Su rival lo ha puesto sobre la mesa: {scandal}. ¿Qué responde?"
+  ],
+  "human": [
+   "[p,t,self]¿Qué se le da peor que la política?",
+   "[t,p,self]Hágame un autorretrato en tres defectos.",
+   "[p,r,self]¿Cuál es su mejor cualidad y cuál su peor defecto?",
+   "[p,self]¿Qué defecto suyo temen más sus colaboradores?",
+   "[p,t,self]Dígame algo de usted que casi nadie sabe.",
+   "[p,r,past]Cuénteme una decisión que tomó siendo joven y que hoy le haría sonrojar.",
+   "[t,r,past]¿Qué ha aprendido de la gente en esta campaña que no sabía en enero?",
+   "[p,past]¿Qué le dolió más: perder un voto importante o perder la paciencia en público?",
+   "[t,p,r,past]Si pudiera borrar una frase de su hemeroteca, ¿cuál sería?",
+   "[p,past]¿Qué le diría hoy al chaval o la chavala que fue usted a los 18?",
+   "[t,p,past]¿Cuál ha sido el peor momento de su carrera y qué aprendió?",
+   "[p,r,taste]¿Cuál fue el último libro que le cambió algo? Y cuál no ha terminado nunca.",
+   "[p,taste]Una canción que sonaba en su casa cuando era niño. No vale la que queda bien.",
+   "[p,t,taste]¿Qué serie, película o disco ha visto más veces?",
+   "[p,r,taste]¿Qué plato le recuerda a su infancia?",
+   "[p,home]¿A quién llama cuando una semana le sale mal y no puede quedar mal con nadie?",
+   "[p,r,home]¿Y en casa? ¿Quién manda: usted o quien le acompaña?",
+   "[t,p,home]¿Cómo lleva su familia su vida política?",
+   "[p,home]¿Quién es la persona que mejor le conoce?",
+   "[p,r,mot]¿Qué le hace levantarse cada mañana para dedicarse a esto?",
+   "[p,t,mot]¿Por qué se dedica a la política con todo lo que cuesta?",
+   "[t,r,mot]¿Qué le queda por hacer en política que le dé miedo no conseguir?"
+  ],
+  "crisis": [
+   "[t,r,c]Esta semana todo el país habla de {crisis}. ¿Dónde estaba su partido cuando empezó?",
+   "{crisis}. ¿Qué medida urgente aprobaría hoy mismo?",
+   "[c]¿Por qué la respuesta institucional a {crisis} ha llegado tarde, según su opinión?",
+   "[p,r]Hablemos de {crisis}. ¿Qué le ha llamado más la atención de cómo se ha gestionado?",
+   "[d]¿Quién es responsable de {crisis}: el Gobierno, la oposición o todos?",
+   "Los afectados por {crisis} dicen que la política los ha dejado solos. ¿Tienen razón?",
+   "[t,r]{crisis}. ¿Qué le dice a las familias afectadas?",
+   "[c,d]¿Qué ha fallado en {crisis} y quién debe asumirlo?",
+   "[p]Después de {crisis}, ¿qué hay que cambiar para que no se repita?"
+  ],
+  "ideology": [
+   "Su partido presume de ideología: {ideo}. ¿A qué ha tenido que renunciar para llegar hasta aquí?",
+   "[d,t]Dicen que lo suyo, {ideo}, hoy es una etiqueta vacía. Dé un ejemplo de lo que no haría usted por defenderla.",
+   "[p]¿Qué le diría a un amigo suyo que le vota por inercia y no sabe qué significa {ideo}?",
+   "[r,t]Entre ser coherente con su ideología ({ideo}) y ganar elecciones, ¿qué elige?",
+   "[d,c]Cuando las ideas chocan con la realidad, ¿qué cede primero en su proyecto ({ideo})?",
+   "[t,r]¿Qué significa {ideo} en el siglo XXI?",
+   "[d]¿Qué dirían de usted sus propios votantes si vieran el último pacto que ha hecho?",
+   "[p]¿Es compatible {ideo} con gobernar de forma pragmática? ¿Dónde está el límite?"
+  ],
+  "flipflop": [
+   "Hace unos días dijo en {outlet}: «{quote}». Hoy defiende lo contrario. ¿Qué ha pasado?",
+   "[d]Su hemeroteca le contradice: «{quote}». ¿Se equivocó entonces o se equivoca ahora?",
+   "[t,r]Una de las dos versiones es falsa: «{quote}» frente a lo que dice hoy. ¿Cuál?",
+   "[c,p]Sobre {issue} dijo algo muy distinto en {outlet}: «{quote}». ¿Qué cambió?",
+   "[p]Dice que ha cambiado de opinión sobre {issue}. ¿Qué le hizo cambiar?"
+  ],
+  "record": [
+   "[g,apoyo]El Gobierno cuenta con un apoyo del {approval}% según su propio barómetro. ¿Es un respaldo suficiente para gobernar?",
+   "[g,apoyo]La estabilidad de su mayoría está en {stability} sobre 100. ¿Cuánto aguanta este Gobierno?",
+   "[g,gestion,t,r]Llevan {gov_month} meses de legislatura. ¿Qué es lo que de verdad ha cambiado en la vida de la gente?",
+   "[g,gestion,c]El déficit está en el {deficit}% del PIB. ¿Qué recortará o qué subirá para corregirlo?",
+   "[g,gestion]La deuda pública ronda el {debt}% del PIB. ¿Qué le diría a quien teme por las pensiones de dentro de veinte años?",
+   "[g,gestion,t]Han aprobado leyes en lo que va de legislatura. ¿Cuál defendería ante un votante crítico?",
+   "[g,apoyo,c]El socio de Gobierno ha amenazado con romper si no se cumple el pacto. ¿Qué parte del acuerdo es la innegociable?",
+   "[g,apoyo,t,r]Las encuestas muestran desgaste. ¿Qué es lo que no está llegando a los ciudadanos?",
+   "[o,alt]El Gobierno presume de un {approval}% de apoyo. ¿Qué haría usted distinto desde la oposición y con qué votos?",
+   "[o,ruido,t,r]Llevan {gov_month} meses criticando al Gobierno. ¿Cuál ha sido la última propuesta suya que el Gobierno ha aceptado?",
+   "[o,ruido,c]Dicen que su oposición es solo ruido. ¿Qué ley ha impulsado usted que haya servido de algo?",
+   "[o,alt,d]Si el Gobierno cae mañana, ¿está su partido preparado para gobernar con estas cuentas?",
+   "[o,ruido,p]¿Es difícil hacer oposición sin parecer solo el que dice que no a todo?",
+   "[o,alt,t]¿Qué le quita el sueño del Gobierno actual y qué haría usted en su lugar?"
+  ],
+  "control": [
+   "Señor presidente, ¿puede explicar a esta Cámara por qué {controlfact}?",
+   "Pregunto al Gobierno: ¿cómo piensa afrontar que {controlfact}?",
+   "¿Considera usted aceptable que {controlfact}? ¿Qué va a hacer al respecto?",
+   "En nombre de mi grupo: {controlfact}. ¿Dimitirá alguien?",
+   "Pregunta directa y respuesta breve: {controlfact}, ¿sí o no es esto responsabilidad del Gobierno?"
+  ],
+  "replica": [
+   "[d]Su rival le interrumpe: «{rivalline}». Tiene diez segundos.",
+   "[d]{rival} le replica con una frase que ha hecho reír al plató: «{rivalline}». ¿Qué responde?",
+   "[d]Turno de réplica. Su adversario acaba de decir: «{rivalline}».",
+   "[c,t]Un periodista de otro medio le interrumpe: «{rivalline}». ¿Qué hace?"
+  ],
+  "control_ask": [
+   "Su turno de pregunta al Gobierno: {controlfact}. ¿Cómo la formula?",
+   "Tiene usted treinta segundos en el Pleno. El asunto: {controlfact}. ¿Qué le pregunta al presidente?",
+   "Pregunta oral en la sesión de control sobre {issue}: {controlfact}. ¿Con qué tono la plantea?",
+   "Toca interpelar al Gobierno. Los datos de hoy: {controlfact}. ¿Cómo entra?",
+   "Su grupo ha pedido la palabra: {controlfact}. ¿Qué dice a la Cámara?"
+  ]
+ },
+ "rivallines": [
+  "Eso ya lo dijo usted el año pasado y no hizo nada.",
+  "Lo suyo es un cuento de buenos deseos.",
+  "Usted no ha gestionado ni una comunidad de vecinos.",
+  "Menos eslóganes y más cifras, por favor.",
+  "Los españoles ya no se creen sus promesas.",
+  "Se nota que no pisa la calle desde hace meses.",
+  "Eso que dice no cabe en ningún presupuesto.",
+  "Cada vez que habla, pierde un voto.",
+  "No me dé lecciones quien ha cambiado de postura tres veces.",
+  "Qué casualidad que se acuerde de eso ahora.",
+  "Con esas cuentas, estaríamos todos en bancarrota.",
+  "Eso no es un programa, es una lista de deseos."
+ ],
+ "control": {
+  "housing": [
+   "el precio del alquiler sigue subiendo mes a mes",
+   "la vivienda protegida prometida no ha salido del papel",
+   "los alquileres han subido por encima del IPC dos años seguidos",
+   "los plazos de entrega de vivienda pública se han retrasado otra vez"
+  ],
+  "tax": [
+   "la presión fiscal sigue creciendo mientras los salarios se estancan",
+   "los autónomos pagan más por lo mismo",
+   "la recaudación crece mientras los salarios se estancan",
+   "los pequeños negocios soportan más cargas que las grandes empresas"
+  ],
+  "health": [
+   "las listas de espera superan los límites que el propio Gobierno fijó",
+   "hay centros de salud sin médico",
+   "las urgencias se saturan cada invierno",
+   "los médicos jóvenes se marchan al extranjero"
+  ],
+  "education": [
+   "el pacto educativo sigue sin firmarse",
+   "las ratios de alumnos por aula no bajan",
+   "la matrícula en FP no cubre las plazas ofertadas",
+   "los docentes reclaman estabilidad y menos burocracia"
+  ],
+  "jobs": [
+   "la temporalidad no cede en los jóvenes",
+   "los salarios pierden poder adquisitivo",
+   "el paro juvenil sigue entre los más altos de Europa",
+   "los falsos autónomos siguen sin protección"
+  ],
+  "energy": [
+   "la factura de la luz vuelve a subir",
+   "se acumulan proyectos renovables sin tramitar",
+   "la nuclear y las renovables siguen sin un plan acordado",
+   "la dependencia energética no baja"
+  ],
+  "security": [
+   "la sensación de inseguridad crece en los barrios",
+   "faltan agentes en las plantillas",
+   "la multirreincidencia crece en las grandes ciudades",
+   "los cuerpos de seguridad denuncian falta de medios"
+  ],
+  "territory": [
+   "la financiación autonómica sigue sin reformarse",
+   "la España vaciada sigue perdiendo servicios",
+   "las inversiones se reparten con criterios poco claros",
+   "los servicios básicos desaparecen en la España vaciada"
+  ]
+ },
+ "scandals": [
+  "un exconcejal de su partido aparece en una investigación por contratos",
+  "un audio filtrado de un dirigente de su formación habla con desprecio de sus votantes",
+  "las cuentas de la última campaña no cuadran, según un medio",
+  "un asesor suyo habría cobrado por un trabajo que no se aprecia",
+  "un mensaje antiguo suyo en redes ha vuelto a circular",
+  "una donación de una empresa que ahora piensa participar en concursos públicos",
+  "un dirigente territorial habría usado el coche oficial para fines privados",
+  "un cargo de su partido habría enchufado a un familiar en una empresa pública",
+  "un viaje pagado por un lobby no figuraba en la declaración de intereses",
+  "un tesorero anterior ha declarado ante un juez por una caja de ahorros",
+  "su partido habría tapado una denuncia interna por acoso",
+  "una encuesta pagada con dinero del partido se habría presentado como independiente"
+ ],
+ "crises": [
+  [
+   "una oleada de incendios forestales que arrasa varias comarcas",
+   "energy"
+  ],
+  [
+   "una huelga de transporte que paraliza ciudades",
+   "jobs"
+  ],
+  [
+   "un nuevo dato de inflación que ha disparado la cesta de la compra",
+   "tax"
+  ],
+  [
+   "una sentencia que reabre el debate territorial",
+   "territory"
+  ],
+  [
+   "un colapso de urgencias en varios hospitales",
+   "health"
+  ],
+  [
+   "un episodio de violencia en un barrio que ha conmocionado a la opinión pública",
+   "security"
+  ],
+  [
+   "el cierre de una fábrica con cientos de despidos",
+   "jobs"
+  ],
+  [
+   "una ola de calor que dispara la factura eléctrica",
+   "energy"
+  ],
+  [
+   "el desplome de la matrícula en la escuela rural",
+   "education"
+  ],
+  [
+   "una nueva subida de los precios del alquiler",
+   "housing"
+  ],
+  [
+   "una gota fría que ha anegado barrios y carreteras",
+   "territory"
+  ],
+  [
+   "una caída de la bolsa tras un dato de empleo decepcionante",
+   "jobs"
+  ],
+  [
+   "un apagón de varias horas que ha dejado sin luz a media provincia",
+   "energy"
+  ],
+  [
+   "la quiebra de una constructora con miles de familias afectadas",
+   "housing"
+  ],
+  [
+   "un brote de gripe que satura la atención primaria",
+   "health"
+  ],
+  [
+   "un ciberataque contra servicios públicos esenciales",
+   "security"
+  ]
+ ]
+}

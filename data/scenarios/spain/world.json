@@ -1,0 +1,765 @@
+{
+	"indicators": [
+		{
+			"id": "wages",
+			"name": "Salario real",
+			"domain": "jobs",
+			"unit": "índice",
+			"start": 100,
+			"scale": 5,
+			"min": 70,
+			"max": 140,
+			"good": 1,
+			"rate": 0.05,
+			"dec": 1,
+			"desc": "Poder adquisitivo de los salarios (base 100).",
+			"links": {
+				"productivity": 2.0,
+				"unemployment": -1.6,
+				"inflation": -1.2
+			},
+			"bf": {}
+		},
+		{
+			"id": "productivity",
+			"name": "Productividad",
+			"domain": "science",
+			"unit": "índice",
+			"start": 100,
+			"scale": 5,
+			"min": 75,
+			"max": 130,
+			"good": 1,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Valor producido por hora trabajada (base 100).",
+			"links": {
+				"r_d": 1.1,
+				"digital": 1.0,
+				"investment": 0.9,
+				"skills": 0.8,
+				"informal": -0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "investment",
+			"name": "Inversión empresarial",
+			"domain": "industry",
+			"unit": "índice",
+			"start": 100,
+			"scale": 8,
+			"min": 60,
+			"max": 150,
+			"good": 1,
+			"rate": 0.08,
+			"dec": 1,
+			"desc": "Inversión privada en equipos y capacidad (base 100).",
+			"links": {
+				"growth": 2.2,
+				"rate": -1.8,
+				"trust": 0.9,
+				"deficit": -0.6,
+				"productivity": 0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "exports",
+			"name": "Exportaciones",
+			"domain": "industry",
+			"unit": "% PIB",
+			"start": 35,
+			"scale": 4,
+			"min": 22,
+			"max": 50,
+			"good": 1,
+			"rate": 0.05,
+			"dec": 1,
+			"desc": "Ventas al exterior sobre el PIB.",
+			"links": {
+				"energy_price": -0.9,
+				"productivity": 0.8,
+				"wages": -0.4,
+				"inflation": -0.4
+			},
+			"bf": {}
+		},
+		{
+			"id": "consumption",
+			"name": "Consumo de los hogares",
+			"domain": "indirect",
+			"unit": "índice",
+			"start": 100,
+			"scale": 4,
+			"min": 75,
+			"max": 125,
+			"good": 1,
+			"rate": 0.1,
+			"dec": 1,
+			"desc": "Gasto de las familias (base 100).",
+			"links": {
+				"wages": 1.8,
+				"unemployment": -1.5,
+				"inflation": -1.3,
+				"rent_burden": -0.8,
+				"trust": 0.6
+			},
+			"bf": {}
+		},
+		{
+			"id": "house_price",
+			"name": "Precio de la vivienda",
+			"domain": "housing",
+			"unit": "índice",
+			"start": 100,
+			"scale": 10,
+			"min": 60,
+			"max": 180,
+			"good": 0,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Precio medio de la vivienda (base 100).",
+			"links": {
+				"rate": -2.0,
+				"growth": 1.2,
+				"housing_stock": -1.0,
+				"net_migration": 1.0,
+				"tourism": 0.7,
+				"consumption": 0.4
+			},
+			"bf": {}
+		},
+		{
+			"id": "rent_burden",
+			"name": "Esfuerzo del alquiler",
+			"domain": "housing",
+			"unit": "% renta",
+			"start": 37,
+			"scale": 5,
+			"min": 20,
+			"max": 60,
+			"good": -1,
+			"rate": 0.05,
+			"dec": 1,
+			"desc": "Parte de la renta que gasta en alquiler un hogar joven.",
+			"links": {
+				"house_price": 1.6,
+				"wages": -1.0,
+				"housing_stock": -1.0,
+				"net_migration": 0.8,
+				"tourism": 0.6
+			},
+			"bf": {}
+		},
+		{
+			"id": "youth_unemp",
+			"name": "Paro juvenil",
+			"domain": "jobs",
+			"unit": "%",
+			"start": 28,
+			"scale": 5,
+			"min": 8,
+			"max": 55,
+			"good": -1,
+			"rate": 0.06,
+			"dec": 1,
+			"desc": "Paro entre menores de 25 años.",
+			"links": {
+				"unemployment": 5.5,
+				"skills": -0.8,
+				"dropout": 0.6
+			},
+			"bf": {}
+		},
+		{
+			"id": "informal",
+			"name": "Economía sumergida",
+			"domain": "jobs",
+			"unit": "% PIB",
+			"start": 17,
+			"scale": 2.5,
+			"min": 6,
+			"max": 30,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Actividad que no tributa ni cotiza.",
+			"links": {
+				"transparency": -1.0,
+				"poverty": 0.5,
+				"unemployment": 0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "tourism",
+			"name": "Turismo",
+			"domain": "industry",
+			"unit": "índice",
+			"start": 100,
+			"scale": 8,
+			"min": 60,
+			"max": 140,
+			"good": 1,
+			"rate": 0.06,
+			"dec": 1,
+			"desc": "Llegadas y gasto turístico (base 100).",
+			"links": {
+				"energy_price": -0.6,
+				"inflation": -0.5,
+				"crime": -0.8,
+				"trust": 0.3
+			},
+			"bf": {}
+		},
+		{
+			"id": "entrepreneurship",
+			"name": "Creación de empresas",
+			"domain": "industry",
+			"unit": "índice",
+			"start": 100,
+			"scale": 8,
+			"min": 60,
+			"max": 150,
+			"good": 1,
+			"rate": 0.06,
+			"dec": 1,
+			"desc": "Nuevas empresas por año (base 100).",
+			"links": {
+				"growth": 1.6,
+				"rate": -0.9,
+				"digital": 1.0,
+				"informal": -0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "poverty",
+			"name": "Riesgo de pobreza",
+			"domain": "social",
+			"unit": "%",
+			"start": 20.2,
+			"scale": 3,
+			"min": 8,
+			"max": 38,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Población bajo el umbral de pobreza (60 % de la mediana).",
+			"links": {
+				"unemployment": 1.8,
+				"wages": -1.0,
+				"inflation": 0.7,
+				"rent_burden": 0.9,
+				"gini": 0.7
+			},
+			"bf": {}
+		},
+		{
+			"id": "gini",
+			"name": "Desigualdad (Gini)",
+			"domain": "social",
+			"unit": "puntos",
+			"start": 31.5,
+			"scale": 2,
+			"min": 22,
+			"max": 45,
+			"good": -1,
+			"rate": 0.03,
+			"dec": 1,
+			"desc": "Índice de Gini de la renta (0-100).",
+			"links": {
+				"poverty": 0.5,
+				"unemployment": 0.5,
+				"wages": -0.4,
+				"informal": 0.3
+			},
+			"bf": {}
+		},
+		{
+			"id": "life_exp",
+			"name": "Esperanza de vida",
+			"domain": "health",
+			"unit": "años",
+			"start": 83.2,
+			"scale": 1,
+			"min": 76,
+			"max": 90,
+			"good": 1,
+			"rate": 0.02,
+			"dec": 1,
+			"desc": "Años de vida al nacer.",
+			"links": {
+				"health": 0.35,
+				"poverty": -0.15,
+				"waiting": -0.1,
+				"environment": 0.2
+			},
+			"bf": {}
+		},
+		{
+			"id": "waiting",
+			"name": "Espera sanitaria",
+			"domain": "health",
+			"unit": "días",
+			"start": 110,
+			"scale": 20,
+			"min": 30,
+			"max": 260,
+			"good": -1,
+			"rate": 0.06,
+			"dec": 0,
+			"desc": "Demora media para una consulta con especialista.",
+			"links": {
+				"health": -16.0,
+				"net_migration": 3.0
+			},
+			"bf": {
+				"sanidad": -60.0
+			}
+		},
+		{
+			"id": "dropout",
+			"name": "Abandono escolar",
+			"domain": "education",
+			"unit": "%",
+			"start": 13.9,
+			"scale": 3,
+			"min": 4,
+			"max": 28,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Jóvenes de 18-24 años que dejaron los estudios.",
+			"links": {
+				"education": -2.2,
+				"poverty": 1.0,
+				"youth_unemp": 0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "skills",
+			"name": "Competencias (PISA)",
+			"domain": "education",
+			"unit": "puntos",
+			"start": 474,
+			"scale": 15,
+			"min": 420,
+			"max": 540,
+			"good": 1,
+			"rate": 0.03,
+			"dec": 0,
+			"desc": "Resultados PISA de los alumnos de 15 años.",
+			"links": {
+				"education": 5.0,
+				"poverty": -2.0,
+				"digital": 1.5,
+				"dropout": -2.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "crime",
+			"name": "Criminalidad",
+			"domain": "security",
+			"unit": "‰ hab.",
+			"start": 44,
+			"scale": 5,
+			"min": 20,
+			"max": 90,
+			"good": -1,
+			"rate": 0.05,
+			"dec": 1,
+			"desc": "Infracciones penales por cada 1.000 habitantes.",
+			"links": {
+				"unemployment": 1.5,
+				"poverty": 1.2,
+				"security": -3.0,
+				"gini": 1.0,
+				"polarization": 0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "court_delay",
+			"name": "Duración de los juicios",
+			"domain": "justice",
+			"unit": "meses",
+			"start": 12,
+			"scale": 3,
+			"min": 4,
+			"max": 30,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Tiempo medio de un procedimiento civil.",
+			"links": {
+				"digital": -0.8
+			},
+			"bf": {
+				"justicia": -14.0
+			}
+		},
+		{
+			"id": "trust",
+			"name": "Confianza institucional",
+			"domain": "justice",
+			"unit": "0-100",
+			"start": 40,
+			"scale": 8,
+			"min": 10,
+			"max": 80,
+			"good": 1,
+			"rate": 0.04,
+			"dec": 0,
+			"desc": "Confianza de los ciudadanos en las instituciones.",
+			"links": {
+				"transparency": 3.0,
+				"polarization": -2.5,
+				"crime": -0.8,
+				"unemployment": -1.2,
+				"inflation": -1.0,
+				"tension": -1.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "transparency",
+			"name": "Transparencia",
+			"domain": "justice",
+			"unit": "0-100",
+			"start": 60,
+			"scale": 6,
+			"min": 20,
+			"max": 95,
+			"good": 1,
+			"rate": 0.04,
+			"dec": 0,
+			"desc": "Percepción de limpieza de la vida pública.",
+			"links": {
+				"digital": 0.8
+			},
+			"bf": {}
+		},
+		{
+			"id": "net_migration",
+			"name": "Inmigración neta",
+			"domain": "immigration",
+			"unit": "miles/año",
+			"start": 640,
+			"scale": 150,
+			"min": 0,
+			"max": 1400,
+			"good": 0,
+			"rate": 0.06,
+			"dec": 0,
+			"desc": "Saldo migratorio anual.",
+			"links": {
+				"growth": 60.0,
+				"unemployment": -40.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "birth",
+			"name": "Natalidad",
+			"domain": "family",
+			"unit": "hijos/mujer",
+			"start": 1.12,
+			"scale": 0.1,
+			"min": 0.8,
+			"max": 1.9,
+			"good": 1,
+			"rate": 0.02,
+			"dec": 2,
+			"desc": "Fecundidad.",
+			"links": {
+				"wages": 0.03,
+				"rent_burden": -0.03,
+				"unemployment": -0.03
+			},
+			"bf": {}
+		},
+		{
+			"id": "gender_gap",
+			"name": "Brecha salarial de género",
+			"domain": "family",
+			"unit": "%",
+			"start": 12,
+			"scale": 2,
+			"min": 2,
+			"max": 25,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Diferencia media de salario entre mujeres y hombres.",
+			"links": {},
+			"bf": {}
+		},
+		{
+			"id": "pensions_gap",
+			"name": "Déficit de pensiones",
+			"domain": "social",
+			"unit": "% PIB",
+			"start": 2.6,
+			"scale": 0.8,
+			"min": -1,
+			"max": 8,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 2,
+			"desc": "Gasto en pensiones no cubierto por cotizaciones.",
+			"links": {
+				"unemployment": 0.4,
+				"wages": -0.3,
+				"net_migration": -0.3,
+				"productivity": -0.2
+			},
+			"bf": {}
+		},
+		{
+			"id": "polarization",
+			"name": "Polarización",
+			"domain": "territory",
+			"unit": "0-100",
+			"start": 55,
+			"scale": 8,
+			"min": 15,
+			"max": 95,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 0,
+			"desc": "Distancia entre bloques políticos en la sociedad.",
+			"links": {
+				"gini": 1.5,
+				"unemployment": 1.0,
+				"tension": 1.5,
+				"trust": -1.5,
+				"inflation": 0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "tension",
+			"name": "Tensión territorial",
+			"domain": "territory",
+			"unit": "0-100",
+			"start": 50,
+			"scale": 8,
+			"min": 10,
+			"max": 95,
+			"good": -1,
+			"rate": 0.04,
+			"dec": 0,
+			"desc": "Conflicto entre el Estado y las autonomías.",
+			"links": {
+				"polarization": 1.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "emissions",
+			"name": "Emisiones de CO₂",
+			"domain": "energy",
+			"unit": "Mt",
+			"start": 288,
+			"scale": 25,
+			"min": 150,
+			"max": 380,
+			"good": -1,
+			"rate": 0.03,
+			"dec": 0,
+			"desc": "Emisiones de gases de efecto invernadero.",
+			"links": {
+				"growth": 12.0,
+				"renewables": -10.0,
+				"energy_price": -3.0,
+				"transit_share": -6.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "renewables",
+			"name": "Renovables en electricidad",
+			"domain": "energy",
+			"unit": "%",
+			"start": 50,
+			"scale": 8,
+			"min": 20,
+			"max": 95,
+			"good": 1,
+			"rate": 0.03,
+			"dec": 0,
+			"desc": "Peso de las renovables en la generación eléctrica.",
+			"links": {
+				"investment": 1.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "energy_price",
+			"name": "Precio de la energía",
+			"domain": "energy",
+			"unit": "índice",
+			"start": 100,
+			"scale": 15,
+			"min": 50,
+			"max": 220,
+			"good": -1,
+			"rate": 0.1,
+			"dec": 0,
+			"desc": "Factura energética de familias y empresas (base 100).",
+			"links": {
+				"renewables": -2.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "transit_share",
+			"name": "Uso del transporte público",
+			"domain": "transport",
+			"unit": "%",
+			"start": 14,
+			"scale": 3,
+			"min": 5,
+			"max": 40,
+			"good": 1,
+			"rate": 0.05,
+			"dec": 1,
+			"desc": "Viajes diarios en transporte colectivo.",
+			"links": {
+				"infrastructure": 1.0,
+				"energy_price": 0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "rural",
+			"name": "Población rural",
+			"domain": "agriculture",
+			"unit": "índice",
+			"start": 100,
+			"scale": 3,
+			"min": 80,
+			"max": 115,
+			"good": 1,
+			"rate": 0.02,
+			"dec": 1,
+			"desc": "Habitantes de municipios pequeños (base 100).",
+			"links": {
+				"farm_income": 0.8,
+				"digital": 0.4,
+				"infrastructure": 0.5
+			},
+			"bf": {}
+		},
+		{
+			"id": "farm_income",
+			"name": "Renta agraria",
+			"domain": "agriculture",
+			"unit": "índice",
+			"start": 100,
+			"scale": 8,
+			"min": 60,
+			"max": 150,
+			"good": 1,
+			"rate": 0.06,
+			"dec": 1,
+			"desc": "Ingreso de agricultores y ganaderos (base 100).",
+			"links": {
+				"energy_price": -1.8,
+				"exports": 0.8,
+				"inflation": -0.3
+			},
+			"bf": {}
+		},
+		{
+			"id": "digital",
+			"name": "Digitalización",
+			"domain": "science",
+			"unit": "0-100",
+			"start": 60,
+			"scale": 6,
+			"min": 30,
+			"max": 95,
+			"good": 1,
+			"rate": 0.04,
+			"dec": 1,
+			"desc": "Índice de economía y sociedad digitales.",
+			"links": {
+				"r_d": 3.0,
+				"investment": 1.0,
+				"skills": 1.0
+			},
+			"bf": {}
+		},
+		{
+			"id": "r_d",
+			"name": "Inversión en I+D",
+			"domain": "science",
+			"unit": "% PIB",
+			"start": 1.4,
+			"scale": 0.3,
+			"min": 0.6,
+			"max": 3.5,
+			"good": 1,
+			"rate": 0.03,
+			"dec": 2,
+			"desc": "Gasto total en investigación y desarrollo.",
+			"links": {
+				"growth": 0.04
+			},
+			"bf": {
+				"ciencia": 0.8
+			}
+		},
+		{
+			"id": "housing_stock",
+			"name": "Vivienda protegida",
+			"domain": "housing",
+			"unit": "% parque",
+			"start": 2.5,
+			"scale": 1.0,
+			"min": 0.5,
+			"max": 12,
+			"good": 1,
+			"rate": 0.02,
+			"dec": 1,
+			"desc": "Vivienda pública y protegida sobre el total.",
+			"links": {},
+			"bf": {
+				"vivienda": 3.0
+			}
+		}
+	],
+	"feeds": {
+		"growth": {
+			"productivity": 0.12,
+			"investment": 0.1,
+			"exports": 0.05,
+			"consumption": 0.12,
+			"tourism": 0.04,
+			"trust": 0.05,
+			"informal": -0.03,
+			"entrepreneurship": 0.05,
+			"energy_price": -0.07,
+			"poverty": -0.03
+		},
+		"unemployment": {
+			"wages": 0.06,
+			"entrepreneurship": -0.1,
+			"tourism": -0.08,
+			"skills": -0.05,
+			"informal": 0.04
+		},
+		"inflation": {
+			"energy_price": 0.22,
+			"wages": 0.1,
+			"consumption": 0.1,
+			"house_price": 0.05,
+			"tourism": 0.03
+		}
+	}
+}

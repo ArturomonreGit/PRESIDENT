@@ -1,0 +1,865 @@
+{
+ "answers": {
+  "data": [
+   "Los datos mandan: en {issue} le pongo cifras, calendario y un responsable con nombre. Y se publicará cada trimestre.",
+   "Sin adjetivos: tres medidas, un coste y un plazo. Se lo detallo y que lo audite quien quiera.",
+   "Mire el último informe independiente sobre {issue}: de ahí parte nuestro plan, no de una ocurrencia.",
+   "[d]Le propongo algo: usted dice una cifra y yo le doy la mía con su fuente. Veamos cuál aguanta.",
+   "[t,r]En una frase: medimos, corregimos y publicamos los resultados de {issue} cada tres meses.",
+   "[p]Soy un poco friki de los números, no se lo negaré: en {issue} la evidencia dice que hay que ir por aquí.",
+   "[c]Le facilitaré el documento con los números exactos al terminar. No hablo de memoria de lo que importa.",
+   "Primero, un diagnóstico con datos oficiales de {issue}; después, un plan por fases; y resultados públicos cada seis meses.",
+   "Lo que funciona en otros países tiene evidencia detrás. En {issue} copiaría lo demostrado y descartaría lo que no.",
+   "[t]Mida con una sola cifra: ese es el indicador que comprometo en {issue} y por el que quiero que me juzguen.",
+   "[p,r]Soy de los que prefieren una tabla a un discurso. En {issue}: tres indicadores y un calendario."
+  ],
+  "empathy": [
+   "A quien lo está pasando mal con {issue} le diría que lo veo, que no estoy aquí para sermonear y que no se va a quedar solo.",
+   "Esta semana me contó una mujer en un mercado lo que le cuesta {issue}. No me lo he podido quitar de la cabeza.",
+   "[p,r]Me hace usted una pregunta que no es de números, es de gente. Y la gente de {issue} se siente abandonada.",
+   "[t]Si me permite una anécdota: un chico me paró en un tren y me dijo que ya no creía en nadie. Por él estoy aquí.",
+   "[d]Mientras ustedes discuten, hay familias que no duermen por {issue}. Esa es mi prioridad.",
+   "[c]Entiendo la rabia. Vamos a empezar escuchando, y después actuando, no al revés.",
+   "Cuando me cuentan lo de {issue} no me hablan de estadísticas, me hablan de su vida. Mi plan parte de ahí.",
+   "[t,p]Me preocupa que quien sufre {issue} sienta que nadie le escucha. Lo primero es dar la cara y estar con ellos.",
+   "Lo que propongo en {issue} es sencillo: que nadie se quede atrás por falta de ayuda a tiempo.",
+   "[r]Detrás de cada problema de {issue} hay una persona; mis medidas están pensadas para ella."
+  ],
+  "honest": [
+   "Le voy a decir lo que no quiere oír: {issue} no se arregla en un año y quien lo prometa le miente.",
+   "No lo tengo todo resuelto. Sé hacia dónde ir y reconozco que en {issue} hay cosas que no depende solo de mí.",
+   "[p,r]Me equivoqué en eso. Lo dije convencido y me costó aprender que no era tan sencillo.",
+   "[t]Prefiero perder un voto hoy diciendo la verdad sobre {issue} que ganarlo con una frase bonita.",
+   "[d]Voy a ser honesto, y eso en un debate cuesta caro: en esto mi propuesta tiene un coste que no esconderé.",
+   "[c]No voy a firmar una cifra que no puedo cumplir. Le doy un rango y me comprometo a explicar cada desviación.",
+   "No prometo milagros en {issue}: sí un rumbo claro, medidas que se puedan cumplir y rendición de cuentas.",
+   "En {issue} tengo claro qué haría primero y qué todavía no sé. Prefiero decirlo a inventarlo.",
+   "[d,c]Mi propuesta sobre {issue} tiene costes y no los voy a esconder.",
+   "Parte de lo que digo hoy sobre {issue} tardará años en notarse. Se lo digo ahora, no después."
+  ],
+  "deflect": [
+   "Creo que esa no es la cuestión de fondo; lo que le preocupa al ciudadano es otra cosa, y es de lo que quiero hablar.",
+   "Es un tema complejo, con muchos matices, y no me parece justo despacharlo en un titular.",
+   "Habrá tiempo de hablar de {issue}; ahora prefiero centrarme en algo que importa más.",
+   "[d]Esa pregunta mejor dirigida a quien gobierna, que para algo tiene los datos.",
+   "[t,r]Estoy encantado de que lo pregunte, pero hoy no vengo a hablar de eso.",
+   "[p]Qué buena pregunta... déjeme pensarla, que si no, acabo diciendo una tontería.",
+   "[c]Eso lo veremos en su momento y con los informes sobre la mesa.",
+   "Mi respuesta sobre {issue} está en el programa y no cabe en una frase de plató.",
+   "[t,r]Mi equipo trabaja en {issue} con propuestas detalladas, que presentaremos en su momento.",
+   "Sobre {issue}, la mejor respuesta es la que se da al terminar una legislatura, no en un estudio de televisión."
+  ],
+  "attack": [
+   "Que {rival} me hable de {issue} tiene mérito: el desastre de estos años lleva su firma.",
+   "[d]Lo más sorprendente es que lo dice quien votó en contra de la medida que ahora presume de defender.",
+   "{rival} lleva años opinando sobre {issue} y ni un solo resultado que enseñar.",
+   "[t,r]Hay una cosa que me parece grave: el doble rasero. Con {rival} nadie pregunta nunca.",
+   "[p]No tengo nada personal contra nadie, pero hay que decir las cosas por su nombre: {rival} ha fallado en {issue}.",
+   "[c]Quien hoy me pregunta por {issue} debería preguntarle a {rival} por qué no lo arregló cuando pudo."
+  ],
+  "humor": [
+   "Dicho así parece un examen sorpresa de {issue}. Por suerte, estudié.",
+   "[p,r]Si me dieran un euro cada vez que me hacen esta pregunta, a estas horas pagaba yo la deuda.",
+   "[t,d]Me encanta cuando alguien explica {issue} como si lo hubiera inventado. Lo mío es más modesto: hacerlo.",
+   "[d]Qué cosas tiene usted. Seguro que en casa le sale mejor que aquí.",
+   "[p]Mi madre me diría: «hijo, ve al grano». Y ahí voy: en {issue}, hay que arremangarse.",
+   "[c]Con humor se lleva mejor la rueda de prensa, y la política. Pero la respuesta va en serio."
+  ],
+  "hardline": [
+   "En {issue} no vamos a ceder: es una línea roja y se lo digo a quien haga falta.",
+   "[d]Se lo digo mirándole a los ojos: mientras yo esté aquí, eso no pasa.",
+   "[t,r]No habrá marcha atrás. Hay cosas que no se negocian y {issue} es una de ellas.",
+   "[p]Soy tozudo, lo reconozco: en esto no me van a mover ni con encuestas ni con presiones.",
+   "[c]Mi posición es firme y la defenderé en el Parlamento y fuera de él."
+  ],
+  "concede": [
+   "Tiendo la mano a quien quiera arrimar el hombro en {issue}: aquí lo que importa es resolver, no ganar una discusión.",
+   "[d]Acepto que en eso {rival} tiene parte de razón. Y precisamente por eso conviene pactarlo.",
+   "[t,r]Las mejores leyes son las que sobreviven a un cambio de Gobierno. En {issue} me siento a hablar con todos.",
+   "[p]Mire, no tengo el monopolio de la verdad. Prefiero rectificar con quien tenga una idea mejor.",
+   "[c]Estoy dispuesto a ceder en el calendario si hay acuerdo de fondo en {issue}."
+  ],
+  "promise": [
+   "Cien días, y me podrán pedir cuentas: eso les prometo sobre {issue}, a la vista de todos.",
+   "[d]Se lo digo ante todos: si en un año {issue} no ha mejorado, que me lo recuerden en la calle.",
+   "[t,r]Me comprometo hoy, aquí y ahora, a que {issue} será mi primera prioridad.",
+   "[p]Si lo logramos, me apunto a hacerle un programa entero a usted para contar cómo hemos cumplido.",
+   "[c]Lo firmo, y que conste en acta: voy a presentar una ley de {issue} antes de verano.",
+   "En {issue} firmo hoy una medida, un plazo y un responsable. Si no se cumple, me lo recuerdan.",
+   "[t,r]Mi compromiso sobre {issue} cabe en una frase: resultados medibles en el primer año.",
+   "[p]Le doy mi palabra de que {issue} no será un titular, será una prioridad presupuestaria.",
+   "[d]Se lo digo ante todos: lo primero que aprobaremos en {issue} será una medida concreta, con fecha."
+  ]
+ },
+ "replica": {
+  "attack": [
+   "Eso se lo dice usted a quien no ha mirado sus propias cuentas.",
+   "Cuando acabe de interrumpir, me gustará que explique su programa.",
+   "Qué fácil criticar cuando uno no tiene que gobernar.",
+   "Esa frase le sale mejor que cualquier propuesta suya."
+  ],
+  "humor": [
+   "Ay, qué ingenio. Debería dedicarse a los monólogos.",
+   "Gracias por el espectáculo; yo prefiero hablar de las cuentas.",
+   "Me lo apunto: la próxima vez le dejo el turno de chistes."
+  ],
+  "concede": [
+   "Tiene usted razón en parte, y se lo reconozco. Pero eso no cambia lo esencial.",
+   "Acepto la crítica, y le propongo que la convierta en una enmienda."
+  ],
+  "deflect": [
+   "Prefiero no responderle a eso; hay asuntos más serios.",
+   "No voy a entrar en ese terreno, el público sabe distinguir."
+  ],
+  "hardline": [
+   "Puede insistir lo que quiera: mi posición no cambia.",
+   "Con esa frase no me va a descolocar, siga."
+  ]
+ },
+ "react": {
+  "great": {
+   "hostile": [
+    "Vaya, no esperaba una respuesta tan sólida.",
+    "Es difícil rebatir eso, tengo que admitirlo.",
+    "Touché. Me quedo sin réplica por hoy.",
+    "Eso ha sonado a respuesta de las que se recuerdan; el plató se ha callado.",
+    "Se lo concedo: aquí no he conseguido ponerle en un aprieto.",
+    "Ahí no le he encontrado la grieta. Reconozco el mérito.",
+    "Pensaba que se rompería, y ha aguantado con soltura."
+   ],
+   "neutral": [
+    "Una respuesta clara; el público lo agradece.",
+    "Muy claro. De esas contestaciones que se citan al día siguiente.",
+    "Bien explicado, sin duda.",
+    "Eso es lo que muchos esperaban oír.",
+    "Vaya manera de redondear una respuesta.",
+    "Concreta, sin adornos y con datos: así da gusto.",
+    "Una respuesta de manual: clara y sin rodeos."
+   ],
+   "friendly": [
+    "Exacto, justo lo que queríamos que explicara.",
+    "Una gran respuesta, y se nota que conoce el asunto.",
+    "Gracias por la claridad; ha puesto cara y ojos al tema.",
+    "Eso sí que ha sido hablar claro; aplausos en el estudio.",
+    "Mis oyentes lo van a agradecer.",
+    "Fantástico. Eso es justo lo que queríamos entender.",
+    "Gracias, de verdad: ha explicado en un minuto lo que otros no logran en una hora."
+   ]
+  },
+  "good": {
+   "hostile": [
+    "Hmm, algo es algo. Pero seguiré insistiendo.",
+    "Aceptable, aunque no cierra la cuestión.",
+    "Puede ser, aunque hay quien no lo verá así.",
+    "No me convence del todo, pero tiene su lógica.",
+    "Resiste el envite, pero no lo da todo por zanjado.",
+    "No está mal, pero me quedo con la duda de la letra pequeña.",
+    "Pasable. Falta saber si luego se cumple."
+   ],
+   "neutral": [
+    "Entendido. Pasamos a otra cuestión.",
+    "Respuesta correcta; veremos cómo se concreta.",
+    "Es una postura clara, al menos.",
+    "Lo anoto: queda para el análisis de mañana.",
+    "Una respuesta razonable; el público decidirá.",
+    "Correcto. Ni un titular ni un problema.",
+    "Se defiende bien; la audiencia dirá si le convence."
+   ],
+   "friendly": [
+    "Muy bien, creo que se ha entendido.",
+    "Perfecto, así se entiende mejor su posición.",
+    "Gracias; eso ayuda a la audiencia.",
+    "Me parece una respuesta sensata.",
+    "Buen punto, y lo ha explicado con sencillez.",
+    "Me ha gustado el tono, y la respuesta tiene sentido.",
+    "Lo ha dejado claro. Eso se agradece."
+   ]
+  },
+  "weak": {
+   "hostile": [
+    "¿Eso es todo? No ha respondido a lo que le pregunté.",
+    "Perdone, pero esa respuesta no convence a nadie.",
+    "Eso suena a lo de siempre.",
+    "Le repito la pregunta, porque la respuesta se ha quedado a medias.",
+    "Qué escurridizo: mucha forma y poco fondo.",
+    "Ha dado un rodeo largo para no llegar a ninguna parte.",
+    "Con respuestas así, los espectadores se quedan igual que estaban."
+   ],
+   "neutral": [
+    "Una respuesta algo vaga, si me permite.",
+    "Puede que se quede corto, pero sigamos.",
+    "No me queda del todo claro, pero adelante.",
+    "Hay mucho margen de mejora ahí.",
+    "Me temo que la audiencia esperaba más.",
+    "Se quedó a medias; falta concreción.",
+    "Podría haber ido más al grano."
+   ],
+   "friendly": [
+    "Quizá podría haberlo explicado mejor.",
+    "Creo que ahí le faltó un poco de contundencia.",
+    "Sigamos, pero eso podría pulirse.",
+    "Tengo la sensación de que se guardaba algo mejor.",
+    "Vamos con la siguiente, y quizá la próxima salga mejor.",
+    "Seguro que tiene una respuesta mejor guardada para otro momento.",
+    "Ha quedado un poco en el aire, pero sigamos."
+   ]
+  },
+  "bad": {
+   "hostile": [
+    "Esto va a salir mañana en todos los periódicos, y no precisamente bien.",
+    "Vaya, acaba de abrir un frente que no tenía.",
+    "Creo que no era consciente de lo que acaba de decir.",
+    "Eso es un regalo para sus rivales; ya hay quien lo está tuiteando.",
+    "Se lo van a recordar durante semanas.",
+    "Esa frase va a circular sola por las redes antes de que acabe el programa.",
+    "Se acaba de poner en bandeja una semana difícil."
+   ],
+   "neutral": [
+    "Eso va a dar mucho que hablar.",
+    "Puede que esa respuesta le acompañe unos días.",
+    "No parece que esa respuesta le haya favorecido.",
+    "El plató ha reaccionado: no ha sido un buen momento.",
+    "Tomo nota; los especialistas lo analizarán.",
+    "Es un paso en falso y se va a notar.",
+    "El silencio del plató lo dice todo."
+   ],
+   "friendly": [
+    "Vaya, eso no ha salido como esperábamos.",
+    "Lo lamento, pero esa respuesta no ayuda.",
+    "Creo que no es lo que quería decir.",
+    "Seguro que quería decir otra cosa. ¿Quiere aclararlo?",
+    "Mejor lo dejamos ahí y seguimos.",
+    "Yo le daría la oportunidad de matizarlo, porque así no suena bien.",
+    "Es una respuesta que mañana preferirá olvidar."
+   ]
+  }
+ },
+ "social": {
+  "great": [
+   "{a}: Eso es hablar claro #{tag}",
+   "{a}: Se ha ganado el plató. Pregunta cerrada.",
+   "{a}: Lo de {issue} lo ha resuelto en una frase.",
+   "{a}: Por fin alguien que contesta de verdad.",
+   "{a}: Ahí lo tienen, así se responde.",
+   "{a}: Hilo con lo mejor de esta respuesta ↓",
+   "{a}: Ni sus rivales se atreven a replicarle.",
+   "{a}: Respuesta de manual sobre {issue}. Guardadla.",
+   "{a}: Esto es lo que quería oír hoy.",
+   "{a}: Rotundo. Lo de {issue} queda zanjado."
+  ],
+  "good": [
+   "{a}: Correcto, sin sobresaltos.",
+   "{a}: Ha cumplido, aunque sin brillo.",
+   "{a}: Respuesta sensata. Veremos si lo cumple.",
+   "{a}: Se agarra al guion y le funciona.",
+   "{a}: Ni fu ni fa, pero a favor.",
+   "{a}: Ha salido del paso con oficio.",
+   "{a}: Sin errores, y hoy eso ya es mucho.",
+   "{a}: Contesta lo justo, y lo justo funciona."
+  ],
+  "weak": [
+   "{a}: ¿Eso era una respuesta?",
+   "{a}: Se ha ido por la tangente otra vez.",
+   "{a}: Vaya manera de no contestar.",
+   "{a}: Qué poca sustancia en {issue}.",
+   "{a}: Pregunta clara, respuesta turbia.",
+   "{a}: Mucho verbo y poco contenido sobre {issue}.",
+   "{a}: Pregunta directa, respuesta por la tangente.",
+   "{a}: Se escucha el eco de lo que no ha dicho."
+  ],
+  "bad": [
+   "{a}: Esto le va a perseguir #{tag}",
+   "{a}: No me puedo creer lo que acabo de oír.",
+   "{a}: Captura guardada para el próximo debate.",
+   "{a}: Menudo patinazo con {issue}.",
+   "{a}: Ya es tendencia, y no por lo bueno.",
+   "{a}: Su equipo de comunicación está sudando.",
+   "{a}: Frase para la hemeroteca, y no por lo bueno.",
+   "{a}: Los de su partido ya miran al suelo.",
+   "{a}: Esto va a durar más que el programa. #{tag}"
+  ],
+  "idle": [
+   "{a}: Mucho pendiente del reloj en este plató.",
+   "{a}: Que se calle el moderador y hablen de {issue}.",
+   "{a}: ¿Alguien ha entendido la última pregunta?",
+   "{a}: Esto es lo más visto de la noche.",
+   "{a}: Cuando hablan de {issue} sube la audiencia.",
+   "{a}: Qué bien se está en casa mientras ellos discuten.",
+   "{a}: Dadle al moderador una campana."
+  ]
+ },
+ "handles": [
+  "@lucia_en_directo",
+  "@cronista_anónimo",
+  "@pepe_votante",
+  "@madrid_al_dia",
+  "@tertulianodelibre",
+  "@maria_y_la_política",
+  "@jovenindignado",
+  "@el_barómetro",
+  "@vecina_de_vallecas",
+  "@analista_t",
+  "@ruralesvivos",
+  "@nuestrafactura",
+  "@laventanadigital",
+  "@el_pasillo",
+  "@opina_marta",
+  "@paco_el_de_la_radio"
+ ],
+ "intros": {
+  "tv": [
+   "Buenas noches. Esta noche, en {outlet}, el responsable político al que todos esperaban.",
+   "Comienza el programa: cuatro preguntas, sin cortes y en directo.",
+   "Hoy tenemos con nosotros a {leader}. Bienvenido al plató.",
+   "Esta noche, en {outlet}, una conversación pendiente con {leader}."
+  ],
+  "radio": [
+   "Son las ocho en {outlet}. Hoy, en la entrevista de la mañana: {leader}.",
+   "Micrófono abierto, con la mejor tertulia. Buenos días, {leader}.",
+   "Buenos días en {outlet}. Nuestro invitado de hoy, {leader}, no necesita presentación."
+  ],
+  "podcast": [
+   "Bienvenidos a un nuevo episodio. Hoy no hay guion ni cortes: una conversación larga con {leader}.",
+   "Aquí nadie tiene prisa. Un café, un micrófono, y {leader} a quien le toca contar la verdad.",
+   "Hoy, con calma y sin guion, charlamos con {leader}."
+  ],
+  "press": [
+   "Buenas tardes y gracias por venir. {leader} atenderá hoy a los medios acreditados.",
+   "Comparecencia ante los medios: cinco preguntas, sin turnos de réplica.",
+   "Comparece {leader} ante los medios. Hay tiempo para varias preguntas."
+  ],
+  "debate": [
+   "Esta noche, un debate sin red. Los tiempos son estrictos y no se permite leer papeles.",
+   "Comienza el cara a cara: {leader} frente a {rivalname}. Moderadora y público en directo.",
+   "Arranca el debate. Dos modelos, un solo escenario y el reloj en marcha."
+  ],
+  "control": [
+   "Se abre la sesión de control. Pregunta al Gobierno en nombre de su grupo.",
+   "Pleno del Congreso. Tiene la palabra el portavoz.",
+   "Sesión de control al Gobierno. Cada pregunta tiene su tiempo y cada respuesta, su coste."
+  ]
+ },
+ "outros": {
+  "tv": [
+   "Hasta aquí el programa. Los espectadores tienen la última palabra.",
+   "Gracias por acompañarnos. Mañana, el análisis.",
+   "Cerramos el programa. Gracias por habernos acompañado."
+  ],
+  "radio": [
+   "Hasta aquí la entrevista. Seguimos, tras la publicidad.",
+   "Y con esto cerramos. Gracias por haber venido.",
+   "Gracias por la entrevista. Seguimos con las noticias."
+  ],
+  "podcast": [
+   "Hemos llegado al final del episodio. Compartidlo, que ya sabéis cómo va esto.",
+   "Se acabó el cable. Gracias por una conversación sin prisas.",
+   "Hasta aquí el episodio. Si te ha gustado, ya sabes dónde encontrarnos."
+  ],
+  "press": [
+   "No hay más preguntas. Gracias a todos.",
+   "Doy por finalizada la comparecencia.",
+   "Se da por concluida la rueda de prensa. Gracias a todos."
+  ],
+  "debate": [
+   "Termina el debate. Ahora, a esperar el veredicto de la audiencia.",
+   "Último turno cerrado. Esto es todo.",
+   "Fin del debate. Cada uno se lleva su parte de aplausos y de reproches."
+  ],
+  "control": [
+   "Termina el turno. Se levanta la sesión.",
+   "Fin del turno de preguntas.",
+   "Concluye el turno de control. Se reanuda la sesión."
+  ]
+ },
+ "by_kind": {
+  "cost": {
+   "data": [
+    "Con la memoria económica delante: ingresos por lucha contra el fraude, crecimiento y reordenación del gasto. Cada partida, con su cifra.",
+    "Lo pagamos con tres fuentes que se pueden auditar: más recaudación por empleo, menos fraude y reorientación del gasto improductivo.",
+    "[d]Se lo calculo en directo: coste anual, ingreso asociado y saldo. Y publicamos el informe de impacto.",
+    "[c]Le entrego el cuadro financiero completo y que lo revise quien quiera. No tengo nada que esconder.",
+    "Cada medida lleva su ficha: cuánto cuesta, quién la paga y cuándo se amortiza."
+   ],
+   "honest": [
+    "No todo cabe a la vez. Habrá que priorizar y escalonar, y prefiero decirlo hoy a esconderlo hasta después de las elecciones.",
+    "Voy a ser sincero: parte de esto se pagará con déficit a corto plazo, y por eso lo escalonamos en varios años.",
+    "[p,r]Si faltan ingresos, recortaré lo menos urgente y no tocaré lo esencial. No voy a engañarle con eso.",
+    "[t]Le doy una respuesta incómoda: el dinero no sale de la nada, sale de crecer más y de repartir mejor el esfuerzo."
+   ],
+   "promise": [
+    "No subiré los impuestos a la clase media ni dejaré las cuentas peor de como las encontré. Me comprometo a ello.",
+    "Si el plan no cuadra, no lo aprobaré: me comprometo a presupuestos equilibrados año a año.",
+    "[d]Se lo prometo ante todos: ni un euro sin su fuente de financiación.",
+    "Mi compromiso es publicar cada semestre cuánto llevamos gastado y cuánto hemos ingresado."
+   ],
+   "deflect": [
+    "Las cuentas se cierran con los datos reales del Ministerio cuando se gobierna; hoy hablemos de las prioridades.",
+    "Esa pregunta se la hacen siempre a la oposición y nunca a quien lleva años gastando. Pregunte a quien gobierna.",
+    "[t,r]Hablar de cifras sueltas sin el presupuesto delante no es serio. Hablemos de lo que importa a la gente.",
+    "[p]No quiero soltar un número que mañana sea titular; le digo la dirección: crecer, ordenar y priorizar."
+   ],
+   "attack": [
+    "Lo dice quien ha disparado el gasto y ha dejado la deuda por las nubes. Nadie con su historial puede dar lecciones de caja.",
+    "[d]Pregúnteselo a quien prometió lo mismo y nunca explicó cómo lo pagaba. Yo, al menos, tengo las cuentas hechas.",
+    "Cuando gobernaron ellos, las cuentas no cuadraban y nadie les preguntaba así. Es un doble rasero.",
+    "El problema no es mi programa, es que a algunos les incomoda que alguien explique de dónde sale el dinero."
+   ],
+   "plan_left": [
+    "Con una fiscalidad más justa: que las grandes fortunas, la banca y las multinacionales aporten lo que les corresponde, y combatiendo el fraude.",
+    "Un impuesto a los grandes patrimonios, más lucha contra la evasión y fondos europeos bien ejecutados."
+   ],
+   "plan_right": [
+    "Con más crecimiento: bajando impuestos se recauda más, y recortando el gasto político y las duplicidades administrativas.",
+    "Eliminando gasto improductivo, atrayendo inversión y creando empleo: más gente trabajando es más recaudación."
+   ],
+   "plan_centre": [
+    "Con un equilibrio: gasto eficiente, lucha contra el fraude y crecimiento, sin subir los impuestos a quien menos tiene.",
+    "Un pacto presupuestario plurianual, con reglas de gasto claras y ahorro donde no haga falta."
+   ]
+  },
+  "rival": {
+   "attack": [
+    "Que {rival} hable de mentiras tiene gracia: hemos visto muchas promesas suyas desmentidas por los hechos.",
+    "[d]Eso es lo que se dice cuando no se tienen argumentos: se ataca a la persona y se evita el debate.",
+    "{rival} ha hecho de la crítica un oficio. Hacer propuestas, mucho menos.",
+    "[t,r]Cada vez que {rival} abre la boca aparece una cifra que no cuadra. No me hable de rigor.",
+    "[c]No voy a entrar en descalificaciones, pero {rival} tiene un historial que no avala lo que dice hoy.",
+    "[praise]Lo mejor que ha hecho {rival} es saber vender cualquier cosa. Lo difícil es encontrar algo que haya cumplido.",
+    "[praise,d]Reconocerle algo a {rival} es fácil: es muy bueno en el discurso. Lo difícil es encontrar la medida que lo acompañe.",
+    "[dare]Quien huye de los debates con reglas es {rival}, no yo. Que acepte las condiciones y hablamos.",
+    "[dare]A {rival} le conviene un debate sin reglas para hablar sin que nadie compruebe nada."
+   ],
+   "data": [
+    "Lo desmiento con datos: las cifras que cito son oficiales y están publicadas. Que {rival} diga cuál no cuadra.",
+    "[d]Le propongo contrastar cifra a cifra, con fuente, lo que dice {rival} y lo que digo yo.",
+    "Las críticas de {rival} se caen ante los números. Se los doy uno por uno, si quiere.",
+    "[p]No es opinión, es aritmética: lo que afirma {rival} no cuadra con ningún informe independiente.",
+    "[praise]Si me atengo a las cifras, {rival} sacó adelante una ley razonable en su día. Una. Y lo digo con datos.",
+    "[praise,d,c]Los datos dicen que en un par de asuntos {rival} ha acertado. Lo justo es reconocerlo.",
+    "[dare]Acepto con una condición: que cada cifra que se diga se verifique en directo. Así se ve quién dice la verdad.",
+    "[dare,t,r]Me apunto, siempre que cada cifra tenga su fuente. Y que gane quien mejor argumente."
+   ],
+   "humor": [
+    "Si {rival} me critica tanto, es que me sigue. Me halaga, la verdad.",
+    "[t,d]Qué bien lo hace {rival}: dos minutos de crítica sin una sola propuesta. Un récord.",
+    "[p,r]No le voy a responder yo: que lo haga la hemeroteca, que tiene más paciencia que yo.",
+    "Con todo el cariño: la última vez que {rival} acertó con una crítica fue por casualidad.",
+    "[praise]Ah, me pide que sea amable con {rival}. Déjeme pensar... Tiene un gusto excelente para las corbatas.",
+    "[praise,p]Si le soy sincero, la mayor virtud de {rival} es hacerme más fácil la campaña. Se lo agradezco.",
+    "[dare]Sin moderador y sin cortes... esa es la mejor definición de una reunión familiar. Me apunto.",
+    "[dare]Encantado, siempre que me dejen traer yo mismo el cronómetro."
+   ],
+   "concede": [
+    "En parte tiene razón, no lo voy a negar. Y precisamente por eso propongo corregirlo con un acuerdo, no con una pelea.",
+    "[t,r]Acepto la crítica en lo que es justa; no en lo que es descalificación. Hay margen para entenderse.",
+    "No es mi estilo responder con otra acusación. Si hay un error se corrige, y si {rival} aporta, se acepta.",
+    "[c]Lo tomo como una crítica constructiva en lo que tiene de cierta. Mi puerta está abierta.",
+    "[praise]Reconozco a {rival} su capacidad de trabajo y su coherencia en algunos asuntos. Son cosas que hay que decir.",
+    "[praise,p]Le reconozco algo importante: {rival} no se esconde. Da la cara, y eso se agradece aunque no coincidamos.",
+    "[praise]Una cosa que ha hecho bien: tender puentes cuando le ha hecho falta. Ojalá lo hiciera más a menudo.",
+    "[dare]Acepto si hay reglas claras que valgan para los dos. Estoy dispuesto a mover el formato para que ocurra.",
+    "[dare,c]Sí, con un moderador de común acuerdo. No me escondo, pero quiero que sirva de algo."
+   ],
+   "hardline": [
+    "No voy a retroceder ni un milímetro. Lo que digo, lo mantengo, y {rival} puede decir lo que quiera.",
+    "[d]Se lo digo a la cara: mantengo cada palabra. Y no me van a hacer cambiar de opinión con insultos.",
+    "Mi posición no se mueve por mucho que {rival} levante la voz.",
+    "[t,r]Mi posición es firme. Si a {rival} le molesta, que lo explique, pero yo no cambio de línea.",
+    "[praise]No voy a regalarle un elogio a {rival}. Somos adversarios y lo seremos: lo que nos separa es más grande que lo que nos une.",
+    "[praise,d]No me pida un halago. Respeto a {rival}, pero la política exige claridad, no cortesías.",
+    "[dare]Donde y cuando quiera, y sin trampas. Yo no tengo miedo a ningún debate.",
+    "[dare,d]Acepto hoy mismo. Lo que no voy a aceptar es que se trampee."
+   ],
+   "honest": [
+    "Puede que {rival} tenga algo de razón. No soy perfecto, pero prefiero reconocer lo que no he hecho bien que negarlo.",
+    "[p,r]He cometido errores, claro, pero no los que dice {rival}. Los míos los conozco y los corrijo.",
+    "Le contesto con franqueza: parte de lo que dice es cierto y parte es exagerado. Y le explico cuál es cuál.",
+    "[t]Prefiero reconocer los fallos antes que defenderme con una pirueta. Hay cosas que he hecho mal.",
+    "[praise]Me cuesta, porque somos rivales, pero sí: {rival} tiene una virtud, la constancia. Eso hay que reconocerlo.",
+    "[praise,p,r]Sinceramente, de {rival} admiro la resistencia. No es fácil aguantar tantos años en esto.",
+    "[dare]Sin moderador, no. Un debate sin reglas no informa a nadie; prefiero uno serio y con datos.",
+    "[dare,p]Me atrevo, pero con reglas. Un debate sin moderador no sirve a los ciudadanos."
+   ]
+  },
+  "crisis": {
+   "empathy": [
+    "Lo primero es estar con los afectados: a quienes lo han perdido todo les digo que no están solos y que las ayudas llegarán sin burocracia.",
+    "Pienso en las familias que lo están pasando mal ahora mismo. A ellas hay que escucharlas primero y atenderlas ya.",
+    "[t,r]Hoy toca solidaridad antes que política. Mi mensaje es de apoyo, de cercanía y de compromiso con quien sufre.",
+    "[p]Me remueve ver a tanta gente esperando respuestas. Yo me pondría de su lado desde el minuto uno."
+   ],
+   "data": [
+    "Con datos: qué ha ocurrido, a quién afecta y de qué recursos disponemos. Con eso se activa un protocolo y se mide cada paso.",
+    "[d,c]Hace falta un diagnóstico serio: tiempos de respuesta, recursos y fallos. Se publica y se corrige.",
+    "Lo primero es la información fiable: cifras reales de afectados, daños y medios disponibles.",
+    "Cada hora cuenta: activaría el comité de crisis, daría cifras diarias y nombraría un responsable único con nombre y apellidos."
+   ],
+   "attack": [
+    "Hay responsabilidades políticas claras: quien tenía que prever esto no lo hizo. Que den explicaciones ya.",
+    "[d]Lo que ha fallado es la gestión de quien gobierna. La respuesta ha llegado tarde y mal.",
+    "Nos dicen que no es momento de polémicas, pero cuando falla la gestión alguien tiene que asumirlo.",
+    "[c]No es una desgracia imprevisible: hubo avisos que no se atendieron. Eso hay que aclararlo."
+   ],
+   "promise": [
+    "Aprobaríamos un plan de emergencia con ayudas directas en una semana, y rendiré cuentas públicamente de cómo se ejecuta.",
+    "Me comprometo a que ningún afectado se quede sin ayuda por culpa de la burocracia.",
+    "[t,r,c]Mañana mismo, un paquete de medidas urgentes y una comisión que vigile que llegan a quien las necesita.",
+    "Si estuviera en mi mano, hoy convocaría un Consejo extraordinario y lo firmaría esta misma semana."
+   ],
+   "honest": [
+    "No voy a señalar a un único culpable: hubo fallos de coordinación en varios niveles. Y quien quiera simplificar, engaña.",
+    "[p,r]Hay cosas que no se pueden evitar y otras que sí; las segundas se han hecho mal, y eso hay que reconocerlo.",
+    "Es una situación muy compleja y no tengo todas las respuestas hoy. Sí sé que hay que escuchar a los expertos.",
+    "Reconozco que todos hemos llegado tarde ante una crisis así, también nosotros. Y hay que corregirlo."
+   ],
+   "plan_centre": [
+    "Un plan de respuesta y reconstrucción pactado entre todos los grupos, con financiación garantizada y control independiente.",
+    "[t]Propongo un acuerdo de Estado: respuesta rápida ahora y un plan de prevención para que no se repita.",
+    "Una estrategia que sume a todas las administraciones y que no dependa de quién gobierne."
+   ],
+   "deflect": [
+    "No es el momento de polémicas políticas, sino de ayudar a quienes lo necesitan. Habrá tiempo de pedir cuentas.",
+    "[t,r]Prefiero no entrar en reproches ahora. Lo importante es que los afectados reciban ayuda.",
+    "Esa pregunta tendrá su sitio más adelante. Hoy toca estar con la gente.",
+    "[d]Se me pide que señale responsables en medio de una emergencia; no voy a hacerlo en pleno directo."
+   ]
+  },
+  "ideology": {
+   "data": [
+    "Mi ideología no es una etiqueta: es lo que se mide en mis votaciones, mi programa y lo que cumplo. Se puede comprobar.",
+    "[d]Mire mis resultados: mis votos y mis leyes dicen más de mi ideología que cualquier discurso.",
+    "Los hechos son mi defensa: lo que he propuesto y votado es coherente con lo que defiendo."
+   ],
+   "honest": [
+    "He tenido que renunciar a cosas para llegar hasta aquí y no me avergüenzo: gobernar es elegir, y a veces cuesta.",
+    "[p,r]Reconozco que hay distancia entre el ideal y la realidad. Mi trabajo es acortarla, aunque no siempre lo consiga.",
+    "Sinceramente: a veces la realidad obliga a rebajar el ideal. Lo importante es que no se rebaje el rumbo."
+   ],
+   "hardline": [
+    "No renuncio a lo esencial por ganar unas elecciones. Mis principios no están en venta.",
+    "[d,t]Entre ser coherente y ganar, elijo la coherencia. Y ya veremos si el votante me da la razón.",
+    "Se pueden adaptar los métodos, pero los principios no. Eso no lo negocio."
+   ],
+   "humor": [
+    "Si fuera una etiqueta vacía, no tendría tantos críticos: algo significará para que me lo pregunten tanto.",
+    "[t,p]Mi ideología hoy es como ser de un equipo con mala racha: una forma de vida con sufrimiento y mucho orgullo.",
+    "Una cosa es la etiqueta y otra lo que hay dentro. Yo prefiero abrir la caja."
+   ],
+   "deflect": [
+    "Las etiquetas son para las latas de conserva. A mí me importa lo que se hace en la vida de la gente.",
+    "No me gusta hablar de ismos; prefiero hablar de problemas concretos y de cómo resolverlos.",
+    "[d]Eso se lo dejo a los politólogos. Yo hablo de políticas, no de pegatinas."
+   ],
+   "plan_left": [
+    "Para mí, mi ideología consiste en poner lo público y la igualdad en el centro: más protección a quien más lo necesita y más justicia fiscal.",
+    "Significa que el Estado ampara a quien no llega y que los derechos no dependen del bolsillo."
+   ],
+   "plan_right": [
+    "Para mí, mi ideología consiste en confiar en la libertad y en el esfuerzo individual: menos trabas, menos impuestos y más oportunidades para quien las busca.",
+    "Significa que cada uno prospere por su trabajo y que el Estado ni estorbe ni sustituya."
+   ],
+   "plan_centre": [
+    "Para mí, mi ideología consiste en buscar el punto de encuentro: reformas posibles que duren más que una legislatura.",
+    "Es pragmatismo con valores: soluciones que funcionan, vengan de donde vengan."
+   ]
+  },
+  "record": {
+   "data": [
+    "[g,apoyo]El apoyo es un termómetro, no un fin. Lo que miro es qué mejora con las medidas aprobadas, y tengo cifras de cada una.",
+    "[g,apoyo,d]Más que una encuesta, miro la gestión: indicadores, plazos y resultados publicados.",
+    "[g,gestion]Cada medida aprobada tiene su evaluación y sus cifras. Los resultados se pueden consultar.",
+    "[g,gestion,c]Le doy los datos de ejecución cuando quiera: lo que se ha hecho, lo que cuesta y lo que falta.",
+    "[o,alt]Mi alternativa está cuantificada: qué haríamos, cuánto cuesta y de dónde sale. Y lo publicaremos.",
+    "[o,ruido]Hemos presentado propuestas concretas y algunas se han aprobado. Se puede comprobar en el Diario de Sesiones."
+   ],
+   "honest": [
+    "[g,apoyo]Con un respaldo así, el margen es corto y lo sé. No voy a hacerme el fuerte: hay que ganarse la confianza cada mes.",
+    "[g,apoyo,p,r]No es una situación cómoda y no voy a venderle otra. Hay que corregir lo que no funciona.",
+    "[g,gestion]Se han hecho cosas y otras se han quedado cortas. Lo reconozco: hay un ritmo que acelerar.",
+    "[g,gestion,t]No todo ha salido como esperábamos. Prefiero decirlo y corregirlo que esconderlo.",
+    "[o,alt]Desde la oposición tengo menos herramientas, es cierto. Pero sé dónde se equivoca el Gobierno y cómo lo haría yo.",
+    "[o,ruido]Hacer oposición es ingrato: la crítica suena más que la propuesta. Pero hacemos las dos cosas."
+   ],
+   "attack": [
+    "[g,apoyo]Quienes critican nuestra estabilidad llevan años esperando que caigamos. Que presenten una alternativa si se atreven.",
+    "[g,gestion]Los que gobernaron antes dejaron la herencia que dejaron. Cada avance que hacemos parte de ahí.",
+    "[o,alt]El Gobierno presume de apoyo, pero la gente no ve la mejora. Nosotros lo haríamos con más eficacia y menos propaganda.",
+    "[o,ruido]Lo que es ruido es el Gobierno rechazando ideas por ser de otros. Sus votos hablan por ellos."
+   ],
+   "deflect": [
+    "[g,apoyo]Las encuestas son lo que son. Yo me ocupo de gobernar, no de leer encuestas.",
+    "[g,gestion]Los frutos de una política pública no se miden en un mes. Dennos tiempo y pidan cuentas al final.",
+    "[o,alt]No me toca gobernar hoy; me toca controlar. Ya presentaré mi gobierno cuando toque.",
+    "[o,ruido]Cada uno hace su papel. Lo importante es que lo que decimos tenga base y se pueda comprobar."
+   ],
+   "empathy": [
+    "[g,apoyo]Lo que me preocupa de verdad es que la gente note la mejora en su casa. Ese es el único apoyo que me importa.",
+    "[g,gestion]Detrás de cada cifra hay familias; lo que más me alegra es cuando alguien me dice que nota la diferencia.",
+    "[o,alt]Haría lo que la gente me pide en la calle: arreglar lo que no funciona en su día a día.",
+    "[o,ruido]Cuando la gente me dice que alguien tiene que decir las cosas claras, sé que el trabajo vale la pena."
+   ],
+   "promise": [
+    "[g,apoyo]Mi compromiso es que el apoyo se gane con resultados: medidas visibles en los próximos meses y rendición de cuentas.",
+    "[g,gestion]Antes de fin de año tendrán un balance público de cada compromiso, con nombre y fecha.",
+    "[o,alt]Si gobernamos, el primer día habrá un plan de choque. Y me podrán pedir cuentas.",
+    "[o,ruido]A partir de ahora, cada crítica vendrá con su propuesta alternativa. Me comprometo a ello."
+   ],
+   "plan_centre": [
+    "[g,apoyo]Para sostener esta mayoría hay que dialogar: más pactos con el resto de grupos y menos imposiciones.",
+    "[g,gestion]Seguiremos sumando apoyos para aprobar reformas que duren más que esta legislatura.",
+    "[o,alt]Mi alternativa es un gobierno de pactos y reformas que sumen, no que dividan.",
+    "[o,ruido]Estoy dispuesto a pactar con el Gobierno cuando sea bueno para la gente. Oposición no es bloqueo."
+   ]
+  },
+  "control": {
+   "data": [
+    "Señoría, los datos son estos: en {issue} hemos adoptado medidas con calendario y evaluación, y están publicadas.",
+    "[c]Le doy las cifras de ejecución en {issue}: se las haré llegar, y verá que los avances son medibles.",
+    "Se lo detallo con cifras: en {issue} el Gobierno ha movilizado recursos y los resultados se verán mes a mes."
+   ],
+   "honest": [
+    "Señoría, tiene razón en parte: en {issue} queda mucho por hacer y no voy a negarlo. Estamos en ello.",
+    "Reconozco que en {issue} el ritmo no es el que querríamos. Lo estamos corrigiendo.",
+    "No es un problema que se resuelva en un día; lo asumimos, y respondemos con medidas."
+   ],
+   "attack": [
+    "Señoría, su grupo gobernó cuando le tocó y dejó lo que dejó. Pocas lecciones puede dar sobre {issue}.",
+    "Qué curioso que lo pregunte quien votó en contra de las medidas que hoy reclama en {issue}.",
+    "Con todo respeto: la responsabilidad en {issue} de quienes hoy preguntan es mayor que la nuestra."
+   ],
+   "deflect": [
+    "Señoría, el Gobierno trabaja en {issue} y presentará su plan en el momento oportuno.",
+    "Le contestaré por escrito con todo detalle; el asunto de {issue} es más complejo que un turno de réplica.",
+    "No voy a dejar que un titular nos aparte del debate de fondo."
+   ],
+   "empathy": [
+    "Señoría, entiendo la preocupación de la gente por {issue}; yo hablo con ellos y por eso actuamos.",
+    "A quienes lo sufren en {issue} les digo que el Gobierno los escucha y trabaja para mejorar su día a día."
+   ],
+   "humor": [
+    "Señoría, si {issue} se arreglara con preguntas en esta Cámara, ya estaría resuelto. Por suerte, también se trabaja fuera.",
+    "Agradezco su interés repentino por {issue}; ojalá lo hubiera tenido cuando gobernaba.",
+    "Me alegra que pregunte: demuestra que algo estamos haciendo bien en {issue}."
+   ],
+   "hardline": [
+    "El Gobierno no va a rectificar en {issue}: nuestra línea es clara y la mantendremos.",
+    "En {issue} no hay marcha atrás. Se lo digo con toda claridad a esta Cámara.",
+    "[c]Insistan cuanto quieran: la política del Gobierno en {issue} no va a cambiar."
+   ]
+  },
+  "control_ask": {
+   "attack": [
+    "Señor presidente, ¿hasta cuándo va a seguir ignorando lo que ocurre en {issue}? ¿Va a asumir responsabilidades?",
+    "¿Cómo puede presumir de gestión cuando en {issue} los resultados son un fracaso? Responda con claridad.",
+    "[c]El Gobierno ha fracasado en {issue}. ¿Dimitirá alguien por ello?"
+   ],
+   "data": [
+    "Los datos son claros: en {issue} el Gobierno incumple sus propios objetivos. ¿Qué cifra comprometerá hoy y para cuándo?",
+    "[c]Pregunto con cifras: ¿qué ha ejecutado el Gobierno en {issue} y qué ha quedado sin hacer?",
+    "Tengo la ejecución presupuestaria de {issue}. ¿Puede explicar por qué no coincide con sus anuncios?"
+   ],
+   "hardline": [
+    "Esta es una línea roja para mi grupo: ¿se compromete el Gobierno a rectificar en {issue}, sí o no?",
+    "No aceptaremos más excusas en {issue}. ¿Va a cumplir lo prometido?",
+    "[d]Mi grupo no va a mirar a otro lado: exigimos medidas inmediatas en {issue}."
+   ],
+   "humor": [
+    "Señor presidente, tantas veces ha anunciado soluciones para {issue} que ya parece una serie de televisión: ¿cuándo llega el último capítulo?",
+    "Si anunciar medidas arreglara {issue}, el Gobierno lo habría resuelto todo. ¿Pasamos a los hechos?",
+    "Le propongo un trato: menos titulares y más resultados en {issue}."
+   ],
+   "empathy": [
+    "Hay familias que sufren {issue}. ¿Qué les dice hoy el Gobierno, mirándolas a la cara?",
+    "Hablo en nombre de quienes no llegan por {issue}. ¿Qué respuesta tiene para ellos?",
+    "A la gente de la calle le preocupa {issue}. ¿Qué va a hacer el Gobierno por ellos, y cuándo?"
+   ],
+   "honest": [
+    "Pregunto sin ánimo de bronca: ¿reconoce el Gobierno que en {issue} las cosas no van bien? Podemos arreglarlo juntos.",
+    "Voy a ser franco: en {issue} hay avances y fallos. ¿Puede el Gobierno aceptar ambos?",
+    "[c]Le planteo una pregunta constructiva: ¿qué necesita el Gobierno de la oposición para avanzar en {issue}?"
+   ]
+  },
+  "human": {
+   "honest": [
+    "[self]Defectos tengo muchos: soy impaciente, perfeccionista y me cuesta delegar. Mi equipo podría dar más detalles.",
+    "[self,p]Me cuesta desconectar y reconocer cuando me equivoco. Son cosas en las que trabajo cada día.",
+    "[past]Me equivoqué y duele, pero aprendí: lo mejor de equivocarse es no repetirlo. Lo cuento sin adornos.",
+    "[past,p,r]Hay cosas de mi pasado que hoy haría de otra forma. Reconocerlo es lo único que me queda.",
+    "[taste]Le voy a decir la verdad, aunque no quede bien: leo menos de lo que debería y escucho más de lo que confieso.",
+    "[taste,p]No le voy a dar la respuesta que queda bien: la mía es más sencilla y menos elegante.",
+    "[home]En casa mando poco, y lo digo con orgullo. Me corrigen cuando me paso y eso me hace mejor.",
+    "[home,p]Cuando la semana sale mal hablo con quien me conoce desde antes de la política. Hace falta.",
+    "[mot]Hay días en que dudo, y quien dice que no está mintiendo. Pero sigo aquí porque creo en esto.",
+    "[mot,p]No siempre tengo la respuesta: a veces me levanto cansado. Y aun así, vuelvo."
+   ],
+   "empathy": [
+    "[self]Soy cercano y me tomo las cosas muy a pecho, quizá demasiado. Pero prefiero eso a ser frío.",
+    "[self,p]Mi mayor defecto es que me importa demasiado lo que la gente sufre. Y no me arrepiento.",
+    "[past]Lo que me dejó marcado fue ver a gente que sufría por mis errores. Desde entonces escucho más que hablo.",
+    "[past,p]Aprendí de las personas con las que me he cruzado: me enseñaron más que cualquier cargo.",
+    "[taste]Lo que me gusta lo asocio a quien me lo descubrió: una persona, una casa, una época. Me emociona recordarlo.",
+    "[taste,p]Lo que sonaba en casa era de mi madre y de mi padre. Lo oigo y me acuerdo de ellos.",
+    "[home]Mi familia es mi refugio y mi límite: me recuerda cada día para qué hago esto.",
+    "[home,p,r]La gente que me quiere es la que me baja a tierra. Les debo todo.",
+    "[mot]Lo que me mueve es la gente que me encuentro cada día. Mi familia me ha enseñado que se puede ser exigente y cercano.",
+    "[mot]Vengo de una casa donde se llegaba justo a fin de mes. Eso no se olvida."
+   ],
+   "humor": [
+    "[self]Soy un desastre en bricolaje, en cocina y aparcando. En política me defiendo algo mejor.",
+    "[self,t,p]Mi mejor cualidad es que me río de mí. El peor defecto, que a veces lo hago en el momento menos oportuno.",
+    "[past]Cometí muchas tonterías de joven; la mayoría, por fortuna, anteriores a las redes sociales.",
+    "[past,t,p]Si pudiera cambiar algo del pasado, empezaría por el peinado. Lo demás, lo asumo.",
+    "[taste]Gusto discutible, lo reconozco: mi lista daría para una pelea familiar. Pero es mía.",
+    "[taste,t,p]Si dijera la verdad, perdería votos entre los entendidos y ganaría entre mis vecinos.",
+    "[home]En casa el único que manda es el perro, y a veces ni eso.",
+    "[home,t,p]Mando yo, claro. Lo que pasa es que se turnan para ignorarme.",
+    "[mot]Me levanto porque el despertador es implacable y mi madre, más.",
+    "[mot,t,r]Lo primero, el café. Lo segundo, la política. Y si el café falla, ya no sé."
+   ],
+   "deflect": [
+    "[self]Prefiero que me juzguen por lo que hago y no por lo que cuento de mí.",
+    "[self]La política no va de mí, va de la gente. Pasemos a lo importante.",
+    "[past]El pasado es de quien lo vive, no de la política. Prefiero mirar al futuro.",
+    "[past]No creo que sea lo más relevante para los españoles. Hablemos de lo que viene.",
+    "[taste]Prefiero no hablar de mis gustos privados: son eso, privados.",
+    "[taste]No sé si les interesa a los espectadores; hablemos de cosas que les importan más.",
+    "[home]La familia no es de la política; prefiero cuidarla lejos de los focos.",
+    "[home]Mi vida privada es privada. Hablemos de lo que importa a la gente.",
+    "[mot]Prefiero que me juzguen por lo que hago, no por lo que cuento de mí.",
+    "[mot]La política no va de mí, sino de la gente."
+   ],
+   "hardline": [
+    "[self]Soy tozudo, me lo dicen todos: cuando creo que tengo razón, no suelto la presa. Para bien y para mal.",
+    "[self]Mi defecto: no me rindo. Quien trabaja conmigo lo sabe, y a veces lo sufre.",
+    "[past]No cambiaría nada de lo esencial. Lo hecho, hecho está, y mantengo lo que defendí.",
+    "[past]Me quedo con lo que aprendí y no pido perdón por haber defendido lo que creía.",
+    "[taste]Tengo gustos claros y no me avergüenzo de ninguno: lo que me gusta, me gusta.",
+    "[taste]No voy a disculparme por lo que me gusta.",
+    "[home]En casa y en el partido mando lo justo y escucho lo necesario. Y lo que se decide, se cumple.",
+    "[home]No negociamos lo importante: se habla y se decide juntos.",
+    "[mot]Lo que me define es que no me rindo, y no voy a empezar ahora.",
+    "[mot]Soy exigente conmigo y con los míos. Quien trabaja conmigo lo sabe."
+   ],
+   "data": [
+    "[self]Mi mejor cualidad es el rigor: me gusta contrastar. Mi peor defecto, que a veces abrumo con cifras.",
+    "[self]Lo que me define se mide: gestión, cuentas claras y cumplimiento. De los defectos, que hablen mis colaboradores.",
+    "[past]Mi trayectoria es pública y se puede consultar: cargos, votos y resultados. Lo aprendido está en cada uno de ellos.",
+    "[past]Si repaso mis años con números, lo que aprendí cabe en una lección: medir antes de decidir.",
+    "[taste]Si lo cuento por números: dos libros al mes y tres discos a la semana. Constancia no me falta.",
+    "[taste]Tengo una lista que he ido apuntando durante años; lo que más repito, por si quiere comprobarlo, es lo que más me gusta.",
+    "[home]Tres personas me conocen de verdad: mi pareja, mi hermano y un amigo de la infancia. Con eso me basta.",
+    "[home]Cuando hago balance, los que de verdad cuentan en mi vida caben en una mano.",
+    "[mot]Quince años de trayectoria, tres cargos de gestión y un historial que se puede consultar. Eso es lo que me mueve: resultados.",
+    "[mot]Lo que me define se mide: gestión, resultados y cuentas claras."
+   ]
+  },
+  "pact": {
+   "concede": [
+    "Mi mano está tendida a todos, también a {rival}, pero no a cualquier precio. Hablaremos cuando haya programa.",
+    "[t,r]Un buen pacto con {rival} sería un pacto de legislatura, con compromisos escritos. Si hay eso, hablamos."
+   ],
+   "hardline": [
+    "No habrá pacto con {rival} mientras sus condiciones sean las de ahora. Ni en el Gobierno ni fuera.",
+    "[d]Mi respuesta es no, y es un no que no depende de las encuestas."
+   ],
+   "honest": [
+    "No cierro ninguna puerta que mis votantes quieran abrir, pero tampoco prometo que {rival} vaya a cruzarla.",
+    "[p]No sé qué pasará y no quiero engañarle: dependerá de los resultados y de lo que nos ofrezcan."
+   ],
+   "attack": [
+    "Antes de pedirme pactos, que {rival} explique con quién se ha sentado y qué ha cedido por ello.",
+    "[d]Mi pregunta es qué precio estaría dispuesto a pagar {rival}. Yo ya sé el que no voy a pagar."
+   ],
+   "deflect": [
+    "Hoy hablamos de lo que decida la gente en las urnas; los pactos son cuestión de aritmética posterior.",
+    "[t,r]Eso se verá el día después de las elecciones, no antes."
+   ],
+   "humor": [
+    "Me pregunta si me casaría con {rival}. De momento no hemos intercambiado ni el teléfono.",
+    "[p]Para pactar con {rival} habría que ponerse de acuerdo antes en qué cenamos."
+   ],
+   "data": [
+    "Las cuentas parlamentarias son las que son: la mayoría absoluta exige 176. Se hará lo que permitan los escaños y el programa.",
+    "[c,t]La aritmética manda: veremos cuántos escaños sumamos y con quién se pueden aprobar las leyes."
+   ]
+  },
+  "scandal": {
+   "honest": [
+    "Hemos actuado tarde y mal. Pido disculpas y abro una auditoría externa; los resultados se harán públicos.",
+    "[p]No tengo una excusa. Asumo lo que me toca, y lo que no me toca también."
+   ],
+   "deflect": [
+    "Es un asunto que está en los tribunales y mi respeto a la justicia me impide opinar.",
+    "[t,r]No voy a juzgar a nadie por una noticia. Cuando haya hechos probados, actuaremos."
+   ],
+   "attack": [
+    "Esto huele a operación política: nos filtran un asunto menor mientras callan los suyos, que son mayores.",
+    "Es curioso que se destapen estas cosas justo ahora. A mí me preocupa más quién las mueve."
+   ],
+   "data": [
+    "La documentación demuestra que los hechos no son como se publican. La haremos pública hoy mismo.",
+    "[c]Hemos revisado las cuentas y los procedimientos: los importes que se citan no coinciden con los registros."
+   ],
+   "empathy": [
+    "Siento mucho que haya gente que se sienta defraudada. Tienen derecho a exigirnos más.",
+    "[p]Entiendo la indignación. Yo también me enfadaría si me hubieran fallado así."
+   ],
+   "hardline": [
+    "No hay excusas: quien se haya saltado las normas, se va. Y no habrá excepciones.",
+    "[d]Tolerancia cero. Ya he pedido el cese de los implicados."
+   ]
+  },
+  "gotcha": {
+   "honest": [
+    "No me sé ese dato exacto. Si quiere, se lo traigo mañana verificado.",
+    "[p]Esa cifra no la recuerdo y no quiero inventarla."
+   ],
+   "data": [
+    "Se la doy de memoria: {fact}.",
+    "[c]{fact}; si necesita el detalle, se lo remitimos hoy."
+   ],
+   "humor": [
+    "Veo que hoy traen examen. Apruebo por los pelos, y la chuleta la tenía el gabinete.",
+    "[p]Mi nota en cultura general es mejor que mi nota en cálculo mental."
+   ],
+   "deflect": [
+    "Los datos de detalle los gestiona mi equipo; yo me ocupo de las decisiones de fondo.",
+    "[d]No creo que esa sea la pregunta importante de esta noche."
+   ],
+   "attack": [
+    "Es una pregunta de trivial, no de política. Los ciudadanos esperan que hablemos de sus problemas.",
+    "[t,r]Hay preguntas para informar y preguntas para pillar. Esta es de las segundas."
+   ],
+   "empathy": [
+    "Quizá me falle una cifra, pero no me falla lo que siento al hablar con la gente. Eso importa más.",
+    "[p]No me sé el dato; sí sé cómo lo vive una familia cada mes."
+   ]
+  },
+  "flipflop": {
+   "honest": [
+    "Cambié de opinión, y lo digo: aprendí algo nuevo y prefiero rectificar a empeñarme.",
+    "[p,r]Sí, dije eso. Hoy pienso distinto y le explico por qué: es de sabios."
+   ],
+   "deflect": [
+    "Se saca de contexto una frase de hace unos días. Mi posición es la misma y está en el programa.",
+    "[t,r]No voy a comentar cada línea de la hemeroteca; prefiero hablar de propuestas."
+   ],
+   "attack": [
+    "Hablan de hemeroteca quienes tienen la suya llena de rectificaciones. Mírenla antes de preguntar.",
+    "[d]Si cambiar de opinión fuera delito, habría mucha gente procesada en esta sala."
+   ],
+   "data": [
+    "Lo que dije se refería a otro contexto, con otros datos. Con los datos de hoy, esta es mi posición.",
+    "[c]Aquí tiene la diferencia: lo que se dijo entonces y lo que se dice ahora, con fechas y fuentes."
+   ],
+   "humor": [
+    "Rectificar es de sabios, y yo soy un sabio de tanto rectificar.",
+    "[t,p]Dicen que cambiar de opinión es de listos; yo no soy tanto, pero lo practico."
+   ],
+   "hardline": [
+    "Mi posición no ha cambiado ni cambiará, y lo que se ha publicado no la contradice.",
+    "[d]No hay giro alguno: sigo defendiendo lo mismo con las mismas palabras."
+   ]
+  }
+ }
+}

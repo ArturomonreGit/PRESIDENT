@@ -1,0 +1,2511 @@
+{
+ "areas": [
+  {
+   "id": "housing",
+   "name": "Vivienda",
+   "issue": "housing",
+   "ministry": "Vivienda",
+   "color": "#7C5CFC",
+   "desc": "Alquiler, suelo, vivienda pública y fiscalidad inmobiliaria."
+  },
+  {
+   "id": "tax",
+   "name": "Fiscalidad",
+   "issue": "tax",
+   "ministry": "Hacienda",
+   "color": "#E0A93B",
+   "desc": "Impuestos sobre renta, consumo, sociedades, patrimonio y cotizaciones."
+  },
+  {
+   "id": "health",
+   "name": "Sanidad",
+   "issue": "health",
+   "ministry": "Sanidad",
+   "color": "#E5484D",
+   "desc": "Financiación, personal, listas de espera, copagos y modelo de gestión."
+  },
+  {
+   "id": "education",
+   "name": "Educación",
+   "issue": "education",
+   "ministry": "Educación y Formación Profesional",
+   "color": "#2563EB",
+   "desc": "Presupuesto, becas, FP, concertada y universidad."
+  },
+  {
+   "id": "jobs",
+   "name": "Trabajo y empleo",
+   "issue": "jobs",
+   "ministry": "Trabajo y Economía Social",
+   "color": "#0FA3B1",
+   "desc": "Salario mínimo, contratación, jornada, prestaciones y empleo público."
+  },
+  {
+   "id": "energy",
+   "name": "Energía y clima",
+   "issue": "energy",
+   "ministry": "Transición Ecológica",
+   "color": "#1B9E5A",
+   "desc": "Renovables, nuclear, precios de la energía, transporte y medio rural."
+  },
+  {
+   "id": "security",
+   "name": "Seguridad y justicia",
+   "issue": "security",
+   "ministry": "Interior",
+   "color": "#3D4B5C",
+   "desc": "Policía, Código Penal, defensa, justicia y política migratoria."
+  },
+  {
+   "id": "territory",
+   "name": "Territorio",
+   "issue": "territory",
+   "ministry": "Política Territorial",
+   "color": "#D6336C",
+   "desc": "Financiación autonómica, competencias, lenguas y despoblación."
+  },
+  {
+   "id": "social",
+   "name": "Pensiones y protección social",
+   "issue": "jobs",
+   "ministry": "Derechos Sociales",
+   "color": "#E85D04",
+   "desc": "Pensiones, ingreso mínimo, familia y dependencia."
+  }
+ ],
+ "budget": [
+  {
+   "id": "pensiones",
+   "name": "Pensiones",
+   "ministry": "Seguridad Social y Pensiones",
+   "base": 212.0,
+   "color": "#E85D04"
+  },
+  {
+   "id": "sanidad",
+   "name": "Sanidad",
+   "ministry": "Sanidad",
+   "base": 109.0,
+   "color": "#E5484D"
+  },
+  {
+   "id": "educacion",
+   "name": "Educación",
+   "ministry": "Educación y Formación Profesional",
+   "base": 69.0,
+   "color": "#2563EB"
+  },
+  {
+   "id": "prestaciones",
+   "name": "Prestaciones y servicios sociales",
+   "ministry": "Derechos Sociales",
+   "base": 41.0,
+   "color": "#D6336C"
+  },
+  {
+   "id": "territorial",
+   "name": "Transferencias a comunidades",
+   "ministry": "Política Territorial",
+   "base": 52.0,
+   "color": "#7C5CFC"
+  },
+  {
+   "id": "defensa",
+   "name": "Defensa",
+   "ministry": "Defensa",
+   "base": 23.0,
+   "color": "#3D4B5C"
+  },
+  {
+   "id": "transportes",
+   "name": "Transportes e infraestructuras",
+   "ministry": "Transportes y Movilidad",
+   "base": 21.0,
+   "color": "#0FA3B1"
+  },
+  {
+   "id": "interior",
+   "name": "Interior y seguridad",
+   "ministry": "Interior",
+   "base": 17.0,
+   "color": "#5B6B7F"
+  },
+  {
+   "id": "administracion",
+   "name": "Presidencia y administración",
+   "ministry": "Presidencia y Relaciones con las Cortes",
+   "base": 14.0,
+   "color": "#8FA3B8"
+  },
+  {
+   "id": "transicion",
+   "name": "Transición ecológica y energía",
+   "ministry": "Transición Ecológica",
+   "base": 14.0,
+   "color": "#1B9E5A"
+  },
+  {
+   "id": "ciencia",
+   "name": "Ciencia, cultura y digital",
+   "ministry": "Ciencia y Universidades",
+   "base": 14.0,
+   "color": "#9B3DC9"
+  },
+  {
+   "id": "agricultura",
+   "name": "Agricultura y medio rural",
+   "ministry": "Agricultura y Alimentación",
+   "base": 10.0,
+   "color": "#8DB600"
+  },
+  {
+   "id": "justicia",
+   "name": "Justicia",
+   "ministry": "Justicia",
+   "base": 7.0,
+   "color": "#7A5C3E"
+  },
+  {
+   "id": "industria",
+   "name": "Industria, comercio y turismo",
+   "ministry": "Industria y Comercio",
+   "base": 7.0,
+   "color": "#F2A900"
+  },
+  {
+   "id": "vivienda",
+   "name": "Vivienda",
+   "ministry": "Vivienda",
+   "base": 3.0,
+   "color": "#7C5CFC"
+  }
+ ],
+ "taxes": [
+  {
+   "id": "cotizaciones",
+   "name": "Cotizaciones sociales",
+   "base": 233.0,
+   "color": "#2563EB"
+  },
+  {
+   "id": "irpf",
+   "name": "IRPF",
+   "base": 153.0,
+   "color": "#E85D04"
+  },
+  {
+   "id": "iva",
+   "name": "IVA",
+   "base": 102.0,
+   "color": "#1B9E5A"
+  },
+  {
+   "id": "sociedades",
+   "name": "Impuesto de Sociedades",
+   "base": 41.0,
+   "color": "#F2A900"
+  },
+  {
+   "id": "iiee",
+   "name": "Impuestos especiales",
+   "base": 25.0,
+   "color": "#9B3DC9"
+  },
+  {
+   "id": "patrimonio",
+   "name": "Patrimonio, sucesiones e inmuebles",
+   "base": 11.0,
+   "color": "#D6336C"
+  },
+  {
+   "id": "otros",
+   "name": "Tasas y otros ingresos",
+   "base": 34.0,
+   "color": "#8FA3B8"
+  }
+ ],
+ "quality": [
+  {
+   "id": "health",
+   "name": "Sanidad",
+   "base": 62.0,
+   "domain": "sanidad"
+  },
+  {
+   "id": "education",
+   "name": "Educación",
+   "base": 58.0,
+   "domain": "educacion"
+  },
+  {
+   "id": "housing",
+   "name": "Acceso a la vivienda",
+   "base": 38.0,
+   "domain": "vivienda"
+  },
+  {
+   "id": "security",
+   "name": "Seguridad",
+   "base": 65.0,
+   "domain": "interior"
+  },
+  {
+   "id": "environment",
+   "name": "Medio ambiente",
+   "base": 52.0,
+   "domain": "transicion"
+  },
+  {
+   "id": "equality",
+   "name": "Igualdad y cohesión",
+   "base": 48.0,
+   "domain": "prestaciones"
+  },
+  {
+   "id": "infrastructure",
+   "name": "Infraestructuras y movilidad",
+   "base": 66.0,
+   "domain": "transportes"
+  },
+  {
+   "id": "innovation",
+   "name": "Innovación y productividad",
+   "base": 45.0,
+   "domain": "ciencia"
+  }
+ ],
+ "groups": [
+  {
+   "id": "jovenes",
+   "name": "Jóvenes",
+   "share": 13,
+   "base": 42,
+   "desc": "18-30 años: acceso a vivienda y empleo.",
+   "likes": {
+    "housing": 0.45,
+    "unemployment": -2.0,
+    "education": 0.25,
+    "environment": 0.3,
+    "inflation": -1.0,
+    "equality": 0.15
+   }
+  },
+  {
+   "id": "trabajadores",
+   "name": "Trabajadores",
+   "share": 22,
+   "base": 47,
+   "desc": "Asalariados del sector privado.",
+   "likes": {
+    "unemployment": -1.4,
+    "inflation": -2.0,
+    "health": 0.25,
+    "equality": 0.2,
+    "growth": 1.5
+   }
+  },
+  {
+   "id": "clase_media",
+   "name": "Clase media",
+   "share": 16,
+   "base": 50,
+   "desc": "Familias con ingresos medios e hipoteca.",
+   "likes": {
+    "inflation": -1.6,
+    "growth": 1.5,
+    "education": 0.3,
+    "health": 0.25,
+    "security": 0.2,
+    "housing": 0.2
+   }
+  },
+  {
+   "id": "autonomos",
+   "name": "Autónomos y pymes",
+   "share": 8,
+   "base": 44,
+   "desc": "Trabajadores por cuenta propia y pequeños negocios.",
+   "likes": {
+    "growth": 2.0,
+    "inflation": -1.2,
+    "unemployment": -0.4,
+    "deficit": -0.6
+   }
+  },
+  {
+   "id": "empresarios",
+   "name": "Grandes empresas",
+   "share": 3,
+   "base": 52,
+   "desc": "Grandes empresarios e inversores.",
+   "likes": {
+    "growth": 2.5,
+    "deficit": -1.0,
+    "innovation": 0.3,
+    "infrastructure": 0.2
+   }
+  },
+  {
+   "id": "funcionarios",
+   "name": "Funcionarios",
+   "share": 6,
+   "base": 54,
+   "desc": "Empleados públicos.",
+   "likes": {
+    "health": 0.2,
+    "education": 0.25,
+    "growth": 0.8,
+    "inflation": -1.0
+   }
+  },
+  {
+   "id": "pensionistas",
+   "name": "Pensionistas",
+   "share": 17,
+   "base": 55,
+   "desc": "Jubilados y mayores.",
+   "likes": {
+    "health": 0.55,
+    "inflation": -2.2,
+    "security": 0.3,
+    "equality": 0.1
+   }
+  },
+  {
+   "id": "parados",
+   "name": "Desempleados",
+   "share": 5,
+   "base": 32,
+   "desc": "Personas en busca de empleo.",
+   "likes": {
+    "unemployment": -3.2,
+    "equality": 0.2,
+    "inflation": -0.8
+   }
+  },
+  {
+   "id": "rurales",
+   "name": "Mundo rural",
+   "share": 6,
+   "base": 41,
+   "desc": "Pueblos y comarcas despobladas.",
+   "likes": {
+    "infrastructure": 0.5,
+    "health": 0.35,
+    "inflation": -1.0,
+    "growth": 0.8
+   }
+  },
+  {
+   "id": "vulnerables",
+   "name": "Familias vulnerables",
+   "share": 4,
+   "base": 36,
+   "desc": "Hogares en riesgo de pobreza.",
+   "likes": {
+    "equality": 0.5,
+    "inflation": -2.2,
+    "unemployment": -1.2,
+    "housing": 0.3,
+    "health": 0.25
+   }
+  }
+ ],
+ "measures": [
+  {
+   "id": "rent_cap",
+   "area": "housing",
+   "name": "Tope al alquiler",
+   "desc": "Limita la subida de los alquileres.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Sin tope",
+    "Tope en zonas tensionadas",
+    "Tope general (IPC+)",
+    "Congelación de alquileres"
+   ],
+   "fx": {
+    "housing": 4.0,
+    "equality": 1.2,
+    "growth": -0.03
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "jovenes": 3.0,
+    "trabajadores": 1.2,
+    "vulnerables": 1.5,
+    "empresarios": -1.5,
+    "clase_media": -0.5
+   },
+   "lean": {
+    "economic": -0.7,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "igualdad": 0.4,
+    "liberalismo_economico": -0.8
+   },
+   "sec": {
+    "construccion": -0.3
+   }
+  },
+  {
+   "id": "social_housing",
+   "area": "housing",
+   "name": "Inversión en vivienda pública",
+   "desc": "Construcción y gestión de vivienda social.",
+   "base": 3,
+   "min": 1,
+   "max": 15,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "housing": 1.6,
+    "growth": 0.02,
+    "equality": 0.4
+   },
+   "cost": {
+    "vivienda": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "jovenes": 0.9,
+    "vulnerables": 0.8
+   },
+   "lean": {
+    "economic": -0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "igualdad": 0.4,
+    "socialismo": 0.3
+   },
+   "sec": {
+    "construccion": 0.25
+   }
+  },
+  {
+   "id": "rental_aid",
+   "area": "housing",
+   "name": "Ayuda al alquiler joven",
+   "desc": "Bono mensual para menores de 35 años.",
+   "base": 0,
+   "min": 0,
+   "max": 5,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "housing": 1.0,
+    "inflation": 0.02
+   },
+   "cost": {
+    "vivienda": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "jovenes": 2.2
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "igualdad": 0.3
+   },
+   "sec": {}
+  },
+  {
+   "id": "land_liberalization",
+   "area": "housing",
+   "name": "Liberalización del suelo y licencias",
+   "desc": "Facilita construir más y más rápido.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Muy restrictivo",
+    "Actual",
+    "Ágil",
+    "Liberalizado"
+   ],
+   "fx": {
+    "housing": 2.2,
+    "growth": 0.07,
+    "environment": -1.5
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "empresarios": 1.5,
+    "jovenes": 0.4,
+    "autonomos": 0.6
+   },
+   "lean": {
+    "economic": 0.6,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.7,
+    "ecologismo": -0.5
+   },
+   "sec": {
+    "construccion": 0.8
+   }
+  },
+  {
+   "id": "second_home_tax",
+   "area": "housing",
+   "name": "Recargo a viviendas vacías y segundas residencias",
+   "desc": "Penaliza el parque inmobiliario ocioso.",
+   "base": 0,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Ninguno",
+    "Recargo 50 % IBI",
+    "Recargo 100 % IBI",
+    "Recargo 200 % IBI"
+   ],
+   "fx": {
+    "housing": 1.8,
+    "equality": 0.4,
+    "growth": -0.01
+   },
+   "cost": {},
+   "rev": {
+    "patrimonio": 1.2
+   },
+   "hits": {
+    "jovenes": 1.2,
+    "rurales": -1.2,
+    "clase_media": -0.5,
+    "empresarios": -0.8
+   },
+   "lean": {
+    "economic": -0.6,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "igualdad": 0.3,
+    "liberalismo_economico": -0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "first_home_tax",
+   "area": "housing",
+   "name": "Impuesto sobre la primera vivienda",
+   "desc": "Gravamen anual sobre el valor catastral de la residencia habitual.",
+   "base": 0,
+   "min": 0,
+   "max": 1.5,
+   "step": 0.25,
+   "unit": "% catastral",
+   "labels": [],
+   "fx": {
+    "growth": -0.04,
+    "equality": 0.1
+   },
+   "cost": {},
+   "rev": {
+    "patrimonio": 2.4
+   },
+   "hits": {
+    "clase_media": -2.0,
+    "pensionistas": -1.6,
+    "trabajadores": -1.0,
+    "rurales": -1.0
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "vat_general",
+   "area": "tax",
+   "name": "IVA general",
+   "desc": "Tipo general sobre el consumo.",
+   "base": 21,
+   "min": 10,
+   "max": 25,
+   "step": 1,
+   "unit": "%",
+   "labels": [],
+   "fx": {
+    "inflation": 0.08,
+    "growth": -0.03,
+    "equality": -0.2
+   },
+   "cost": {},
+   "rev": {
+    "iva": 4.3
+   },
+   "hits": {
+    "trabajadores": -1.0,
+    "clase_media": -1.0,
+    "pensionistas": -0.9,
+    "vulnerables": -1.1,
+    "jovenes": -0.6
+   },
+   "lean": {
+    "economic": 0.25,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.2
+   },
+   "sec": {}
+  },
+  {
+   "id": "vat_basic",
+   "area": "tax",
+   "name": "IVA de alimentos básicos",
+   "desc": "Tipo reducido sobre alimentos y productos esenciales.",
+   "base": 10,
+   "min": 0,
+   "max": 15,
+   "step": 1,
+   "unit": "%",
+   "labels": [],
+   "fx": {
+    "inflation": 0.05,
+    "equality": -0.1
+   },
+   "cost": {},
+   "rev": {
+    "iva": 1.1
+   },
+   "hits": {
+    "vulnerables": -1.3,
+    "pensionistas": -0.6,
+    "trabajadores": -0.5
+   },
+   "lean": {
+    "economic": 0.1,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "corp_tax",
+   "area": "tax",
+   "name": "Impuesto de Sociedades",
+   "desc": "Tipo nominal sobre beneficios.",
+   "base": 25,
+   "min": 15,
+   "max": 35,
+   "step": 1,
+   "unit": "%",
+   "labels": [],
+   "fx": {
+    "growth": -0.04,
+    "innovation": -0.2
+   },
+   "cost": {},
+   "rev": {
+    "sociedades": 1.4
+   },
+   "hits": {
+    "empresarios": -2.0,
+    "autonomos": -0.5
+   },
+   "lean": {
+    "economic": -0.6,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.8
+   },
+   "sec": {}
+  },
+  {
+   "id": "wealth_tax",
+   "area": "tax",
+   "name": "Impuesto sobre el patrimonio",
+   "desc": "Gravamen sobre grandes patrimonios.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Ninguno",
+    "Solo grandes fortunas",
+    "Generalizado"
+   ],
+   "fx": {
+    "equality": 1.3,
+    "growth": -0.03
+   },
+   "cost": {},
+   "rev": {
+    "patrimonio": 3.5
+   },
+   "hits": {
+    "empresarios": -2.2,
+    "autonomos": -0.6
+   },
+   "lean": {
+    "economic": -0.8,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.8,
+    "igualdad": 0.5,
+    "socialismo": 0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "inheritance_tax",
+   "area": "tax",
+   "name": "Sucesiones y donaciones",
+   "desc": "Armonización o bonificación del impuesto.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Bonificado",
+    "Actual",
+    "Armonizado al alza"
+   ],
+   "fx": {
+    "equality": 0.5
+   },
+   "cost": {},
+   "rev": {
+    "patrimonio": 1.8
+   },
+   "hits": {
+    "clase_media": -1.4,
+    "rurales": -1.0,
+    "empresarios": -1.0
+   },
+   "lean": {
+    "economic": -0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.6,
+    "igualdad": 0.3
+   },
+   "sec": {}
+  },
+  {
+   "id": "fuel_tax",
+   "area": "tax",
+   "name": "Impuesto a los carburantes",
+   "desc": "Índice sobre el tipo actual (100 = actual).",
+   "base": 100,
+   "min": 70,
+   "max": 140,
+   "step": 10,
+   "unit": "índice",
+   "labels": [],
+   "fx": {
+    "environment": 1.3,
+    "inflation": 0.1,
+    "growth": -0.02
+   },
+   "cost": {},
+   "rev": {
+    "iiee": 2.2
+   },
+   "hits": {
+    "rurales": -2.0,
+    "trabajadores": -0.8,
+    "autonomos": -1.0
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "ecologismo": 0.6
+   },
+   "sec": {}
+  },
+  {
+   "id": "ssc_employer",
+   "area": "tax",
+   "name": "Cotización empresarial",
+   "desc": "Cotizaciones a cargo de la empresa.",
+   "base": 23.6,
+   "min": 18,
+   "max": 30,
+   "step": 1,
+   "unit": "%",
+   "labels": [],
+   "fx": {
+    "unemployment": 0.12,
+    "growth": -0.03
+   },
+   "cost": {},
+   "rev": {
+    "cotizaciones": 5.4
+   },
+   "hits": {
+    "empresarios": -1.6,
+    "autonomos": -0.8
+   },
+   "lean": {
+    "economic": -0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.6
+   },
+   "sec": {}
+  },
+  {
+   "id": "tax_fraud",
+   "area": "tax",
+   "name": "Lucha contra el fraude fiscal",
+   "desc": "Más inspectores y cruce de datos.",
+   "base": 0,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Actual",
+    "Reforzada",
+    "Máxima"
+   ],
+   "fx": {},
+   "cost": {
+    "administracion": 0.7
+   },
+   "rev": {
+    "irpf": 1.4,
+    "iva": 1.4,
+    "sociedades": 0.6
+   },
+   "hits": {
+    "autonomos": -0.8,
+    "empresarios": -0.8,
+    "trabajadores": 0.3
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "health_budget",
+   "area": "health",
+   "name": "Presupuesto sanitario",
+   "desc": "Gasto sanitario público total.",
+   "base": 95,
+   "min": 75,
+   "max": 140,
+   "step": 5,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "health": 1.7
+   },
+   "cost": {
+    "sanidad": 5.0
+   },
+   "rev": {},
+   "hits": {
+    "pensionistas": 0.9,
+    "vulnerables": 0.7,
+    "trabajadores": 0.4,
+    "rurales": 0.5,
+    "funcionarios": 0.3
+   },
+   "lean": {
+    "economic": -0.4,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "socialdemocracia": 0.3
+   },
+   "sec": {}
+  },
+  {
+   "id": "health_staff",
+   "area": "health",
+   "name": "Plantillas y salarios sanitarios",
+   "desc": "Contratación y mejora salarial del personal.",
+   "base": 0,
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "health": 1.0
+   },
+   "cost": {
+    "sanidad": 3.0
+   },
+   "rev": {},
+   "hits": {
+    "funcionarios": 1.5,
+    "pensionistas": 0.4
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "waiting_lists",
+   "area": "health",
+   "name": "Plan contra las listas de espera",
+   "desc": "Refuerzo de actividad quirúrgica y diagnóstica.",
+   "base": 0,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Ninguno",
+    "Plan básico",
+    "Plan intensivo"
+   ],
+   "fx": {
+    "health": 2.4
+   },
+   "cost": {
+    "sanidad": 1.5
+   },
+   "rev": {},
+   "hits": {
+    "pensionistas": 1.8,
+    "trabajadores": 0.6
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "pharma_copay",
+   "area": "health",
+   "name": "Copago farmacéutico",
+   "desc": "Parte del coste de los medicamentos que paga el paciente.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Gratuito",
+    "Actual",
+    "Ampliado"
+   ],
+   "fx": {
+    "health": -1.3,
+    "equality": -0.5
+   },
+   "cost": {
+    "sanidad": -0.9
+   },
+   "rev": {
+    "otros": 0.9
+   },
+   "hits": {
+    "pensionistas": -2.0,
+    "vulnerables": -2.0,
+    "trabajadores": -0.6
+   },
+   "lean": {
+    "economic": 0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "private_health",
+   "area": "health",
+   "name": "Conciertos con la sanidad privada",
+   "desc": "Derivaciones y colaboración público-privada.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Prohibidos",
+    "Limitados",
+    "Amplios"
+   ],
+   "fx": {
+    "health": -0.4,
+    "growth": 0.02
+   },
+   "cost": {
+    "sanidad": -1.0
+   },
+   "rev": {},
+   "hits": {
+    "funcionarios": -0.8,
+    "empresarios": 0.6
+   },
+   "lean": {
+    "economic": 0.7,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.7,
+    "socialismo": -0.6
+   },
+   "sec": {}
+  },
+  {
+   "id": "public_health",
+   "area": "health",
+   "name": "Salud pública y prevención",
+   "desc": "Programas de prevención, salud mental y vacunación.",
+   "base": 0,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "health": 0.9,
+    "equality": 0.2
+   },
+   "cost": {
+    "sanidad": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "jovenes": 0.4,
+    "pensionistas": 0.4
+   },
+   "lean": {
+    "economic": -0.2,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "edu_budget",
+   "area": "education",
+   "name": "Presupuesto educativo",
+   "desc": "Gasto público en educación.",
+   "base": 60,
+   "min": 45,
+   "max": 90,
+   "step": 3,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "education": 1.5,
+    "innovation": 0.15
+   },
+   "cost": {
+    "educacion": 3.0
+   },
+   "rev": {},
+   "hits": {
+    "funcionarios": 0.9,
+    "jovenes": 0.5,
+    "clase_media": 0.4,
+    "trabajadores": 0.3
+   },
+   "lean": {
+    "economic": -0.4,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "scholarships",
+   "area": "education",
+   "name": "Becas y ayudas al estudio",
+   "desc": "Ayudas a la matrícula y a la movilidad.",
+   "base": 2,
+   "min": 0,
+   "max": 6,
+   "step": 0.5,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "education": 0.5,
+    "equality": 0.5
+   },
+   "cost": {
+    "educacion": 0.5
+   },
+   "rev": {},
+   "hits": {
+    "jovenes": 1.3,
+    "vulnerables": 0.8,
+    "clase_media": 0.4
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "school_choice",
+   "area": "education",
+   "name": "Concertada y libertad de elección",
+   "desc": "Peso de la enseñanza concertada y privada.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Reducir la concertada",
+    "Actual",
+    "Cheque escolar"
+   ],
+   "fx": {
+    "equality": -0.8,
+    "growth": 0.01
+   },
+   "cost": {
+    "educacion": -0.6
+   },
+   "rev": {},
+   "hits": {
+    "funcionarios": -1.0,
+    "clase_media": 0.3
+   },
+   "lean": {
+    "economic": 0.6,
+    "social": 0.4,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.6,
+    "cristianodemocracia": 0.4,
+    "laicismo": -0.5,
+    "socialismo": -0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "vocational",
+   "area": "education",
+   "name": "Formación profesional dual",
+   "desc": "Prácticas en empresas y FP vinculada al empleo.",
+   "base": 0,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Actual",
+    "Ampliada",
+    "Sistema dual extendido",
+    "Dual universal"
+   ],
+   "fx": {
+    "unemployment": -0.12,
+    "education": 0.7,
+    "innovation": 0.3
+   },
+   "cost": {
+    "educacion": 1.2
+   },
+   "rev": {},
+   "hits": {
+    "jovenes": 1.2,
+    "empresarios": 0.8,
+    "autonomos": 0.5
+   },
+   "lean": {
+    "economic": 0.0,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "tuition",
+   "area": "education",
+   "name": "Tasas universitarias",
+   "desc": "Precio de la matrícula universitaria.",
+   "base": 2,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Gratuitas",
+    "Reducidas",
+    "Actuales",
+    "Altas"
+   ],
+   "fx": {
+    "education": -0.4,
+    "equality": -0.7
+   },
+   "cost": {},
+   "rev": {
+    "otros": 0.5
+   },
+   "hits": {
+    "jovenes": -1.5,
+    "clase_media": -0.6
+   },
+   "lean": {
+    "economic": 0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.4,
+    "igualdad": -0.3
+   },
+   "sec": {}
+  },
+  {
+   "id": "religion_class",
+   "area": "education",
+   "name": "Religión en la escuela",
+   "desc": "Estatus de la asignatura de religión.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Eliminada",
+    "Optativa",
+    "Obligatoria"
+   ],
+   "fx": {},
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "rurales": 0.5
+   },
+   "lean": {
+    "economic": 0.0,
+    "social": 0.9,
+    "territorial": 0.0
+   },
+   "likes": {
+    "cristianodemocracia": 0.8,
+    "laicismo": -0.9,
+    "conservadurismo": 0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "min_wage",
+   "area": "jobs",
+   "name": "Salario mínimo",
+   "desc": "SMI mensual en 14 pagas.",
+   "base": 1134,
+   "min": 900,
+   "max": 1500,
+   "step": 25,
+   "unit": "€/mes",
+   "labels": [],
+   "fx": {
+    "unemployment": 0.05,
+    "equality": 0.55,
+    "inflation": 0.04
+   },
+   "cost": {},
+   "rev": {
+    "cotizaciones": 0.35
+   },
+   "hits": {
+    "trabajadores": 0.9,
+    "vulnerables": 1.0,
+    "jovenes": 0.6,
+    "autonomos": -0.8,
+    "empresarios": -0.8
+   },
+   "lean": {
+    "economic": -0.6,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.5,
+    "socialismo": 0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "labour_flex",
+   "area": "jobs",
+   "name": "Despido y contratación",
+   "desc": "Protección frente al despido y tipos de contrato.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Muy protegido",
+    "Actual (reforma 2021)",
+    "Flexible",
+    "Desregulado"
+   ],
+   "fx": {
+    "unemployment": -0.25,
+    "equality": -0.8,
+    "growth": 0.05
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "trabajadores": -1.5,
+    "empresarios": 1.5,
+    "autonomos": 0.8,
+    "jovenes": -0.3
+   },
+   "lean": {
+    "economic": 0.7,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.7,
+    "socialismo": -0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "workweek",
+   "area": "jobs",
+   "name": "Jornada laboral semanal",
+   "desc": "Horas semanales máximas.",
+   "base": 40,
+   "min": 32,
+   "max": 44,
+   "step": 1,
+   "unit": "h/semana",
+   "labels": [],
+   "fx": {
+    "unemployment": 0.1,
+    "growth": 0.04,
+    "inflation": 0.01
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "trabajadores": -1.2,
+    "empresarios": 1.0,
+    "autonomos": 0.4,
+    "jovenes": -0.8
+   },
+   "lean": {
+    "economic": 0.4,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.4,
+    "socialismo": -0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "unemp_benefit",
+   "area": "jobs",
+   "name": "Prestación por desempleo",
+   "desc": "Generosidad y duración del paro.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Recortada",
+    "Actual",
+    "Ampliada",
+    "Subsidio universal"
+   ],
+   "fx": {
+    "unemployment": 0.06,
+    "equality": 0.9
+   },
+   "cost": {
+    "prestaciones": 3.5
+   },
+   "rev": {},
+   "hits": {
+    "parados": 3.0,
+    "vulnerables": 1.4,
+    "trabajadores": 0.4
+   },
+   "lean": {
+    "economic": -0.7,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "socialismo": 0.5,
+    "liberalismo_economico": -0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "active_jobs",
+   "area": "jobs",
+   "name": "Políticas activas de empleo",
+   "desc": "Orientación, formación y bonificaciones a la contratación.",
+   "base": 0,
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "unemployment": -0.15,
+    "innovation": 0.1
+   },
+   "cost": {
+    "prestaciones": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "parados": 1.3,
+    "jovenes": 0.6
+   },
+   "lean": {
+    "economic": -0.2,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "self_employed_fee",
+   "area": "jobs",
+   "name": "Cuota de autónomos",
+   "desc": "Cuota mensual (100 = actual).",
+   "base": 100,
+   "min": 50,
+   "max": 130,
+   "step": 10,
+   "unit": "índice",
+   "labels": [],
+   "fx": {
+    "growth": -0.01
+   },
+   "cost": {},
+   "rev": {
+    "cotizaciones": 0.9
+   },
+   "hits": {
+    "autonomos": -1.6
+   },
+   "lean": {
+    "economic": 0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "public_jobs",
+   "area": "jobs",
+   "name": "Empleo público",
+   "desc": "Oferta anual de empleo público.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Congelado",
+    "Reposición",
+    "Ampliado"
+   ],
+   "fx": {
+    "unemployment": -0.05
+   },
+   "cost": {
+    "administracion": 2.5
+   },
+   "rev": {},
+   "hits": {
+    "funcionarios": 2.0,
+    "parados": 0.3
+   },
+   "lean": {
+    "economic": -0.4,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "renewables",
+   "area": "energy",
+   "name": "Inversión en renovables",
+   "desc": "Ayudas a solar, eólica y redes.",
+   "base": 3,
+   "min": 0,
+   "max": 15,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "environment": 1.5,
+    "growth": 0.02,
+    "innovation": 0.4,
+    "inflation": -0.02
+   },
+   "cost": {
+    "transicion": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "jovenes": 0.4,
+    "rurales": 0.2
+   },
+   "lean": {
+    "economic": -0.2,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "ecologismo": 0.8
+   },
+   "sec": {}
+  },
+  {
+   "id": "carbon_tax",
+   "area": "energy",
+   "name": "Impuesto al CO₂",
+   "desc": "Precio al carbono en industria y transporte.",
+   "base": 0,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Ninguno",
+    "Bajo",
+    "Medio",
+    "Alto"
+   ],
+   "fx": {
+    "environment": 2.5,
+    "growth": -0.05,
+    "inflation": 0.12
+   },
+   "cost": {},
+   "rev": {
+    "iiee": 3.0
+   },
+   "hits": {
+    "rurales": -1.5,
+    "empresarios": -1.0,
+    "trabajadores": -0.5,
+    "autonomos": -0.7
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "ecologismo": 0.9,
+    "liberalismo_economico": -0.2
+   },
+   "sec": {}
+  },
+  {
+   "id": "nuclear",
+   "area": "energy",
+   "name": "Energía nuclear",
+   "desc": "Calendario de la energía nuclear.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Cierre inmediato",
+    "Cierre escalonado (actual)",
+    "Prórroga de las centrales",
+    "Nuevas centrales"
+   ],
+   "fx": {
+    "inflation": -0.08,
+    "growth": 0.04,
+    "environment": -0.8
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "empresarios": 0.6
+   },
+   "lean": {
+    "economic": 0.4,
+    "social": 0.3,
+    "territorial": 0.0
+   },
+   "likes": {
+    "ecologismo": -0.6,
+    "liberalismo_economico": 0.3
+   },
+   "sec": {}
+  },
+  {
+   "id": "energy_cap",
+   "area": "energy",
+   "name": "Tope al precio de la energía",
+   "desc": "Intervención de precios eléctricos y del gas.",
+   "base": 0,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Mercado libre",
+    "Tope en horas punta",
+    "Tope general"
+   ],
+   "fx": {
+    "inflation": -0.2,
+    "growth": -0.01
+   },
+   "cost": {
+    "transicion": 2.0
+   },
+   "rev": {},
+   "hits": {
+    "trabajadores": 1.0,
+    "vulnerables": 1.5,
+    "pensionistas": 0.8,
+    "empresarios": -0.6
+   },
+   "lean": {
+    "economic": -0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": -0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "public_transport",
+   "area": "energy",
+   "name": "Transporte público",
+   "desc": "Gasto en ferrocarril, cercanías y autobús.",
+   "base": 18,
+   "min": 12,
+   "max": 30,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "infrastructure": 1.4,
+    "environment": 0.6,
+    "growth": 0.02
+   },
+   "cost": {
+    "transportes": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "jovenes": 0.8,
+    "trabajadores": 0.5,
+    "rurales": 0.3
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "ecologismo": 0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "zbe",
+   "area": "energy",
+   "name": "Restricciones al coche contaminante",
+   "desc": "Zonas de bajas emisiones y fecha de fin de ventas.",
+   "base": 0,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Sin restricciones",
+    "ZBE en grandes ciudades",
+    "Fin de venta de combustión en 2035"
+   ],
+   "fx": {
+    "environment": 2.0,
+    "growth": -0.03
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "rurales": -1.5,
+    "trabajadores": -0.8,
+    "autonomos": -0.8,
+    "jovenes": 0.3
+   },
+   "lean": {
+    "economic": -0.2,
+    "social": -0.3,
+    "territorial": 0.0
+   },
+   "likes": {
+    "ecologismo": 0.8
+   },
+   "sec": {}
+  },
+  {
+   "id": "farm_aid",
+   "area": "energy",
+   "name": "Ayudas a la agricultura",
+   "desc": "Subvenciones agrarias y desarrollo rural.",
+   "base": 9,
+   "min": 5,
+   "max": 16,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "environment": -0.1
+   },
+   "cost": {
+    "agricultura": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "rurales": 1.5
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "ecologismo": -0.1
+   },
+   "sec": {
+    "agricultura": 0.3
+   }
+  },
+  {
+   "id": "police_budget",
+   "area": "security",
+   "name": "Presupuesto de Interior",
+   "desc": "Plantillas y medios policiales.",
+   "base": 15,
+   "min": 10,
+   "max": 24,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "security": 1.5
+   },
+   "cost": {
+    "interior": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "funcionarios": 0.4,
+    "clase_media": 0.3,
+    "pensionistas": 0.3
+   },
+   "lean": {
+    "economic": 0.1,
+    "social": 0.4,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "penal_code",
+   "area": "security",
+   "name": "Código Penal",
+   "desc": "Dureza de las penas.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Más garantista",
+    "Actual",
+    "Endurecido",
+    "Prisión permanente ampliada"
+   ],
+   "fx": {
+    "security": 0.8,
+    "equality": -0.3
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "pensionistas": 0.3,
+    "vulnerables": -0.3
+   },
+   "lean": {
+    "economic": 0.0,
+    "social": 0.8,
+    "territorial": 0.0
+   },
+   "likes": {
+    "conservadurismo": 0.6,
+    "progresismo": -0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "defense_budget",
+   "area": "security",
+   "name": "Presupuesto de Defensa",
+   "desc": "Gasto militar.",
+   "base": 20,
+   "min": 12,
+   "max": 40,
+   "step": 2,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "security": 0.3,
+    "growth": 0.01
+   },
+   "cost": {
+    "defensa": 2.0
+   },
+   "rev": {},
+   "hits": {
+    "empresarios": 0.2
+   },
+   "lean": {
+    "economic": 0.1,
+    "social": 0.5,
+    "territorial": 0.0
+   },
+   "likes": {
+    "patriotismo": 0.5,
+    "pacifismo": -0.8
+   },
+   "sec": {}
+  },
+  {
+   "id": "immigration",
+   "area": "security",
+   "name": "Política migratoria",
+   "desc": "Regularización y control fronterizo.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Regularización amplia",
+    "Actual",
+    "Restrictiva",
+    "Cierre de fronteras"
+   ],
+   "fx": {
+    "security": 0.3,
+    "growth": -0.05
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "rurales": 0.3
+   },
+   "lean": {
+    "economic": 0.0,
+    "social": 0.9,
+    "territorial": 0.0
+   },
+   "likes": {
+    "patriotismo": 0.5,
+    "nacionalismo": 0.3,
+    "progresismo": -0.6
+   },
+   "sec": {}
+  },
+  {
+   "id": "justice_budget",
+   "area": "security",
+   "name": "Presupuesto de Justicia",
+   "desc": "Juzgados, fiscalía y modernización procesal.",
+   "base": 6,
+   "min": 4,
+   "max": 12,
+   "step": 0.5,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "security": 0.5,
+    "growth": 0.01
+   },
+   "cost": {
+    "justicia": 0.5
+   },
+   "rev": {},
+   "hits": {
+    "empresarios": 0.3,
+    "autonomos": 0.3
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "surveillance",
+   "area": "security",
+   "name": "Videovigilancia y datos",
+   "desc": "Vigilancia pública y acceso a datos.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Mínima",
+    "Actual",
+    "Ampliada"
+   ],
+   "fx": {
+    "security": 0.8
+   },
+   "cost": {},
+   "rev": {},
+   "hits": {
+    "jovenes": -0.6
+   },
+   "lean": {
+    "economic": 0.0,
+    "social": 0.6,
+    "territorial": 0.0
+   },
+   "likes": {
+    "conservadurismo": 0.4,
+    "anarquismo": -0.8
+   },
+   "sec": {}
+  },
+  {
+   "id": "regional_funding",
+   "area": "territory",
+   "name": "Financiación autonómica",
+   "desc": "Transferencias a las comunidades.",
+   "base": 45,
+   "min": 35,
+   "max": 70,
+   "step": 2,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "health": 0.1,
+    "education": 0.1
+   },
+   "cost": {
+    "territorial": 2.0
+   },
+   "rev": {},
+   "hits": {
+    "rurales": 0.3
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.7
+   },
+   "likes": {
+    "federalismo": 0.5,
+    "regionalismo": 0.5,
+    "centralismo": -0.5
+   },
+   "sec": {}
+  },
+  {
+   "id": "competencies",
+   "area": "territory",
+   "name": "Competencias autonómicas",
+   "desc": "Reparto competencial entre Estado y comunidades.",
+   "base": 1,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Recentralizar",
+    "Actual",
+    "Ampliar competencias",
+    "Modelo federal/cuasi-federal"
+   ],
+   "fx": {},
+   "cost": {},
+   "rev": {},
+   "hits": {},
+   "lean": {
+    "economic": 0.0,
+    "social": 0.0,
+    "territorial": 0.95
+   },
+   "likes": {
+    "federalismo": 0.6,
+    "regionalismo": 0.6,
+    "centralismo": -0.8,
+    "nacionalismo": -0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "language_policy",
+   "area": "territory",
+   "name": "Lenguas cooficiales en la escuela",
+   "desc": "Peso de las lenguas cooficiales en la educación.",
+   "base": 1,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Castellano preferente",
+    "Actual",
+    "Inmersión lingüística"
+   ],
+   "fx": {},
+   "cost": {},
+   "rev": {},
+   "hits": {},
+   "lean": {
+    "economic": 0.0,
+    "social": 0.0,
+    "territorial": 0.8
+   },
+   "likes": {
+    "regionalismo": 0.6,
+    "nacionalismo": -0.5,
+    "patriotismo": -0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "territorial_invest",
+   "area": "territory",
+   "name": "Inversión territorial plurianual",
+   "desc": "Plan de infraestructuras y cohesión territorial.",
+   "base": 0,
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "infrastructure": 1.0,
+    "growth": 0.03
+   },
+   "cost": {
+    "transportes": 1.2
+   },
+   "rev": {},
+   "hits": {
+    "rurales": 1.2
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.3
+   },
+   "likes": {
+    "regionalismo": 0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "rural_plan",
+   "area": "territory",
+   "name": "Plan contra la despoblación",
+   "desc": "Servicios, banda ancha y ayudas fiscales rurales.",
+   "base": 0,
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "infrastructure": 0.5,
+    "equality": 0.3
+   },
+   "cost": {
+    "agricultura": 1.0
+   },
+   "rev": {},
+   "hits": {
+    "rurales": 2.0
+   },
+   "lean": {
+    "economic": -0.1,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "pension_reval",
+   "area": "social",
+   "name": "Revalorización de pensiones",
+   "desc": "Referencia de la subida anual.",
+   "base": 2,
+   "min": 0,
+   "max": 3,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Congelación",
+    "Por debajo del IPC",
+    "IPC (actual)",
+    "IPC + 1 %"
+   ],
+   "fx": {
+    "equality": 0.5,
+    "inflation": 0.03,
+    "growth": 0.01
+   },
+   "cost": {
+    "pensiones": 3.8
+   },
+   "rev": {},
+   "hits": {
+    "pensionistas": 2.6,
+    "vulnerables": 0.4
+   },
+   "lean": {
+    "economic": -0.4,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "retirement_age",
+   "area": "social",
+   "name": "Edad de jubilación",
+   "desc": "Edad ordinaria de retiro.",
+   "base": 66,
+   "min": 63,
+   "max": 70,
+   "step": 1,
+   "unit": "años",
+   "labels": [],
+   "fx": {
+    "unemployment": 0.03,
+    "equality": -0.1
+   },
+   "cost": {
+    "pensiones": -4.0
+   },
+   "rev": {},
+   "hits": {
+    "pensionistas": -0.8,
+    "trabajadores": -1.3,
+    "jovenes": 0.2
+   },
+   "lean": {
+    "economic": 0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "liberalismo_economico": 0.4
+   },
+   "sec": {}
+  },
+  {
+   "id": "min_pension",
+   "area": "social",
+   "name": "Pensiones mínimas y no contributivas",
+   "desc": "Refuerzo de las pensiones más bajas.",
+   "base": 0,
+   "min": 0,
+   "max": 5,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "equality": 0.8
+   },
+   "cost": {
+    "prestaciones": 1.5
+   },
+   "rev": {},
+   "hits": {
+    "pensionistas": 0.7,
+    "vulnerables": 1.8
+   },
+   "lean": {
+    "economic": -0.5,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "child_benefit",
+   "area": "social",
+   "name": "Ayuda universal por hijo",
+   "desc": "Prestación por crianza.",
+   "base": 0,
+   "min": 0,
+   "max": 5,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "equality": 0.6
+   },
+   "cost": {
+    "prestaciones": 1.8
+   },
+   "rev": {},
+   "hits": {
+    "vulnerables": 1.5,
+    "clase_media": 0.6,
+    "trabajadores": 0.4
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.3,
+    "territorial": 0.0
+   },
+   "likes": {
+    "cristianodemocracia": 0.3
+   },
+   "sec": {}
+  },
+  {
+   "id": "dependency",
+   "area": "social",
+   "name": "Atención a la dependencia",
+   "desc": "Servicios y cuidados de larga duración.",
+   "base": 0,
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "unit": "bn €/año",
+   "labels": [],
+   "fx": {
+    "health": 0.3,
+    "equality": 0.4
+   },
+   "cost": {
+    "prestaciones": 1.5
+   },
+   "rev": {},
+   "hits": {
+    "pensionistas": 0.8,
+    "vulnerables": 0.9
+   },
+   "lean": {
+    "economic": -0.3,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {},
+   "sec": {}
+  },
+  {
+   "id": "basic_income",
+   "area": "social",
+   "name": "Ingreso mínimo vital",
+   "desc": "Renta mínima de inclusión.",
+   "base": 0,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "unit": "",
+   "labels": [
+    "Actual",
+    "Ampliado",
+    "Renta básica"
+   ],
+   "fx": {
+    "equality": 1.5,
+    "unemployment": 0.1
+   },
+   "cost": {
+    "prestaciones": 5.0
+   },
+   "rev": {},
+   "hits": {
+    "vulnerables": 2.4,
+    "parados": 0.8,
+    "empresarios": -0.4
+   },
+   "lean": {
+    "economic": -0.9,
+    "social": 0.0,
+    "territorial": 0.0
+   },
+   "likes": {
+    "socialismo": 0.5,
+    "liberalismo_economico": -0.6
+   },
+   "sec": {}
+  }
+ ],
+ "ministry_focus": {
+  "Sanidad": "health",
+  "Educación y Formación Profesional": "education",
+  "Vivienda": "housing",
+  "Interior": "security",
+  "Transición Ecológica": "environment",
+  "Derechos Sociales": "equality",
+  "Igualdad": "equality",
+  "Transportes y Movilidad": "infrastructure",
+  "Ciencia y Universidades": "innovation",
+  "Transformación Digital": "innovation",
+  "Justicia": "security",
+  "Agricultura y Alimentación": "environment",
+  "Hacienda": "growth",
+  "Economía y Empresa": "growth",
+  "Trabajo y Economía Social": "unemployment",
+  "Industria y Comercio": "growth"
+ },
+ "sectors": [
+  {
+   "id": "servicios",
+   "name": "Servicios (comercio, turismo, finanzas)",
+   "base": 67.0,
+   "color": "#2563EB"
+  },
+  {
+   "id": "industria",
+   "name": "Industria y energía",
+   "base": 16.0,
+   "color": "#E85D04"
+  },
+  {
+   "id": "construccion",
+   "name": "Construcción",
+   "base": 6.5,
+   "color": "#F2A900"
+  },
+  {
+   "id": "agricultura",
+   "name": "Agricultura y pesca",
+   "base": 3.0,
+   "color": "#1B9E5A"
+  },
+  {
+   "id": "publico",
+   "name": "Administraciones públicas",
+   "base": 7.5,
+   "color": "#8FA3B8"
+  }
+ ],
+ "demand": [
+  {
+   "id": "consumo",
+   "name": "Consumo de los hogares",
+   "base": 55.0,
+   "color": "#2563EB"
+  },
+  {
+   "id": "publico",
+   "name": "Consumo público",
+   "base": 19.0,
+   "color": "#8FA3B8"
+  },
+  {
+   "id": "inversion",
+   "name": "Inversión",
+   "base": 20.5,
+   "color": "#E85D04"
+  },
+  {
+   "id": "exterior",
+   "name": "Saldo exterior",
+   "base": 5.5,
+   "color": "#1B9E5A"
+  }
+ ],
+ "start": {
+  "gdp": 1462.0,
+  "debt": 1570.0,
+  "growth": 1.9,
+  "unemployment": 12.0,
+  "inflation": 3.0,
+  "interest_rate": 2.5
+ }
+}
