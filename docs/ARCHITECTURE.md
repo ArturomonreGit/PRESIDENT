@@ -187,3 +187,9 @@ Subsistemas nuevos de `GameModel`: `cab` (`CabinetSim`), `coal` (`Coalition`), `
 - Persistencia: `m.s["ivote_last"]` (se borra al empezar un ciclo nuevo) y `m.s["ivote_history"]` (máximo 12 resúmenes). Las partidas antiguas no tienen estas claves y funcionan sin migración.
 - UI: `Shell.open_investiture_vote(replay_session = {})` abre `InvestitureBroadcast` (presentación → votación → resultado); `finished` navega a Consejo/Investidura/Inicio. `VoteHemicycle` solo dibuja: pinta cada escaño con el color del partido y, al votar, el color del voto (los rebeldes llevan un punto blanco). `Shell.confirm_vote()` ahora abre esta pantalla (ya no hay cuadro modal intermedio).
 
+
+## Negociación de Gobierno, entrega G (Alpha 0.2.5)
+- Cláusula `independents` (`Agreements.spec_for_term`, kind `structure`, `verify.t = "permission"`, que se da por cumplida al firmarse). `Agreements.independents_permitted(party)` busca el compromiso vigente (no cancelado, renegociado ni roto) y, mientras se diseña el gabinete —aún sin compromisos—, la oferta de investidura aceptada del partido.
+- `MinistryCandidates`: `independents_allowed(index)` (siempre en el partido del presidente; en un socio solo con permiso), `can_name(index, cand)` (lo que puede nombrar el jugador) y una marca `|i` en la firma de la lista para regenerarla al conceder el permiso; en esas carteras el independiente ocupa el primer hueco libre. `appoint`, `CabinetSim.replace_with` y `Ministers.assign` respetan `can_name`.
+- Menús (`Diplomacy._category_menu`): el presidente jugador puede pedir `independents` (by `ai`); el jugador socio puede pedir `vicepresidency` en «Condiciones por mi voto». Valoración en `PartyBrain.term_value` y `term_text`.
+- Migraciones: sin cambios de formato; las claves nuevas (`ivote_*`, `cand_sets`, `cand_seq`) se crean al vuelo y `tests/qa_g.gd` comprueba que una partida sin ellas carga y regenera las listas.

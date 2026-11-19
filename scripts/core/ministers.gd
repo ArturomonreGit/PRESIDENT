@@ -198,9 +198,11 @@ func assign(index: int, pool_id: int) -> void:
 	if index < 0 or index >= cab.size():
 		return
 	var entry: Dictionary = cab[index]
-	if str(entry.get("party", "")) != m.pid():
+	if str(entry.get("party", "")) != m.pid() and not m.agr.independents_permitted(str(entry.get("party", ""))):
 		return
 	if m.cands.appoint(index, pool_id):
+		return
+	if str(entry.get("party", "")) != m.pid():
 		return
 	for p in pool():
 		if int((p as Dictionary)["pool_id"]) == pool_id:

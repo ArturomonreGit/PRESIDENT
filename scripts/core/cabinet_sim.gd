@@ -796,8 +796,12 @@ func replace_with(idx: int, pool_id: int) -> Dictionary:
 	var err := _president_check(idx, "replace")
 	if err != "":
 		return _fail(err)
-	if str(entry(idx)["party"]) != m.pid() or is_reserved(idx):
-		return _fail("Solo puedes nombrar ministros de tu partido.")
+	var named: Dictionary = {}
+	for cd in m.cands.shortlist(idx):
+		if int((cd as Dictionary).get("pool_id", -1)) == pool_id:
+			named = cd
+	if is_reserved(idx) or named.is_empty() or not m.cands.can_name(idx, named):
+		return _fail("Solo puedes nombrar ministros de tu partido (o independientes en las carteras de un socio que lo haya aceptado en el pacto).")
 	var cur_pool := int(minister(idx).get("pool_id", -2))
 	if cur_pool == pool_id:
 		return _fail("Ya es el titular.")

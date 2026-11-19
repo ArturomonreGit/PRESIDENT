@@ -258,6 +258,9 @@ func _category_menu(id: String, topic: String, give: Array, ask: Array) -> void:
 			_menu_add(give, {"k": "structure", "what": "max_ministries", "n": n, "by": "player"})
 		for n2 in [12, 16]:
 			_menu_add(give, {"k": "structure", "what": "min_ministries", "n": n2, "by": "player"})
+	# Independientes: el presidente (el jugador) pide poder nombrarlos en las carteras del socio.
+	if gov_topics and _player_leads():
+		_menu_add(ask, {"k": "structure", "what": "independents", "by": "ai"})
 	# Carteras concretas: las que más le interesan al partido (las que da, si es el candidato).
 	if gov_topics:
 		for cid in _portfolio_candidates(id):
@@ -265,6 +268,7 @@ func _category_menu(id: String, topic: String, give: Array, ask: Array) -> void:
 	if topic == "partner":
 		for cid2 in _portfolio_candidates(m.pid()):
 			_menu_add(ask, {"k": "portfolio", "comp": str(cid2), "by": "ai"})
+		_menu_add(ask, {"k": "structure", "what": "vicepresidency", "by": "ai"})
 	# Objetivos medibles, presupuesto y territorio.
 	for issue in m.brain.top_issues(id, 3):
 		for lv in [1, 2, 3]:
@@ -284,6 +288,13 @@ func _category_menu(id: String, topic: String, give: Array, ask: Array) -> void:
 		_menu_add(give, {"k": "calendar", "what": "review", "n": mo, "by": "player"})
 	_menu_add(give, {"k": "calendar", "what": "deadline", "n": 12, "by": "player"})
 	_menu_add(give, {"k": "calendar", "what": "resolution", "by": "player"})
+
+## ¿Lidera el jugador el Gobierno (o lo haría, si aún no hay)?
+func _player_leads() -> bool:
+	match m.phase:
+		"investiture": return m.gov.candidate_id() == m.pid()
+		"legislature", "cabinet_design": return m.coal.gov_id() == m.pid()
+	return true
 
 func _menu_add(list: Array, term: Dictionary) -> void:
 	if not _menu_has(list, term):

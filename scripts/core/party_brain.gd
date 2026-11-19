@@ -583,8 +583,19 @@ func term_value(ai_id: String, other_id: String, term: Dictionary, ctx: Dictiona
 			var inst := float(p.get("inst_ambition", 0.4))
 			match what:
 				"vicepresidency":
-					v = (0.10 + 0.40 * inst) * (1.0 - 0.3 * terr)
-					label = "Una vicepresidencia para ellos"
+					if by_ai:
+						v = -(0.12 + 0.26 * amb)
+						label = "Ceder una vicepresidencia"
+					else:
+						v = (0.10 + 0.40 * inst) * (1.0 - 0.3 * terr)
+						label = "Una vicepresidencia para ellos"
+				"independents":
+					if by_ai:
+						v = -(0.05 + 0.15 * amb)
+						label = "Admitir independientes en sus ministerios"
+					else:
+						v = 0.04 + 0.08 * amb
+						label = "Independientes en los ministerios de ellos"
 				"max_ministries", "min_ministries":
 					var nn := float(int(term.get("n", 12)))
 					v = amb * 0.10 * clampf((nn - 8.0) / 12.0, 0.0, 1.0) + 0.01
@@ -1013,6 +1024,7 @@ func term_text(t: Dictionary) -> String:
 		"structure":
 			match str(t.get("what", "coordination")):
 				"vicepresidency": return "una vicepresidencia del Gobierno" if str(t.get("by", "player")) != "ai" else "una vicepresidencia para ti"
+				"independents": return "que el presidente pueda nombrar independientes en sus ministerios" if str(t.get("by", "player")) == "ai" else "admitir independientes en tus ministerios"
 				"max_ministries": return "un Gobierno de %d ministerios como máximo" % int(t.get("n", 14))
 				"min_ministries": return "un Gobierno de al menos %d ministerios" % int(t.get("n", 12))
 			return "un órgano de coordinación del Gobierno"

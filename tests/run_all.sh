@@ -21,6 +21,7 @@ timeout 900 "$GODOT" --headless --path . --script res://tests/agreements.gd 2>&1
 timeout 900 "$GODOT" --headless --path . --script res://tests/candidates.gd 2>&1 | grep -E "FAIL|Fallos"
 timeout 900 "$GODOT" --headless --path . --script res://tests/capital.gd 2>&1 | grep -E "FAIL|Fallos"
 timeout 900 "$GODOT" --headless --path . --script res://tests/investiture_votes.gd 2>&1 | grep -E "FAIL|Fallos|FALLOS"
+timeout 900 "$GODOT" --headless --path . --script res://tests/qa_g.gd 2>&1 | grep -E "FAIL|Fallos"
 timeout 900 "$GODOT" --headless --path . --script res://tests/law_deals.gd 2>&1 | grep -E "FAIL|Fallos"
 timeout 900 "$GODOT" --headless --path . --script res://tests/history.gd 2>&1 | grep -E "FAIL|Fallos"
 timeout 900 "$GODOT" --headless --path . --script res://tests/diplomacy.gd 2>&1 | grep -E "FAIL|Fallos"

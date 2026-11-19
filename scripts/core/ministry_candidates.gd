@@ -29,13 +29,28 @@ func _next_id() -> int:
 func _sig(entry: Dictionary) -> String:
 	var comps: Array = (entry.get("comps", []) as Array).duplicate()
 	comps.sort()
-	return "%d|%s|%s" % [m.cycle, str(entry.get("party", "")), ",".join(comps)]
+	var party := str(entry.get("party", ""))
+	var flag := "|i" if (party != m.pid() and m.agr.independents_permitted(party)) else ""
+	return "%d|%s|%s%s" % [m.cycle, party, ",".join(comps), flag]
 
 ## ¿Se permiten candidatos independientes? Siempre en las carteras del presidente; en las de un socio solo si el acuerdo lo
-## autoriza (aún no existe esa cláusula: pendiente de la entrega G).
+## autoriza (término de estructura «independents», compromiso con verificación «permission»).
 func independents_allowed(index: int) -> bool:
 	var e := m.cab.entry(index)
-	return not e.is_empty() and str(e.get("party", "")) == m.pid()
+	if e.is_empty():
+		return false
+	var party := str(e.get("party", ""))
+	return party == m.pid() or m.agr.independents_permitted(party)
+
+## ¿Puede el jugador nombrar a este candidato en esa cartera? Las suyas, sí; en las de un socio, solo independientes y si el pacto lo permite.
+func can_name(index: int, c: Dictionary) -> bool:
+	var e := m.cab.entry(index)
+	if e.is_empty():
+		return false
+	var party := str(e.get("party", ""))
+	if party == m.pid():
+		return true
+	return m.agr.independents_permitted(party) and bool(c.get("independent", false))
 
 # ---------------------------------------------------------------- consulta
 ## Los cinco candidatos de una cartera (el titular actual, si lo hay, es uno de ellos).
@@ -77,6 +92,12 @@ func retire(index: int, pool_id: int) -> void:
 	if not left.has(pool_id):
 		left.append(pool_id)
 	rec["left"] = left
+
+func _has_independent(list: Array) -> bool:
+	for c in list:
+		if bool((c as Dictionary).get("independent", false)):
+			return true
+	return false
 
 func _has(list: Array, ch: Dictionary) -> bool:
 	for c in list:
@@ -121,6 +142,9 @@ func _complete(index: int, e: Dictionary, current: Array, incumbent: Dictionary)
 	var own := party == m.pid()
 	var source: Array = _own_source(index, e, out) if own else []
 	var roles: Array = ["specialist", "veteran", "loyal", "media", "independent" if independents_allowed(index) else "other"]
+	# En la cartera de un socio que admite independientes, el independiente entra siempre en la lista (primer hueco libre).
+	if not own and independents_allowed(index) and not _has_independent(out):
+		roles = ["independent", "specialist", "veteran", "loyal", "media"]
 	var guard := 0
 	var rejected: Array = []
 	var ri := 0
@@ -352,10 +376,12 @@ func ai_choose(index: int) -> Dictionary:
 ## Nombra a un candidato de la lista de esa cartera (solo carteras del jugador). Devuelve false si no es posible.
 func appoint(index: int, pool_id: int) -> bool:
 	var e := m.cab.entry(index)
-	if e.is_empty() or str(e.get("party", "")) != m.pid():
+	if e.is_empty():
 		return false
 	for c in shortlist(index):
 		if int((c as Dictionary).get("pool_id", -1)) == pool_id:
+			if not can_name(index, c as Dictionary):
+				return false
 			e["minister"] = (c as Dictionary).duplicate(true)
 			m.ministers.log_history(e["minister"], "Nombrado/a para %s." % str(e.get("name", "")))
 			return true

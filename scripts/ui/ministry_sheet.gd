@@ -168,6 +168,8 @@ func _meter_line(title: String, v: float, mx: float, color: Color) -> HBoxContai
 	row.add_child(vl)
 	return row
 
+var _indep_pick := false
+
 func _do_pick(pool_id: int) -> void:
 	if m.phase == "cabinet_design":
 		m.ministers.assign(idx, pool_id)
@@ -181,6 +183,7 @@ func _tab_cands(col: VBoxContainer) -> void:
 	var party := str(e.get("party", ""))
 	var mine := party == m.pid()
 	var can_pick := mine and (m.phase == "cabinet_design" or _president()) and not m.cab.is_reserved(idx)
+	_indep_pick = (not mine) and m.agr.independents_permitted(party) and (m.phase == "cabinet_design" or _president()) and not m.cab.is_reserved(idx)
 	var cur: Dictionary = m.cab.minister(idx)
 	var intro := ""
 	if mine:
@@ -189,6 +192,10 @@ func _tab_cands(col: VBoxContainer) -> void:
 			intro += " Cambiar de titular cuesta %d de capital político." % int(CabinetSim.ACTION_COST.get("replace", 0.0))
 	else:
 		intro = "%s elige a su ministro de esta cartera entre estos cinco candidatos, según los rasgos de su partido." % m.party_name(party)
+		if _indep_pick:
+			intro += " El pacto te permite nombrar tú a un independiente en esta cartera."
+		elif party != m.pid():
+			intro += " Los independientes solo entran en carteras de un socio si lo acepta en el acuerdo."
 	col.add_child(UI.wrap_label(intro, UI.FS_SMALL, UI.MUTED))
 	var row := UI.hbox(8)
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -268,7 +275,7 @@ func _cand_card(c: Dictionary, e: Dictionary, chosen_id: int, can_pick: bool, mi
 	v.add_child(sp2)
 	if is_cur:
 		v.add_child(UI.chip("Titular", UI.GOOD, true))
-	elif can_pick:
+	elif can_pick or (_indep_pick and bool(c.get("independent", false))):
 		var pid := int(c.get("pool_id", -1))
 		var b := UI.button("Nombrar", "secondary", Callable(self, "_do_pick").bind(pid))
 		v.add_child(b)

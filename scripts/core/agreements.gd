@@ -178,6 +178,12 @@ func spec_for_term(term: Dictionary, key: String, as_partner: bool, deadline: in
 				"min_ministries":
 					spec["text"] = "Un Gobierno de al menos %d ministerios" % int(term.get("n", 12))
 					spec["verify"] = {"t": "min", "n": int(term.get("n", 12))}
+				"independents":
+					# Permiso: el partido acepta que el presidente nombre independientes en sus carteras.
+					spec["text"] = "%s admite independientes en sus ministerios" % who
+					spec["binding"] = "binding"
+					spec["owed_to"] = _gov_id()
+					spec["verify"] = {"t": "permission", "party": key}
 				_:
 					spec["text"] = "Órgano de coordinación del Gobierno con %s" % who
 					spec["binding"] = "soft"
@@ -320,6 +326,27 @@ func size_block(adding: bool) -> String:
 	if not adding and m.cab.size() <= int(lim["min"]) and str(lim["min_by"]) != "":
 		return "El acuerdo con %s exige al menos %d ministerios: hace falta renegociarlo." % [m.party_short(str(lim["min_by"])), int(lim["min"])]
 	return ""
+
+## ¿Ha aceptado `party` (por acuerdo vivo) que el presidente nombre independientes en sus ministerios?
+func independents_permitted(party: String) -> bool:
+	for c in list():
+		var com: Dictionary = c
+		if str(com.get("kind", "")) != "structure" or str((com.get("ref", {}) as Dictionary).get("what", "")) != "independents":
+			continue
+		if str((com.get("verify", {}) as Dictionary).get("party", "")) != party:
+			continue
+		if str(com.get("state", "pending")) in ["cancelled", "renegotiated", "breached"]:
+			continue
+		return true
+	# Mientras se diseña el gabinete aún no hay compromisos: manda lo aceptado en la oferta de investidura.
+	if m.phase == "cabinet_design":
+		var offer: Dictionary = m.gov.offers().get(party, {})
+		if str(offer.get("status", "")) == "accepted":
+			for t in offer.get("terms_extra", []):
+				var td: Dictionary = t
+				if str(td.get("k", "")) == "structure" and str(td.get("what", "")) == "independents":
+					return true
+	return false
 
 ## Texto de bloqueo si la cartera está comprometida con un socio (cartera concreta o vicepresidencia); "" si no.
 func pledge_text(idx: int) -> String:
@@ -519,7 +546,7 @@ func _start_commitment(spec: Dictionary, key: String, agr: int, type: String, an
 	if str(vf.get("t", "")) == "credit":
 		_apply_credit(com)
 	var v := _verify(com)
-	if bool(v["done"]) and str(vf.get("t", "")) in ["portfolio", "vice", "cabinet_n", "max", "min", "credit"]:
+	if bool(v["done"]) and str(vf.get("t", "")) in ["portfolio", "vice", "cabinet_n", "max", "min", "credit", "permission"]:
 		set_state(com, "fulfilled", "Materializado: %s." % str(v.get("note", "ya figura en el Consejo")))
 	else:
 		com["progress"] = float(v.get("progress", 0.0))
@@ -603,6 +630,8 @@ func _verify_spec(vf: Dictionary, com: Dictionary = {}) -> Dictionary:
 				if str(m.cab.entry(int(i)).get("rank", "")) == "vice":
 					return {"done": true, "progress": 1.0, "note": "Vicepresidencia en «%s»." % str(m.cab.entry(int(i)).get("name", ""))}
 			return {"done": false, "progress": 0.0, "note": "Ninguna cartera suya tiene rango de vicepresidencia."}
+		"permission":
+			return {"done": true, "progress": 1.0, "note": "El presidente puede nombrar independientes en las carteras de %s." % m.party_short(str(vf.get("party", "")))}
 		"cabinet_n":
 			var have := _party_entries(str(vf["party"])).size()
 			return {"done": have >= int(vf["n"]), "progress": clampf(float(have) / float(maxi(1, int(vf["n"]))), 0.0, 1.0), "note": "Tiene %d de %d carteras." % [have, int(vf["n"])]}
